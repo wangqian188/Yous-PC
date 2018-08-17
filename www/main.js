@@ -27,6 +27,10 @@ Vue.use(VueLazyload, {
 Vue.prototype.$api = "http://116.62.71.76:8001/api/GetServiceApiResult" //api地址
 //Vue.prototype.$api = "http://localhost:8001/api/GetServiceApiResult" //api地址
 Vue.prototype.$resouceUrl = "http://localhost:8081/"  //资源文件地址
+//测试服接口地址 
+//var url = 'http://116.62.68.26:8080';//测试服接口地址
+//var Interface_url = 'http://116.62.68.26:8080';//测试接口地址
+//var img_url = 'http://116.62.68.26/';//图片的地址
 
 // 开启debug模式
 Vue.config.debug = true;
