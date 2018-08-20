@@ -15,9 +15,9 @@
             <a href="javascript:;" @click="getSubDistrict($event)"
                v-for="(item,index) in district"
                :class="[{active:positon_active == index},item.class]"
-               :id="item.code"
+               :id="item.fdcode"
                :data-sortType="'sort_reg_dis_'+index"
-            >{{item.name}}</a>
+            >{{item.fdname}}</a>
         </div>
         <p class="tj_box_1 clearfix" id="sub_district" v-show="sub_show_flag">
             <Progress :percent="statusbar" :stroke-width="5" status="active" v-show="statusShow"></Progress>
@@ -25,10 +25,10 @@
                v-for="(item1,index) in sub_district"
                :class="{active:sub_pos_active == index}"
                class="pt05"
-               :id="item1.code"
+               :id="item1.fdcode"
                :data-sortType="'sort_reg_bus_'+index"
                @click="getHouseList($event)"
-            >{{item1.name}}</a>
+            >{{item1.fdname}}</a>
         </p>
     </div>
 
@@ -60,19 +60,19 @@
                 var _this = this;
                 //调用区域查询接口，更新数据
                 this.$http.post(
-                    this.$api,
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getLpcity.do',
                     {
-                        "parameters": {},
-                        "foreEndType": 2,
-                        "code": "90000301"
+//                      "parameters": {},
+//                      "foreEndType": 2,
+//                      "code": "90000301"
                     }
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
-                        _this.district = result.data.districts;
+                        _this.district = result.data.xzqy;
                         var all_district = {
-                            code: "district_all",
-                            name: "全部",
+                            fdcode: "district_all",
+                            fdname: "全部",
                             class: "noArrow"
                         }
                         _this.district.unshift(all_district);
@@ -124,22 +124,22 @@
                     //调用子级区域查询接口，更新数据
 
                     this.$http.post(
-                        this.$api,
+                        this.$api_ysapi + '/yhcms/web/lpjbxx/getLpXzqyFq.do',
                         {
                             "parameters": {
-                                "city_code": $(e.target).attr('id')
+                                "district": $(e.target).attr('id')
                             },
                             "foreEndType": 2,
-                            "code": "90000302"
+                            "code": "300000010"
                         }
                     ).then(function (res) {
                         var result = JSON.parse(res.bodyText);
                         if (result.success) {
                             _this.sub_show_flag = true;
-                            _this.sub_district = result.data;
+                            _this.sub_district = result.data.xzfq;
                             var all_sub_district = {
-                                code: "dis_sta_all",
-                                name: "全部"
+                                fdcode: "dis_sta_all",
+                                fdname: "全部"
                             }
                             _this.sub_district.unshift(all_sub_district);
 

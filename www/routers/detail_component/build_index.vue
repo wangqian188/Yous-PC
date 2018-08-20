@@ -17,7 +17,7 @@
                     <div class="carousel-big" id="carousel_big">
                         <ul>
                             <li v-for="item in building_images">
-                                <a><img :src="item" alt=""></a>
+                                <a><img :src="$api_img_url + item" alt=""></a>
                             </li>
                         </ul>
                     </div>
@@ -30,7 +30,7 @@
                                 <li v-for="item1 in building_images">
                                     <a class="pr db cur-pointer">
                                         <div class="small-mask"></div>
-                                        <img :src="item1" alt=""/>
+                                        <img :src="$api_img_url + item1" alt=""/>
                                     </a>
                                 </li>
                             </ul>
@@ -751,63 +751,72 @@
 
                 this.building_id = this.$route.query.building_id;
                 this.$http.post(
-                    this.$api,
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getZdLpxq.do',
                     {
                         "parameters": {
-                            "building_id": this.building_id,
-                            "area": "",
-                            "price_dj": "[0,1000000]",
-                            "price_zj": "",
-                            "orderby": "",
-                            "curr_page": "1",
-                            "items_perpage": "10"
+//                          "building_id": this.building_id,
+//                          "area": "",
+//                          "price_dj": "[0,1000000]",
+//                          "price_zj": "",
+//                          "orderby": "",
+//                          "curr_page": "1",
+//                          "items_perpage": "10"
+							"building_id":this.building_id,
+                            "curr_page":1,
+							"items_perpage":"5",
+                            "area":"写字楼",
+                            "real":1
                         },
                         "foreEndType": 2,
                         "code": "30000002"
                     }
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
+                    console.log(result);
                     if (result.success) {
                         if (result.data) {
 
-                            _this.buildingName = result.data.building_name + '周边配套';
-                            _this.buildingNameSingle = result.data.building_name;
+                            _this.buildingName = result.data1.building_name + '周边配套';
+                            _this.buildingNameSingle = result.data1.building_name;
 
-                            _this.labels = result.data.label.split('、');
-                            var obj = {
-                                name: result.data.building_name,
-                                labels: result.data.label.split('、')
-                            };
-                            _this.$emit("listenchild", obj);
+//                          _this.labels = result.data1.label.split('、');
+//                          var obj = {
+//                              name: result.data1.building_name,
+//                              labels: result.data1.label.split('、')
+//                          };
+//                          _this.$emit("listenchild", obj);
 
-                            _this.district = result.data.district == null ? '区域' : result.data.district; //区域
-                            _this.business = result.data.business == null ? '商圈' : result.data.business; //商圈
-
-                            _this.building_images = result.data.building_images;
-
-
-                            _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data.address;
-                            _this.price = result.data.price == null ? '--' : result.data.price;
-                            _this.positionData = result.data.longitude + ',' + result.data.latitude;
+                            _this.district = result.data1.district == null ? '区域' : result.data1.district; //区域
+                            _this.business = result.data1.business == null ? '商圈' : result.data1.business; //商圈
+							var img_str = result.data1.building_images;
+							if(img_str != ''){
+								var hous_img = img_str.split(";");
+								_this.building_images = hous_img;
+							}
 
 
-                            _this.min_renge_area = result.data.min_renge_area == null ? '--' : result.data.min_renge_area;
-                            _this.max_renge_area = result.data.max_renge_area == null ? '--' : result.data.max_renge_area;
-                            _this.min_renge_price = result.data.min_renge_price == null ? '--' : result.data.min_renge_price;
-                            _this.max_renge_price = result.data.max_renge_price == null ? '--' : result.data.max_renge_price;
-                            _this.lease_nums = result.data.lease_nums == null ? '--' : result.data.lease_nums;
+                            _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data1.address;
+                            _this.price = result.data1.price == null ? '--' : result.data1.price;
+                            _this.positionData = result.data1.longitude + ',' + result.data1.latitude;
+
+
+                            _this.min_renge_area = result.data1.min_renge_area == null ? '--' : result.data1.min_renge_area;
+                            _this.max_renge_area = result.data1.max_renge_area == null ? '--' : result.data1.max_renge_area;
+                            _this.min_renge_price = result.data1.min_renge_price == null ? '--' : result.data1.min_renge_price;
+                            _this.max_renge_price = result.data1.max_renge_price == null ? '--' : result.data1.max_renge_price;
+                            _this.lease_nums = result.data.lease_nums == null ? '--' : result.data1.lease_nums;
 
 
                             //物业信息
-                            _this.property_company = result.data.property_company; //物业公司
-                            _this.property_fee = result.data.property_fee; //物业费
-                            if (result.data.opening_date) {
-                                _this.opening_date = result.data.opening_date.replace('0:00:00', ''); // 建成年代
+                            _this.property_company = result.data1.property_company; //物业公司
+                            _this.property_fee = result.data1.property_fee; //物业费
+                            if (result.data1.opening_date) {
+                                _this.opening_date = result.data1.opening_date.replace('0:00:00', ''); // 建成年代
                             }
 
-                            _this.building_level = result.data.building_level; //楼盘级别
-                            _this.property_rights = result.data.property_rights; //产权性质
-                            _this.building_area = result.data.building_area;  //建筑面积
+                            _this.building_level = result.data1.building_level; //楼盘级别
+                            _this.property_rights = result.data1.property_rights; //产权性质
+                            _this.building_area = result.data1.building_area;  //建筑面积
 
 
                             setTimeout(function () {

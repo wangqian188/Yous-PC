@@ -374,7 +374,7 @@
                             <router-link :to="{path:'/detail',query:{building_id:item.id}}" class="db pr clearfix"
                                          :id="item.id" target="_blank">
                                 <div class="fl pr">
-                                    <img :src="item.img_path" :alt="item.img_alt">
+                                    <img :src="$api_img_url + item.img_path" :alt="item.img_alt">
                                     <!--<img :src="http://116.62.71.76:81/default-youshi.png" :alt="item.img_alt">-->
                                 </div>
                                 <div class="price_box tright">
@@ -398,7 +398,7 @@
                                               v-text="item.min_areas+'-'+item.max_areas"></span>
                                         <span
                                                 class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb" v-text="item.lease_nums"></span>&nbsp;套
+                                            class="font-num text-black fb" v-text="item.lpkzfy"></span>&nbsp;套
                                     </dd>
                                     <!-- <dd>
                                         <span><i class="sem_icon item_see"></i>近7天有 <b
@@ -721,7 +721,6 @@
             del_one(e){
                 var _this = this;
                 var del_tip = $(e.target).parent().attr('data-sortType');
-                console.log(this.chosenArr);
                 if (del_tip.indexOf('sort_reg_dis') != -1) { //点击的是删除区域
 
                     this.chosenArr.forEach(function (val, i) {
@@ -872,47 +871,46 @@
                 var _this = this;
                 //调用区域查询接口，更新数据
                 this.$http.post(
-                    this.$api,
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getLpcity.do',
                     {
-                        "parameters": {},
-                        "foreEndType": 2,
-                        "code": "90000301"
+//                      "parameters": {},
+//                      "foreEndType": 2,
+//                      "code": "90000301"
                     }
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
                         _this.area_arr = result.data.range_areas; //面积arr
-
                         var all_area = {
                             code: "area_all",
                             name: "全部"
                         };
-                        _this.area_arr.unshift(all_area);
-
-                        _this.range_unit_prices = result.data.range_unit_prices; //单价
-
-
-                        var all_range_unit = {
-                            code: "range_pri_per_all",
-                            name: "全部"
-                        };
-                        _this.range_unit_prices.unshift(all_range_unit);
-
-                        _this.range_total_prices = result.data.range_total_prices; //总价
-
-                        var all_range_total = {
-                            code: "range_pri_tot_all",
-                            name: "全部"
-                        };
-                        _this.range_total_prices.unshift(all_range_total);
-
-                        _this.labels = result.data.labels; //特色
-
-                        var all_labels = {
-                            code: "",
-                            name: "全部"
-                        };
-                        _this.labels.unshift(all_labels);
+//                      _this.area_arr.unshift(all_area);
+//
+//                      _this.range_unit_prices = result.data.range_unit_prices; //单价
+//
+//
+//                      var all_range_unit = {
+//                          code: "range_pri_per_all",
+//                          name: "全部"
+//                      };
+//                      _this.range_unit_prices.unshift(all_range_unit);
+//
+//                      _this.range_total_prices = result.data.range_total_prices; //总价
+//
+//                      var all_range_total = {
+//                          code: "range_pri_tot_all",
+//                          name: "全部"
+//                      };
+//                      _this.range_total_prices.unshift(all_range_total);
+//
+//                      _this.labels = result.data.labels; //特色
+//
+//                      var all_labels = {
+//                          code: "",
+//                          name: "全部"
+//                      };
+//                      _this.labels.unshift(all_labels);
 
                         _this.initFlag = true;
 
@@ -940,31 +938,36 @@
                 this.search_keywork = this.search_keywork.replace(/(^\s*)|(\s*$)/g, '');
 
                 this.$http.post(
-                    this.$api,
+                    this.$api_ysapi+'/yhcms/web/lpjbxx/getZdLpjbxx.do',
                     {
                         "parameters": {
                             "search_keywork": this.search_keywork, //楼盘/商圈描述search
-                            "district": this.district, //区域
-                            "business": this.business, //商圈
+                            "district":"",
+							"business":"",
+                            "district1": this.district, //区域
+                            "business1": this.business, //商圈
                             "line_id": this.line_id, //地铁线路ID
                             "station_id": this.station_id, //地铁站点ID
                             "area": this.area, //面积
                             "price_dj": this.price_dj, //价格（[30,100]）单价
-                            "price_zj": this.price_zj, //价格（[30,100]）总价
+//                          "price_zj": this.price_zj, //价格（[30,100]）总价
                             "label": this.label, //特色标签
-                            "orderby": this.orderby, //排序默认：D ，面积升序：AA，面积降序：AD，价格升序：PA，价格降序：PD
+                            "chqxz":"",
+                            "orderby": this.orderby, //排序默认：D ，面积升序：A1，面积降序：A2，价格升序：P1，价格降序：P2
                             "curr_page": this.curPage,
                             "items_perpage": this.pageSize
                         },
+                        "sourceStatus":2,
                         "foreEndType": 2,
-                        "code": "30000001"
+                        "code": "30000001",
+                        "appVers": "1"
                     }
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
                     _this.loadingFlag = false;
                     if (result.success) {
-                        if (result.data) {
-                            if (result.data.total_items > 0) {
+                        if (result.data) {//改动测试
+                            if (result.total > 0) {
 
                                 _this.buildingShowFlag = false;
 
@@ -977,9 +980,13 @@
 
                                 }
                                 _this.buildList = result.data.buildings;
-                                _this.total_items = result.data.total_items;
-                                _this.total_pages = result.data.total_pages;
-
+                                _this.total_items = result.total;
+//                              _this.total_pages = result.data.total_pages;
+                                if(_this.total_items % 10 == 0){
+                                	_this.total_pages = _this.total_items / 10;                                	
+                                }else{
+                                	_this.total_pages = parseInt(_this.total_items / 10) + 1;
+                                }
                                 if (_this.total_pages <= 1) {
                                     _this.pageFlag = false;
                                 } else {
@@ -1543,19 +1550,19 @@
                         if (target.find('.sem_icon').hasClass('up')) {
                             target.find('.sem_icon').removeClass('up');
                             if (target.attr('id') == 'areaSort') {
-                                this.orderby = 'AD'; //面积降序：AD
+                                this.orderby = 'A2'; //面积降序：A2
                                 target.find('.bubble').html('点击按面积从大到小排序');
                             } else if (target.attr('id') == 'priceSort') {
-                                this.orderby = 'PD'; //价格降序：PD
+                                this.orderby = 'P2'; //价格降序：P2
                                 target.find('.bubble').html('点击按价格从低到高排序');
                             }
                         } else {
                             target.find('.sem_icon').addClass('up');
                             if (target.attr('id') == 'areaSort') {
-                                this.orderby = 'AA'; //面积升序：AA
+                                this.orderby = 'A1'; //面积升序：A1
                                 target.find('.bubble').html('点击按面积从小到大排序');
                             } else if (target.attr('id') == 'priceSort') {
-                                this.orderby = 'PA'; //价格升序：PA
+                                this.orderby = 'P1'; //价格升序：P1
                                 target.find('.bubble').html('点击按价格从高到低排序');
                             }
                         }

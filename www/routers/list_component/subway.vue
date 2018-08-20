@@ -12,9 +12,9 @@
             <a href="javascript:;"
                v-for="(item,index) in lines"
                :class="[{active:line_active == index},item.class]"
-               :id="item.code"
+               :id="item.id"
                :data-sortType="'sort_sub_lin_'+index"
-            >{{item.name}}</a>
+            >{{item.fdname}}</a>
         </div>
         <p id="sub_line" class="tj_box_1 clearfix" v-show="station_show_flag">
             <Progress :percent="statusbar" :stroke-width="5" status="active" v-show="statusShow"></Progress>
@@ -22,10 +22,10 @@
                v-for="(item1,index) in station_arr"
                :class="{active:station_active == index}"
                class="pt05"
-               :id="item1.code"
+               :id="item1.id"
                :data-sortType="'sort_sub_sta_'+index"
                @click="getHouseList($event)"
-            >{{item1.name}}</a>
+            >{{item1.fdname}}</a>
         </p>
     </div>
 
@@ -68,19 +68,19 @@
                 var _this = this;
                 //调用区域查询接口，更新数据
                 this.$http.post(
-                    this.$api,
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/lpsubway.do',
                     {
-                        "parameters": {},
-                        "foreEndType": 2,
-                        "code": "90000301"
+//                      "parameters": {},
+//                      "foreEndType": 2,
+//                      "code": "90000301"
                     }
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
-                        _this.lines = result.data.lines;
+                        _this.lines = result.data.subway;
                         var all_lines = {
-                            code: "line_all",
-                            name: "全部",
+                            id: "line_all",
+                            fdname: "全部",
                             class: "noArrow"
                         }
                         _this.lines.unshift(all_lines);
@@ -118,22 +118,22 @@
                     //调用车站查询接口，更新数据
 
                     this.$http.post(
-                        this.$api,
+                        this.$api_ysapi + '/yhcms/web/lpjbxx/getLpSubwaystation.do',
                         {
                             "parameters": {
-                                "line": $(e.target).attr('id')
+                                "line_id": $(e.target).attr('id')
                             },
                             "foreEndType": 2,
-                            "code": "90000303"
+                            "code": "30000008"
                         }
                     ).then(function (res) {
                         var result = JSON.parse(res.bodyText);
                         if (result.success) {
                             _this.station_show_flag = true;
-                            _this.station_arr = result.data;
+                            _this.station_arr = result.data.subway_station;
                             var all_station = {
-                                code: "line_sta_all",
-                                name: "全部",
+                                id: "line_sta_all",
+                                fdname: "全部",
                             }
                             _this.station_arr.unshift(all_station);
 
