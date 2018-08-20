@@ -308,11 +308,11 @@
                         <div class="screening_conts_list clearfix">
                             <span class="screening_title mr15">特色:</span>
                             <a href="javascript:;" v-for="(item4,index) in labels"
-                               :id="item4.code"
+                               :id="item4.id"
                                :class="{active:featureActive == index}"
                                :data-sortType="'sort_lab_'+index"
                                @click="sel_feature_list($event)"
-                               v-text="item4.name"
+                               v-text="item4.topic"
                             ></a>
                         </div>
                     </div>
@@ -880,41 +880,7 @@
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
-                        _this.area_arr = result.data.range_areas; //面积arr
-                        var all_area = {
-                            code: "area_all",
-                            name: "全部"
-                        };
-//                      _this.area_arr.unshift(all_area);
-//
-//                      _this.range_unit_prices = result.data.range_unit_prices; //单价
-//
-//
-//                      var all_range_unit = {
-//                          code: "range_pri_per_all",
-//                          name: "全部"
-//                      };
-//                      _this.range_unit_prices.unshift(all_range_unit);
-//
-//                      _this.range_total_prices = result.data.range_total_prices; //总价
-//
-//                      var all_range_total = {
-//                          code: "range_pri_tot_all",
-//                          name: "全部"
-//                      };
-//                      _this.range_total_prices.unshift(all_range_total);
-//
-//                      _this.labels = result.data.labels; //特色
-//
-//                      var all_labels = {
-//                          code: "",
-//                          name: "全部"
-//                      };
-//                      _this.labels.unshift(all_labels);
-
-                        _this.initFlag = true;
-
-
+                       _this.initFlag = true;
                     } else {
                         this.$Message.error(result.message);
                     }
@@ -922,7 +888,83 @@
                     this.$Message.error('获取区域失败');
                 });
             },
-
+			getmainjiList(){
+                var _this = this;
+                //调用面积查询接口，更新数据
+                this.$http.post(
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getLpArea.do',
+                    {}
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        _this.area_arr = result.data; //面积
+                        var all_area = {
+                            code: "area_all",
+                            name: "全部"
+                        };
+                        _this.area_arr.unshift(all_area);
+                        _this.initFlag = true;
+                    } else {
+                        this.$Message.error(result.message);
+                    }
+                }, function (res) {
+                    this.$Message.error('获取面积失败');
+                });
+            },
+            getpriceList(){
+                var _this = this;
+                //调用价格查询接口，更新数据
+                this.$http.post(
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getLpPries.do',
+                    {}
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        _this.range_unit_prices = result.data.unitdata; //单价
+                        var all_range_unit = {
+                            code: "range_pri_per_all",
+                            name: "全部"
+                        };
+                        _this.range_unit_prices.unshift(all_range_unit);
+                        _this.range_total_prices = result.data.totaldata; //总价
+                        var all_range_total = {
+                            code: "range_pri_tot_all",
+                            name: "全部"
+                        };
+                        _this.range_total_prices.unshift(all_range_total);
+                        
+                        _this.initFlag = true;
+                    } else {
+                        this.$Message.error(result.message);
+                    }
+                }, function (res) {
+                    this.$Message.error('获取价格失败');
+                });
+            },
+            gettsbqList(){
+                var _this = this;
+                //调用特色标签查询接口，更新数据
+                this.$http.post(
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getTsbq.do',
+                    {}
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        _this.labels = result.data; //特色
+                        var all_labels = {
+                            code: "",
+                            name: "全部"
+                        };
+                        _this.labels.unshift(all_labels);
+                        
+                        _this.initFlag = true;
+                    } else {
+                        this.$Message.error(result.message);
+                    }
+                }, function (res) {
+                    this.$Message.error('获取特色标签失败');
+                });
+            },
             //获取楼盘列表
             getList(){
                 var _this = this;
@@ -934,9 +976,9 @@
 
                 this.buildingShowFlag = false;
                 this.total_items = '--';
-
+				this.price_dj = this.price_dj!=''?this.price_dj.join(','):this.price_dj;//单价查找
+				this.area = this.area!=''?this.area.join(','):this.area;//面积查找
                 this.search_keywork = this.search_keywork.replace(/(^\s*)|(\s*$)/g, '');
-
                 this.$http.post(
                     this.$api_ysapi+'/yhcms/web/lpjbxx/getZdLpjbxx.do',
                     {
@@ -1675,7 +1717,10 @@
             });
 
             this.getSortList(); //获取筛选条件
-
+			this.getmainjiList();//获取面积筛选条件
+			this.getpriceList();//获取价格筛选条件
+			this.gettsbqList();//获取特色标签筛选条件
+			
             if (this.$route.query.search_keywork) {
                 this.search_keywork = this.$route.query.search_keywork;
             }
