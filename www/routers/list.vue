@@ -398,7 +398,7 @@
                                               v-text="item.min_areas+'-'+item.max_areas"></span>
                                         <span
                                                 class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb" v-text="item.lpkzfy"></span>&nbsp;套
+                                            class="font-num text-black fb" v-text="item.kzfy"></span>&nbsp;套
                                     </dd>
                                     <!-- <dd>
                                         <span><i class="sem_icon item_see"></i>近7天有 <b
@@ -976,8 +976,42 @@
 
                 this.buildingShowFlag = false;
                 this.total_items = '--';
-				this.price_dj = this.price_dj!=''?this.price_dj.join(','):this.price_dj;//单价查找
-				this.area = this.area!=''?this.area.join(','):this.area;//面积查找
+				//处理单价
+				if(this.price_dj != '' || this.price_dj != null){
+					if(typeof(this.price_dj) == "object"){
+						if(this.price_dj[1] == '' || this.price_dj[1] == null){
+							this.price_dj[1] = 10000;							
+						}
+						this.price_dj = [parseInt(this.price_dj[0]),parseInt(this.price_dj[1])];
+					}else{
+						this.price_dj = this.price_dj;
+					}
+					console.log(this.price_dj)
+				}
+				//处理总价
+				if(this.price_zj != '' || this.price_zj != null){
+					if(typeof(this.price_zj) == "object"){
+						if(this.price_zj[1] == '' || this.price_zj[1] == null){
+							this.price_zj[1] = 30*1000000;
+						}
+						this.price_zj = [parseInt(this.price_zj[0]*10000),parseInt(this.price_zj[1])];
+					}else{
+						this.price_zj = this.price_zj;
+					}
+					console.log(this.price_zj)
+				}
+				//处理面积
+				if(this.area != '' || this.area != null){
+					if(typeof(this.area) == "object"){
+						if(this.area[1] == '' || this.area[1] == null){
+							this.area[1] = 10000;
+						}
+					}else{
+						this.area = this.area;
+					}
+					console.log(this.area);
+				}
+					
                 this.search_keywork = this.search_keywork.replace(/(^\s*)|(\s*$)/g, '');
                 this.$http.post(
                     this.$api_ysapi+'/yhcms/web/lpjbxx/getZdLpjbxx.do',
@@ -992,7 +1026,7 @@
                             "station_id": this.station_id, //地铁站点ID
                             "area": this.area, //面积
                             "price_dj": this.price_dj, //价格（[30,100]）单价
-//                          "price_zj": this.price_zj, //价格（[30,100]）总价
+                            "price_zj": this.price_zj, //价格（[30,100]）总价
                             "label": this.label, //特色标签
                             "chqxz":"",
                             "orderby": this.orderby, //排序默认：D ，面积升序：A1，面积降序：A2，价格升序：P1，价格降序：P2

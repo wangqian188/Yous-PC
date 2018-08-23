@@ -41,12 +41,12 @@
                 this.building_id = this.$route.query.building_id;
 
                 this.$http.post(
-                    this.$api,
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getYsSpaceZdLpxq.do',
                     {
                         "parameters": {
                             "building_id": this.building_id,
                             "area": "",
-                            "price_dj": "[0,1000000]",
+                            "price_dj": "",
                             "price_zj": "",
                             "orderby": "",
                             "curr_page": "1",
@@ -59,9 +59,9 @@
                     _this.loadingFlag=false;
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
-                        if (result.data) {
-                            _this.buildingName = result.data.building_name + '周边配套';
-                            _this.positionData = result.data.longitude + ',' + result.data.latitude;
+                        if (result.data1) {
+                            _this.buildingName = result.data1.building_name + '周边配套';
+                            _this.positionData = result.data1.longitude + ',' + result.data1.latitude;
                         }
                     }
 
