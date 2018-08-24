@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">
     <a href="https://www.iviewui.com">
         <img width="200" src="https://raw.githubusercontent.com/iview/iview/master/assets/logo.png">
@@ -98,3 +99,7 @@ Normal browsers and Internet Explorer 9+.
 [MIT](http://opensource.org/licenses/MIT)
 
 Copyright (c) 2016-present, iView
+=======
+# Yous-PC
+幼狮空间PC站
+>>>>>>> ac1b581b58f736bb16cb99d4b8c16f09d199d01d
