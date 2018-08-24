@@ -41,22 +41,22 @@
     			<span class="wemaappimg dobubkdianji pointer" @click="diazshoiye" @mouseover="tjiacsbot($event)">
     				<span class="shouye topgudis">首页</span>
     			</span>
-    			<span class="wemaappimg pointer" @click="xiezilou($event)" @mouseover="tjiacsbot($event)">
+    			<span class="wemaappimg pointer" @click="xiezilou" @mouseover="tjiacsbot($event)">
     				<span class="xzlcz topgudis">写字楼出租</span>
     			</span>
-    			<span class="wemaappimg pointer" @click="diafwsc($event)" @mouseover="tjiacsbot($event)">
+    			<span class="wemaappimg pointer" @click="diafwsc" @mouseover="tjiacsbot($event)">
     				<span class="fwsc topgudis">服务商城</span>
     			</span>
-    			<span class="wemaappimg pointer" @click="yezhuweitui($event)" @mouseover="tjiacsbot($event)">
+    			<span class="wemaappimg pointer" @click="yezhuweitui" @mouseover="tjiacsbot($event)">
     				<span class="fwsc topgudis">业主委托</span>
     			</span>
-    			<span class="wemaappimg pointer" @click="diaqyhl($event)" @mouseover="tjiacsbot($event)">
+    			<span class="wemaappimg pointer" @click="diaqyhl" @mouseover="tjiacsbot($event)">
     				<span class="fwsc topgudis">企业互联</span>
     			</span>
-    			<span class="wemaappimg pointer" @click="diagjfwu($event)" @mouseover="tjiacsbot($event)">
+    			<span class="wemaappimg pointer" @click="diagjfwu" @mouseover="tjiacsbot($event)">
     				<span class="fwsc topgudis">管家服务</span>
     			</span>
-    			<span class="wemaappimg pointer" @click="gxlswa($event)" @mouseover="tjiacsbot($event)">
+    			<span class="wemaappimg pointer" @click="gxlswa" @mouseover="tjiacsbot($event)">
     				<span class="fwsc topgudis">关于亮狮</span>
     			</span>
     			<span class="wemaappimg pointer" @mouseover="laswwem" @mouseout="laswwemout">
@@ -97,13 +97,13 @@
 			diazshoiye(){
 				this.$router.push({ path: '/',query:{type:1}});
 			},
-			xiezilou(e){
-				$(e.target).addClass("dobubkdianji wemaappimg");
+			xiezilou(){
+				
 			},
-			diafwsc(e){
-				$(e.target).addClass("dobubkdianji wemaappimg");
+			diafwsc(){
+				window.open("http://beta.ursbest.com");
 			},
-			yezhuweitui(e){
+			yezhuweitui(){
 				this.$router.push({ path: '/yezhuweit',query:{type:4}});
 			},
 			
@@ -113,13 +113,13 @@
 					$(".wemaappimg:eq("+i+")").removeClass("dobubk");
 				}
 			},
-			diaqyhl(e){
-				$(e.target).addClass("dobubkdianji wemaappimg");
+			diaqyhl(){
+				this.$router.push({ path: '/qyhl',query:{type:5}});
 			},
-			diagjfwu(e){
-				$(e.target).addClass("dobubkdianji wemaappimg");
+			diagjfwu(){
+				this.$router.push({ path: '/gjfw',query:{type:6}});
 			},
-			gxlswa(e){
+			gxlswa(){
 				this.$router.push({ path: '/gxls',query:{type:7}});
 			},
 			lsapp(){
@@ -158,6 +158,28 @@
 						$(".wemaappimg:eq("+i+")").removeClass("dobubkdianji");
 					}
 					if(i == 3){
+						$(".wemaappimg:eq("+i+")").addClass("dobubkdianji");
+					}
+				}
+        	}
+        	if(this.$route.query.type == 5){
+        		var obj = $(".wemaappimg");
+				for(var i=0;i<obj.length;i++){
+					if(i == 0){
+						$(".wemaappimg:eq("+i+")").removeClass("dobubkdianji");
+					}
+					if(i == 4){
+						$(".wemaappimg:eq("+i+")").addClass("dobubkdianji");
+					}
+				}
+        	}
+        	if(this.$route.query.type == 6){
+        		var obj = $(".wemaappimg");
+				for(var i=0;i<obj.length;i++){
+					if(i == 0){
+						$(".wemaappimg:eq("+i+")").removeClass("dobubkdianji");
+					}
+					if(i == 5){
 						$(".wemaappimg:eq("+i+")").addClass("dobubkdianji");
 					}
 				}

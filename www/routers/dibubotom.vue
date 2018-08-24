@@ -31,9 +31,9 @@
 		<div class="yqljer">
 			<span class="yqljwenz">友情链接：</span>
 			<span class="hytz pointer" @click="diandhytz">/ 航远投资 </span>
-			<span class="hlzx pointer" @click="diandhytz">/ 华亮致新 </span>
-			<span class="hlfc pointer" @click="diandhytz">/ 华亮房产 </span>
-			<span class="yszs pointer" @click="diandhytz">/ 幼狮装饰</span>
+			<span class="hlzx pointer" @click="diandhlzx">/ 华亮致新 </span>
+			<span class="hlfc pointer" @click="diandhlfc">/ 华亮房产 </span>
+			<span class="yszs pointer" @click="diandyszs">/ 幼狮装饰</span>
 		</div>
 		<div class="kjdz ggdis">
 			<div class="bjlsw">
@@ -83,7 +83,16 @@
 		},
         methods: {
 			 diandhytz(){
-			 	location.href="http://www.baidu.com";
+			 	window.open("http://www.ursdream.com/");
+			 },
+			 diandhlzx(){
+			 	window.open("http://www.ursbest.com/");
+			 },
+			 diandhlfc(){
+			 	window.open("http://www.hualiangchina.com/");
+			 },
+			 diandyszs(){
+			 	window.open("http://www.ursspace.cn/");
 			 },
 			 diandgsjq(){
 			 	if(this.$route.query.type == 7){

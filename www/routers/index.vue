@@ -80,7 +80,7 @@
 	    	<div class="banner">
 				<swiper :options="swiperOption">
 					<swiper-slide v-for="idx in imgdata">
-						<img src="http://omc.urskongjian.com:81/guangwan/shiye1.jpg" alt="">
+						<img :src="$api_jtimg + idx" alt="">
 					</swiper-slide>
 					<div class="swiper-pagination" slot="pagination"></div>
 					<div class="swiper-button-prev">></div>
@@ -142,16 +142,13 @@
 						<div class="lpimglager ggdis">
 							<div class="lpimgdierss" v-for="item in lpdata">
 								<p>
-									<span class="lping ggdis"><img :src="http://116.62.68.26/item.pic"/></span>
+									<span class="lping ggdis"><img :src="$api_img_url + item.pic"/></span>
 									<span class="lpmignchlarge">
 										<span class="lpmignch ggdis">{{item.topic}}</span>
 										<span class="cbdhxqq">CBD核心区，高性价比商业之选</span>
 									</span>
 								</p>
 							</div>
-							
-							
-							
 						</div>
 					</div>
 				</div>
@@ -166,21 +163,21 @@
 					<div class="kjdz ggdis">
 						<div class="gozhuce ggdis">
 							<p class="gszcimgla">
-								<span class="gszcimg"></span>
-								<span class="zszximg"></span>
+								<span class="gszcimg" @click="diajissc"></span>
+								<span class="zszximg" @click="diajissc"></span>
 							</p>
 							<p class="bangjv">
-								<span class="bgjjimg ggdis"></span>
+								<span class="bgjjimg ggdis" @click="diajissc"></span>
 								<span class="gngypspa ggdis">
-									<span class="bgypimg ggdis"></span>
-									<span class="kgbximg ggdis"></span>
+									<span class="bgypimg ggdis" @click="diajissc"></span>
+									<span class="kgbximg ggdis" @click="diajissc"></span>
 								</span>
 							</p>
 							<p class="bangjv">
-								<span class="lzfu ggdis"></span>
+								<span class="lzfu ggdis" @click="diajissc"></span>
 								<span class="gngypspa ggdis">
-									<span class="qyys ggdis"></span>
-									<span class="qybj ggdis"></span>
+									<span class="qyys ggdis" @click="diajissc"></span>
+									<span class="qybj ggdis" @click="diajissc"></span>
 								</span>
 							</p>
 						</div>
@@ -245,21 +242,23 @@
 
 		},
         methods: {
-			 min(){
+			min(){
 			 	this.$http.post(
-			 	"http://116.62.68.26:8080/yhcms/web/jcsj/getHotBuilding.do",
-          		/*this.$api + "/yhcms/web/jcsj/getHotBuilding.do",*/
+			 	/*"http://116.62.68.26:8080/yhcms/web/jcsj/getHotBuilding.do",*/
+          		this.$api_ysapi + "/yhcms/web/jcsj/getHotBuilding.do",
 				).then(function (res) {
 			        var result = JSON.parse(res.bodyText);
 			        /*Indicator.close();*/
 			        if (result.success){
 			            this.lpdata = result.data;
-			            alert(JSON.stringify(this.lpdata));
 			            /*_this.floors = data.zglc || '暂无数据';
 			            _this.topic = result.data[0].topic;*/
 			        }
 		        })
-			 }
+			},
+			diajissc(){
+			 	window.open("http://beta.ursbest.com");
+			}
         },
 
         mounted: function(){
