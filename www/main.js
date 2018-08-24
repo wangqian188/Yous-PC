@@ -47,6 +47,18 @@ var router = new VueRouter({
             component: require('./routers/index.vue')
         },
         {
+            path: '/gxls',//关于亮狮的页面
+            component: require('./routers/gxls.vue')
+        },
+        {
+            path: '/yezhuweit',//关于亮狮的页面
+            component: require('./routers/yezhuweit.vue')
+        },
+        {
+            path: '/blanks',//空白的页面
+            component: require('./routers/blanks.vue')
+        },
+        {
             path: '/office',
             component: require('./routers/office.vue')
         },
@@ -149,6 +161,10 @@ var router = new VueRouter({
 
     ]
 });
+
+require('swiper/dist/css/swiper.css')
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper)
 
 new Vue({
     el: '#app',
