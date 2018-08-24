@@ -211,7 +211,7 @@
                 </div>
 
                 <!--右侧悬浮box start-->
-                <div class="sidebar_box">
+                <div class="sidebar_box" v-if="false">
                     <div class="sidebar_main" id="sidebar_fix">
                         <div class="booking_house">
                             <div class="booking_house_mes">

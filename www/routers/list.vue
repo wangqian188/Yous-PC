@@ -26,7 +26,7 @@
         position: relative;
     }
 
-    //分页
+    /*//分页*/
     .page_wrap {
         text-align: center;
         width: 410px;
@@ -42,8 +42,9 @@
         background-color: #3facf8;
         border-color: #3facf8;
     }
-
-
+	#sidebar_fix{
+		box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+	}
 </style>
 
 <template>
@@ -65,7 +66,7 @@
                                    maxlength="30">
                         </div>
                         <a class="map_btn fl ml10" id="bannerSearchbtn" @click="searchClick()">搜索</a>
-                        <router-link target="_blank" :to="{path:'/map_search'}" class="map_find_room fl ml10"><i></i>地图搜索
+                        <router-link v-if='false' target="_blank" :to="{path:'/map_search'}" class="map_find_room fl ml10"><i></i>地图搜索
                         </router-link>
                     </div>
                 </div>
@@ -435,8 +436,8 @@
                     <!--右侧栏-->
                     <div class="sidebar_box pt70">
                         <div class="sidebar_main" id="sidebar_fix">
-                            <div class="side_model_tit"><i></i>地图找房</div>
-                            <div class="map_house pr mt10">
+                            <div class="side_model_tit" v-if="false"><i></i>地图找房</div>
+                            <div class="map_house pr mt10" v-if="false">
                                 <div class="map_hover_wrap">
                                     <div class="map_hover_bg"></div>
                                     <div class="pr">
@@ -446,9 +447,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="side_model_tit mb10"><i></i>快速找房</div>
-                            <div class="booking_house">
-                                <div class="booking_house_mes">
+                            <div class="side_model_tit mb10" v-if="false"><i></i>快速找房</div>
+                            <div class="booking_house" style="box-shadow: none;">
+                                <div class="booking_house_mes" v-if="false">
                                     <div class="side_model_tit cl_blue">快速委托找房</div>
                                     <form id="freeLookForm" class="nice-validator n-default">
                                         <div class="form_control form_btn mt10 tc cur_pointer" @click="modal6 = true">
@@ -458,13 +459,17 @@
 
                                     <p class="nearby">* 客服将在10分钟内联系您</p>
                                 </div>
-                                <div class="consult_box tc">
+                                <div class="consult_box tc" style="box-shadow: none;border-bottom: 1px solid rgba(0, 0, 0, 0.03);">
                                     <i class="right_logo_icon"></i>咨询热线：<b class="text_pink_app">400-078-8800</b>
                                 </div>
                             </div>
-                            <div class="app_download tc">
+                            <div class="app_download tc" style="box-shadow: none;">
                                 <img src="../resources/images/ys_weixin.jpg" alt="扫描二维码关注">
                                 <p>随时随地查阅最新房源<br>即刻关注官方微信</p>
+                            </div>
+                            <div class="app_download tc" style="box-shadow: none;">
+                                <img src="../resources/images/app_link.png" alt="扫描二维码关注">
+                                <p>一站式企业办公服务<br>即刻下载亮狮APP</p>
                             </div>
                         </div>
                     </div>

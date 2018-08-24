@@ -285,9 +285,9 @@
             <!--右侧悬浮box start-->
             <div class="sidebar_box mt10">
                 <div class="sidebar_main" id="sidebar_fix">
-                    <div class="side_model_tit mb10"><i></i>快速找房</div>
-                    <div class="booking_house">
-                        <div class="booking_house_mes">
+                    <div class="side_model_tit mb10" v-if="false"><i></i>快速找房</div>
+                    <div class="booking_house" style="box-shadow: none;">
+                        <div class="booking_house_mes" v-if="false">
                             <div class="side_model_tit cl_blue">快速委托找房</div>
                             <form id="freeLookForm" class="nice-validator n-default">
                                 <div class="form_control form_btn mt10 tc cur_pointer"
@@ -297,13 +297,17 @@
 
                             <p class="nearby">* 客服将在10分钟内联系您</p>
                         </div>
-                        <div class="consult_box tc">
+                        <div class="consult_box tc" style="box-shadow: none;border-bottom: 1px solid rgba(0, 0, 0, 0.03);">
                             <i class="right_logo_icon"></i>咨询热线：<b class="text_pink_app">400-078-8800</b>
                         </div>
                     </div>
-                    <div class="app_download tc">
+                    <div class="app_download tc" style="box-shadow: none;">
                         <img src="../../resources/images/ys_weixin.jpg" alt="扫描二维码关注">
                         <p>随时随地查阅最新房源<br>即刻关注官方微信</p>
+                    </div>
+                    <div class="app_download tc" style="box-shadow: none;">
+                        <img src="../../resources/images/app_link.png" alt="扫描二维码关注">
+                        <p>一站式企业办公服务<br>即刻下载亮狮APP</p>
                     </div>
                 </div>
             </div>
@@ -671,10 +675,10 @@
 //                          _this.total_items = result.data.total_items == null ? '--' : result.data.total_items;
 
                             _this.total_pages = _this.total_items;//总条数
-                            if(_this.total_items % 5 == 0){
-                            	_this.total_pages = _this.total_items / 5;                                	
+                            if(_this.total_pages % 5 == 0){
+                            	_this.total_pages = _this.total_pages / 5;                                	
                             }else{
-                            	_this.total_pages = parseInt(_this.total_items / 5) + 1;
+                            	_this.total_pages = parseInt(_this.total_pages / 5) + 1;
                             }
 
                             if (_this.total_pages <= 1) {
