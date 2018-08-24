@@ -1,0 +1,1351 @@
+<style lang="less" scoped>
+    .page_det_box {
+        padding: 30px 0;
+        margin: 0 auto;
+        width: 400px;
+    }
+</style>
+
+
+<template>
+    <div>
+        <!--img detail-->
+        <div class="common-info clearfix">
+            <!--轮播图 start-->
+            <div class="carousel-wrapper">
+                <div class="carousel-box" id="carousel_building">
+                    <div class="carousel-big" id="carousel_big">
+                        <ul>
+                            <li v-for="item in building_images">
+                                <a><img :src="$api_img_url + item" alt=""></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="carousel-small-box">
+                        <div class="carousel-small-prev toggle-button" id="carousel_small_prev">
+                            <img src="../../resources/images/detail/small-prev.png" width="20" height="62" alt="">
+                        </div>
+                        <div class="carousel-small clearfix" id="carousel_small">
+                            <ul>
+                                <li v-for="item1 in building_images">
+                                    <a class="pr db cur-pointer">
+                                        <div class="small-mask"></div>
+                                        <img :src="$api_img_url + item1" alt=""/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="carousel-small-next toggle-button" id="carousel_small_next">
+                            <img src="../../resources/images/detail/small-next.png" width="20" height="62" alt=""></div>
+                    </div>
+                </div>
+            </div>
+            <!--轮播图 end-->
+
+            <div class="building-message">
+
+                <!--logo-->
+                <div class="building-label clearfix">
+                    <div class="building-tag">
+                        <h1 v-text="buildingNameSingle"></h1>
+                        <ul class="tag-item" v-for="item in labels">
+                            <!--<li>互联网</li>-->
+                            <li v-for="label in item.split(',')" v-text="label"></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="price-box clearfix mt20">
+                    <p class="building-price">
+                        <strong v-text="price">&nbsp;</strong><span>元/<em class="font-num">m²</em>·天</span>
+                    </p>
+                </div>
+
+                <dl class="rental-info clearfix">
+                    <dd>
+                        <i class="bold db rent_num" v-text="total_items"></i>
+                        <span>全部待租</span>
+                    </dd>
+                    <dd>
+
+                        <span v-if="max_renge_price==min_renge_price" class="bold db rent_num">
+                          <i class="bold" v-text="min_renge_price"></i>元/<em class="font-num">m²</em>·天
+                        </span>
+                        <span v-else class="bold db rent_num">
+                            <i class="bold" v-text="min_renge_price"></i> ~ <i class="bold"
+                                                                               v-text="max_renge_price"></i> 元/<em
+                                class="font-num">m²</em>·天</span>
+                        <span>价格范围</span>
+                    </dd>
+                    <dd>
+                        <span v-if="min_renge_area==max_renge_area" class="bold db rent_num">
+                           <i class="bold" v-text="max_renge_area"></i><em class="font-num"> m²</em>
+                        </span>
+                        <span v-else class="bold db rent_num"><i class="bold" v-text="min_renge_area"></i> - <i
+                                class="bold"
+                                v-text="max_renge_area"></i><em class="font-num"> m²</em>
+                        </span>
+                        <span>面积范围</span>
+                    </dd>
+                </dl>
+
+                <p class="building-address clearfix">
+                    <i class="detail-icon fl"></i><span v-text="address"></span><a href="#buildmap" class="show-map">&nbsp;查看地图</a>
+                </p>
+
+                <p class="building-consult clearfix">
+                    <!-- <i class="detail-icon fl"></i><span>距离14号线阜通站808米</span> -->
+                </p>
+
+                <!--电话咨询-->
+                <div class="consulting clearfix mobile_consult">
+                    <div class="quick">
+                        <i class="detail-icon"></i>
+                        <div class="tel">
+                            <em class="tel_num_all">400-078-8800</em></div>
+                    </div>
+                    <!--<div class="mobile_box">-->
+                    <!--<a href="javascript:;" class="call_back_btn" @click="modal5 = true">客服电话</a>-->
+                    <!--</div>-->
+                </div>
+
+                <div class="build_weixin_top"><i class="detail-icon"></i><span>分享</span>
+                    <div class="attention-share-ewm none">
+                        <div class="build_weixin_img" id="ys_weixin_img"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--building 信息分类start-->
+        <div class="category-message-box clearfix ">
+
+            <div class="category-message" id="category_message">
+
+                <div id="detail-infomation">
+                    <div class="category-item-title-first">
+                        <h2 class="fl"><i class="detail-icon rent"></i>{{buildingNameSingle}}共有&nbsp;<strong
+                                class="text-blue" v-text="total_items"></strong>&nbsp;套房源待租</h2>
+                        <a class="show-link mr20" href="javascript:;" target="_blank" @click="lookAll()">查看全部</a>
+                    </div>
+
+
+                    <div class="screening-range ph10" v-show="initFlag">
+
+                        <!--面积-->
+                        <div class="screening-range-list">
+                            <span>面积:</span>
+                            <ul class="clearfix" id="area_qj_wrap">
+                                <li v-for="(item1,index) in area_arr" v-if="index == 0">
+                                    <a href="javascript:;"
+                                       :id="item1.code"
+                                       :class="{on:areaActive == index}"
+                                       :data-sortType="'sort_are_'+index"
+                                       @click="sel_area_list($event)"
+                                    >全部</a>
+                                </li>
+                                <template v-else>
+                                    <li v-if="index == area_arr.length-1">
+                                        <a href="javascript:;" class="last"
+                                           @click="sel_area_list($event)">>{{item1.minnum}}m²</a>
+                                    </li>
+                                    <li v-else>
+                                        <a href="javascript:;"
+                                           @click="sel_area_list($event)">{{item1.minnum}}-{{item1.maxnum}}m²</a>
+                                    </li>
+                                </template>
+                                <li></li>
+                            </ul>
+                        </div>
+
+                        <!--价格-->
+                        <div class="screening-range-list" id="price-list">
+                            <span>价格:</span>
+
+                            <ul class="clearfix" id="price_dj_wrap">
+                                <li v-for="(item2,index) in range_unit_prices" v-if="index == 0">
+                                    <a href="javascript:;"
+                                       :id="item2.code"
+                                       :class="{on:areaActive == index}"
+                                       :data-sortType="'sort_are_'+index"
+                                       @click="sel_price_list($event)"
+                                    >全部</a>
+                                </li>
+                                <template v-else>
+                                    <li v-if="index == range_unit_prices.length-1">
+                                        <a href="javascript:;" class="last"
+                                           @click="sel_price_list($event)">>{{item2.minnum}}{{item2.unit}}</a>
+                                    </li>
+                                    <li v-else>
+                                        <a href="javascript:;"
+                                           @click="sel_price_list($event)">{{item2.minnum}}-{{item2.maxnum}}{{item2.unit}}</a>
+                                    </li>
+                                </template>
+
+                                <li>
+                                    <div class="price-wrap">
+                                        <a class="active cur-pointer conts_option">按单价</a>
+                                        <a class="cur-pointer conts_option">按总价</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="clearfix none">
+
+                                <li v-for="(item3,index) in range_total_prices" v-if="index == 0">
+                                    <a href="javascript:;"
+                                       :id="item3.code"
+                                       :class="{on:areaActive == index}"
+                                       :data-sortType="'sort_are_'+index"
+                                       @click="sel_tot_price_list($event)"
+                                    >全部</a>
+                                </li>
+                                <template v-else>
+                                    <li v-if="index == range_total_prices.length-1">
+                                        <a href="javascript:;"
+                                           class="last"
+                                           @click="sel_tot_price_list($event)">>{{item3.minnum}}{{item3.unit}}</a>
+                                    </li>
+                                    <li v-else>
+                                        <a href="javascript:;"
+                                           @click="sel_tot_price_list($event)">{{item3.minnum}}-{{item3.maxnum}}{{item3.unit}}</a>
+                                    </li>
+                                </template>
+
+                                <li>
+                                    <div class="price-wrap">
+                                        <a class="cur-pointer conts_option">按单价</a>
+                                        <a class="cur-pointer conts_option active">按总价</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!--自定义面积和价格-->
+                        <div class="screening-range-list">
+                            <span>自定义:</span>
+                            <ul class="clearfix pl20">
+                                <li><a class="fb">面积</a></li>
+                                <li class="area-wrap clearfix pr" @mouseenter="areaShowFlag = true"
+                                    @mouseleave="areaShowFlag = false">
+                                    <div>
+                                        <input name="temp-beginArea"
+                                               maxlength="6"
+                                               value=""
+                                               type="text"
+                                               autocomplete="off"
+                                               v-model="bArea"
+                                               onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                               onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                        <i class="mv05 text-grayC">-</i>
+                                        <input name="temp-endArea"
+                                               maxlength="6"
+                                               value=""
+                                               type="text"
+                                               autocomplete="off"
+                                               v-model="eArea"
+                                               onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                               onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                        <i class="font-num text-black ml05">m²</i>
+                                    </div>
+                                    <div class="inp-pop" v-show="areaShowFlag">
+                                        <form action="/detail-184.html#detail-infomation" class="fl" id="areaForm">
+                                            <input name="beginArea"
+                                                   maxlength="6"
+                                                   value=""
+                                                   type="text"
+                                                   autocomplete="off"
+                                                   v-model="bArea"
+                                                   onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                                   onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                            <i class="mv05 text-grayC">-</i>
+                                            <input name="endArea"
+                                                   maxlength="6"
+                                                   value=""
+                                                   type="text"
+                                                   autocomplete="off"
+                                                   v-model="eArea"
+                                                   onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                                   onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                            <i class="font-num text-black ml05">m²</i>
+                                            <a class="confrim-btn cur-pointer ml05" @click="self_area($event)"
+                                               id="areaConfirm">确定</a>
+                                        </form>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="fb">价格</a>
+                                </li>
+                                <li class="price-inp-wrap pr" @mouseenter="priceShowFlag = true"
+                                    @mouseleave="priceShowFlag = false">
+                                    <div>
+                                        <input type="text"
+                                               autocomplete="off"
+                                               name="temp-startprice"
+                                               value=""
+                                               v-model="bNum"
+                                               onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                               onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                        <i class="mv05 text-grayC">-</i>
+                                        <input type="text"
+                                               autocomplete="off"
+                                               name="temp-endprice"
+                                               value=""
+                                               class="mr05"
+                                               v-model="eNum"
+                                               onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                               onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                        <i class="text-black">元</i>
+                                    </div>
+                                    <div class="inp-pop" v-show="priceShowFlag">
+                                        <form action="/detail-184.html#detail-infomation" class="fl" id="priceForm">
+
+                                            <input type="text"
+                                                   autocomplete="off" name="startprice" value="" maxlength="5"
+                                                   v-model="bNum"
+                                                   onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                                   onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                            <i class="mv05 text-grayC">-</i>
+                                            <input type="text" autocomplete="off" name="endprice"
+                                                   value="" class="mr05" maxlength="5"
+                                                   v-model="eNum"
+                                                   onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                                   onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                            <i class="text-black">元</i>
+
+                                            <input type="hidden" name="priceFlag" value="1">
+                                            <a class="confrim-btn cur-pointer ml05" id="priceConfirm"
+                                               @click="self_price_per($event)">确定</a>
+                                        </form>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--搜索结果-->
+                    <div class="clearfix">
+
+                        <div class="sort-list clearfix fl" @click="buildSort($event)">
+                            <a href="javascript:;" class="tag">默认</a>
+                            <a href="javascript:;" id="priceSort">价格<span></span></a>
+                            <a href="javascript:;" id="areaSort">面积<span></span></a>
+                        </div>
+                        <div class="fr sort-meet-result ">共 <b v-text="total_items"></b> 套房源符合条件</div>
+                    </div>
+
+                    <!--加载中-->
+                    <div class="loading_wrap" v-show="loadingFlag">
+                        <Spin fix>
+                            <Icon type="load-c" size=20     class="demo-spin-icon-load"></Icon>
+                            <div>加载中……</div>
+                        </Spin>
+                    </div>
+
+                    <ul class="detail-office-list" v-show="house_res_show">
+                        <li v-for="item in buildList">
+                            <router-link target="_blank"
+                                         :to="{path:'/house_det',query:{building_id:building_id,house_id:item.id}}">
+                                <div class="list-img">
+                                    <img :src="$api_img_url + item.housing_icon" alt="">
+                                </div>
+                                <div class="list-introduce">
+                                    <div class="introduce-primary clearfix">
+                                        <span class="font20" v-if="item.decoration_level==null">
+                                          {{item.housing_area}}<em class="font-num">m²</em>{{item.decoration_level}}
+                                        </span>
+                                        <span class="font20" v-else>
+                                           {{item.housing_area}}<em class="font-num">m²</em>·{{item.decoration_level}}
+                                        </span>
+
+                                        <div>
+                                            <span class="text-gray6"><em class="font-num"
+                                                                         v-text="item.monthly_price"></em> 元/月</span>
+                                            <div><b class="font-num text-black" v-text="item.daily_price"></b> 元/<span
+                                                    class="font-num">m²</span>·天
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="introduce-second">
+                                        <span><em class="text-gray6">工位：</em>{{item.workstation}}个</span>
+                                    </div>
+                                    <!-- <div class="introduce-time-btn">
+                                        <span>更新于：{{item.refreshTime | formatDate}}</span>
+                                    </div> -->
+                                </div>
+                            </router-link>
+                        </li>
+                    </ul>
+
+                    <!--暂无结果-->
+                    <h3 class="no_result" v-show="buildingShowFlag">暂无待出租写字楼 !</h3>
+
+                    <!--page-->
+                    <div class="page_wrap mb25" v-show="pageFlag">
+                        <Page ref="pages" :total="total_pages*10" @on-change="change"></Page>
+                    </div>
+
+                </div>
+
+                <div class="building-information">
+                    <div class="category-item-title">
+                        <h2 class="fl"><i class="detail-icon introduce"></i>{{buildingNameSingle}}简介</h2>
+                        <a class="show-link mr20" href="javascript:;" target="_blank" @click="lookMore()">查看详情</a>
+                    </div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td colspan="2" class="clearfix">
+                                <em class="fl">物业公司：</em>
+                                <span class="fl whitespace  w550" v-text="property_company"></span>
+                            </td>
+                            <td colspan="2"></td>
+                            <td colspan="2">
+                                <em>物业费：</em><span v-text="property_fee+'元/m²·月 '"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <em>建成年代：</em><span v-text="opening_date"></span>
+                            </td>
+                            <td colspan="2"></td>
+                            <td colspan="2">
+                                <em>楼盘级别：</em><span v-text="building_level"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <em>产权性质：</em><span v-text="property_rights"></span>
+                            </td>
+                            <td colspan="2"></td>
+                            <td colspan="2">
+                                <em>建筑面积：</em><span v-text="building_area+'m²'"></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--右侧悬浮box start-->
+            <div class="sidebar_box">
+                <div class="sidebar_main" id="sidebar_fix">
+                    <div class="side_model_tit mb10" v-if="false"><i></i>快速找房</div>
+                    <div class="booking_house" style="box-shadow: none;">
+                        <div class="booking_house_mes" v-if='false'>
+                            <div class="side_model_tit cl_blue">快速委托找房</div>
+                            <form id="freeLookForm" class="nice-validator n-default">
+                                <div class="form_control form_btn mt10 tc cur_pointer"
+                                     @click="modal6 = true">一键咨询
+                                </div>
+                            </form>
+
+                            <p class="nearby">* 客服将在10分钟内联系您</p>
+                        </div>
+                        <div class="consult_box tc" style="box-shadow: none;border-bottom: 1px solid rgba(0, 0, 0, 0.03);">
+                            <i class="right_logo_icon"></i>咨询热线：<b class="text_pink_app">400-078-8800</b>
+                        </div>
+                    </div>
+                    <div class="app_download tc" style="box-shadow: none;">
+                        <img src="../../resources/images/ys_weixin.jpg" alt="扫描二维码关注">
+                        <p>随时随地查阅最新房源<br>即刻关注官方微信</p>
+                    </div>
+                    <div class="app_download tc" style="box-shadow: none;">
+                        <img src="../../resources/images/app_link.png" alt="扫描二维码关注">
+                        <p>一站式企业办公服务<br>即刻下载亮狮APP</p>
+                    </div>
+                </div>
+            </div>
+            <!--右侧悬浮box end-->
+        </div>
+        <!--building 信息分类end-->
+
+        <!--一键咨询弹窗-->
+        <Modal v-model="modal6" width="420" @on-cancel="cancel_one">
+            <div popup>
+                <Form ref="formInline2" :model="formInline2" id="wt_form">
+                    <h3>一键咨询</h3>
+                    <Form-item prop="telephone">
+                        <div class="popItem">
+                            <span class="inp_icon phone"></span>
+                            <form action="" id="form_send2">
+                                <input type="text" maxlength="11" required="" value=""
+                                       autocomplete="off"
+                                       name="ys_mobile2"
+                                       onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                                       onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
+                                       placeholder="请输入您的手机号码"
+                                       v-model="formInline2.telephone">
+                            </form>
+                            <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn"
+                                      v-on:run="sendCode2"
+                                      second="60"></TimerBtn>
+                        </div>
+                    </Form-item>
+                    <div class="popItem">
+                        <span class="inp_icon password"></span>
+                        <input type="text" value=""
+                               name="identify_code2"
+                               autocomplete="off"
+                               maxlength="4"
+                               onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                               onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
+                               v-model="formInline2.InputCode"
+                               placeholder="请输入您收到的验证码">
+                    </div>
+                    <p class="pt10">您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
+                    <Form-item>
+                        <input type="primary" readonly class="pop_subbtn" value="提交"
+                               @click="handleSubmit2('formInline2')">
+                    </Form-item>
+                </Form>
+            </div>
+        </Modal>
+
+        <!--周边配套信息-->
+        <div class="category-message-box clearfix " id="buildmap">
+            <!--地图-->
+            <map-part :building-name="buildingName" :position-data="positionData" v-if="positionData"></map-part>
+        </div>
+
+    </div>
+
+</template>
+
+<script>
+
+    import mapPart from '../../components/map-part.vue';
+    import '../../resources/plugin/pic_tab/pic_tab.js';
+    import {formatDate} from '../../components/date.js';
+    import '../../resources/plugin/qrcode/jquery.qrcode.min.js';
+
+    export default {
+        data(){
+            return {
+
+                modal6: false, //弹窗
+                formInline1: {
+                    telephone: '',
+                    city: '',
+                    trade_area: ''
+                },
+
+                formInline2: {
+                    telephone: ''
+                },
+
+                buildingShowFlag: true, //无结果div是否显示
+                house_res_show: true,  //楼盘结果ul是否显示
+                loadingFlag: true, //loading是否显示
+                pageFlag: false, //页码是否显示
+
+                labels: [],
+
+                buildingName: "", //拼出的楼盘周边配套
+                buildingNameSingle: "", //单独楼盘名称
+
+                positionData: "", //经纬度
+
+                orderby: "D",
+
+                building_id: "", //楼盘id
+                address: "",//地址
+                price: "",//价格
+                min_renge_area: "",
+                max_renge_area: "",
+                min_renge_price: "",
+                max_renge_price: "",
+                lease_nums: "",
+
+                building_images: [
+                    'http://116.62.71.76:81/default-youshi.png',
+                    'http://116.62.71.76:81/default-youshi.png',
+                    'http://116.62.71.76:81/default-youshi.png',
+                    'http://116.62.71.76:81/default-youshi.png',
+                    'http://116.62.71.76:81/default-youshi.png'
+                ], //banner图片
+
+
+                //筛选部分
+                initFlag: true,
+                areaActive: 0,
+                perPriceActive: 0,
+                totPriceActive: 0,
+                //面积筛选数组
+                area_arr: [],
+
+                //价格筛选数组
+                range_unit_prices: [],
+
+                range_total_prices: [],
+
+                areaShowFlag: false, //默认面积窗不显示
+                bArea: "", //起始面积
+                eArea: "", //结束面积
+
+                //单价
+                priceShowFlag: false, //默认价格窗不显示
+                bNum: "", //起始价格
+                eNum: "", //结束价格
+
+                area: "",
+                price_dj: "",
+                price_zj: "",
+
+                buildList: [], //楼盘列表，搜索结果
+                total_items: '--', //结果总数
+                total_pages: 0, //总页数
+                //分页
+                pageSize: 5, //每页个数
+                curPage: 1, //当前页数
+
+                //搜索结果
+                decoration_level: "",//装修程度
+                housing_area: "", //面积
+                daily_price: "", //日价格
+                monthly_price: "", //月价格
+                housing_icon: "", //图片
+                workstation: "", //工位
+
+
+                //物业信息
+                property_company: '', //物业公司
+                property_fee: '', //物业费
+                opening_date: '',// 建成年代
+                building_level: '', //楼盘级别
+                property_rights: '', //产权性质
+                building_area: '', //建筑面积
+
+            }
+        },
+        components: {
+            mapPart
+        },
+        methods: {
+            cancel_one(){
+                this.$refs.timerbtn2.stop(); //关闭倒计时
+                this.formInline2.telephone = ''; //
+                this.formInline2.InputCode = ''; //
+            },
+
+            sendCode2: function () {
+                if ($('#form_send2').valid()) {
+
+                    this.$refs.timerbtn2.start(); //启动倒计时
+                    this.$http.post(
+                        this.$api,
+                        {
+                            parameters: {
+                                "VerifiationCCodeType": 3,
+                                "Col_telephone": this.formInline2.telephone
+                            },
+                            foreEndType: "1",
+                            code: "90000102"
+                        }
+                    ).then(function (response) {
+                        var reslute = JSON.parse(response.bodyText);
+                        if (!reslute.success) {
+                            this.$Message.error(reslute.message);
+                        }
+
+                    }, function (response) {
+                        this.$Message.error('API接口报错-网络错误!');
+                        this.loading = false;
+                    });
+                }
+
+            },
+
+            handleSubmit2(name) {
+
+                if ($('#wt_form').valid()) {
+                    this.$http.post(
+                        this.$api,
+                        {
+                            parameters: {
+                                "VerifiationCCodeType": 3,
+                                "Col_telephone": this.formInline2.telephone,
+                                "InputCode": this.formInline2.InputCode
+                            },
+                            foreEndType: "1",
+                            code: "20000004"
+                        }
+                    ).then(function (response) {
+                        var reslute = JSON.parse(response.bodyText);
+                        if (reslute.success) {
+                            this.$Message.success('委托单提交成功!');
+
+                        } else {
+                            this.$Message.error(reslute.message);
+                        }
+
+                        this.$refs.timerbtn2.stop(); //关闭倒计时
+                        this.formInline2.telephone = ''; //
+                        this.formInline2.InputCode = ''; //
+                        this.modal6 = false;
+
+                    }, function (response) {
+                        this.$Message.error('API接口报错-网络错误!');
+                        this.loading = false;
+
+                        this.$refs.timerbtn2.stop(); //关闭倒计时
+                        this.formInline2.telephone = ''; //
+                        this.formInline2.InputCode = ''; //
+                    });
+                }
+            },
+
+            //获取筛选条件
+            getSortList(){
+                var _this = this;
+                //调用区域查询接口，更新数据
+                this.$http.post(
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getLpArea.do',
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        _this.area_arr = result.data; //面积arr
+
+                        var all_area = {
+                            code: "area_all",
+                            name: "全部"
+                        };
+                        _this.area_arr.unshift(all_area);
+                        //alert(JSON.stringify(_this.area_arr));
+
+//                      _this.range_unit_prices = result.data.range_unit_prices; //单价
+//
+//
+//                      var all_range_unit = {
+//                          code: "range_pri_per_all",
+//                          name: "全部"
+//                      };
+//                      _this.range_unit_prices.unshift(all_range_unit);
+//
+//                      _this.range_total_prices = result.data.range_total_prices; //总价
+//
+//                      var all_range_total = {
+//                          code: "range_pri_tot_all",
+//                          name: "全部"
+//                      };
+//                      _this.range_total_prices.unshift(all_range_total);
+
+                        _this.initFlag = true;
+
+
+                    } else {
+                        this.$Message.error(result.message);
+                    }
+                }, function (res) {
+                    this.$Message.error('获取搜索条件失败');
+                });
+            },
+			getpriceList(){
+                var _this = this;
+                //调用价格查询接口，更新数据
+                this.$http.post(
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getLpPries.do',
+                    {}
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        _this.range_unit_prices = result.data.unitdata; //单价
+                        var all_range_unit = {
+                            code: "range_pri_per_all",
+                            name: "全部"
+                        };
+                        _this.range_unit_prices.unshift(all_range_unit);
+                        _this.range_total_prices = result.data.totaldata; //总价
+                        var all_range_total = {
+                            code: "range_pri_tot_all",
+                            name: "全部"
+                        };
+                        _this.range_total_prices.unshift(all_range_total);
+
+                        _this.initFlag = true;
+                    } else {
+                        this.$Message.error(result.message);
+                    }
+                }, function (res) {
+                    this.$Message.error('获取价格失败');
+                });
+            },
+            //获取楼盘详情
+            getDetail(){
+                var _this = this;
+
+                this.building_id = this.$route.query.building_id;
+                this.$http.post(
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getYsSpaceZdLpxq.do',
+                    {
+                        "parameters": {
+                            "building_id": this.building_id,
+                            "area": "",
+                            "price_dj": "",
+                            "price_zj": "",
+                            "orderby": "",
+                            "curr_page": "1",
+                            "items_perpage": "10"
+                        },
+                        "foreEndType": 2,
+                        "code": "30000002"
+                    }
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        if (result.data1) {
+							_this.total_items = result.data1.kzfyS == null || result.data1.kzfyS == '' ? '--' : result.data1.kzfyS;//可租房源数
+							 _this.min_renge_area = result.data1.minArea == null || result.data1.minArea == ''? '--' : result.data1.minArea;//面积范围（小）
+                            _this.max_renge_area = result.data1.maxArea == null || result.data1.maxArea == ''? '--' : result.data1.maxArea;//面积范围（大）
+                            _this.min_renge_price = result.data1.minPrice == null || result.data1.minPrice == '' ? '--' : result.data1.minPrice;//价格范围（小）
+                            _this.max_renge_price = result.data1.maxPrice == null ||  result.data1.maxPrice == ''? '--' : result.data1.maxPrice;//价格范围（大）
+                            //物业信息
+                            _this.property_company = result.data1.wygs; //物业公司
+                            _this.property_fee = result.data1.wyf; //物业费
+                            if (result.data1.kprq) {
+                                _this.opening_date = result.data1.kprq.replace('0:00:00', ''); // 建成年代
+                            }
+//                          楼盘级别（楼盘级别  1:5A   2：甲    3：乙   4:公寓 5:商务 6:综合）
+                            if(result.data1.lpjb == 1){
+                            	_this.building_level = '5A';//楼盘等级                            	
+                            }else if(result.data1.lpjb == 2){
+                            	_this.building_level = '甲';
+                            }else if(result.data1.lpjb == 3){
+                            	_this.building_level = '乙';
+                            }else if(result.data1.lpjb == 4){
+                            	_this.building_level = '公寓';
+                            }else if(result.data1.lpjb == 5){
+                            	_this.building_level = '商务';
+                            }else if(result.data1.lpjb == 6){
+                            	_this.building_level = '综合';
+                            }
+
+                            //产权性质转换文字
+                            var ch1 = result.data1.chqxz;
+							if(ch1 != ""){
+								var ch2 = ch1.split("、");
+								var chs="";
+								for(var i = 0; i < ch2.length; i++){
+									var t = ch2[i];
+									if(t == 1){
+										chs += "写字楼 ";
+									}else if(t == 2){
+										chs += "公寓 ";
+									}else if(t == 3){
+										chs += "商务楼 ";
+									}else if(t == 4){
+										chs += "住宅 ";
+									}else if(t == 5){
+										chs += "商业 ";
+									}else if(t == 6){
+										chs += "酒店 ";
+									}else if(t == 7){
+										chs += "综合 ";
+									}else if(t == 8){
+										chs += "别墅 ";
+									}else if(t == 9){
+										chs += "商业综合体 ";
+									}else if(t == 10){
+										chs += "酒店式公寓 ";
+									}
+								}
+								_this.property_rights = chs; //产权性质
+							}
+                            _this.building_area = result.data1.jzzmj;//建筑面积
+
+                            _this.buildingName = result.data1.building_name + '周边配套';
+                            _this.buildingNameSingle = result.data1.building_name;
+
+                            _this.district = result.data1.district == null ? '区域' : result.data1.district; //区域
+                            _this.business = result.data1.business == null ? '商圈' : result.data1.business; //商圈
+							var img_str = result.data1.building_images;
+							if(img_str != ''){
+								var hous_img = img_str.split(";");
+								_this.building_images = hous_img;
+							}
+
+                            _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data1.address;
+                            _this.price = result.data1.price == null ? '--' : result.data1.price;
+                            _this.positionData = result.data1.longitude + ',' + result.data1.latitude;
+                            _this.lease_nums = result.data.lease_nums == null ? '--' : result.data1.lease_nums;
+
+                            setTimeout(function () {
+                                //首屏轮播
+                                $('#carousel_building').banqh({
+                                    box: '#carousel_building',//总框架
+                                    pic: '#carousel_big',//大图框架
+                                    pnum: '#carousel_small',//小图框架
+                                    prev_btn: '#carousel_small_prev',//小图左箭头
+                                    next_btn: '#carousel_small_next',//小图右箭头
+                                    autoplay: true,//是否自动播放
+                                    interTime: 5000,//图片自动切换间隔
+                                    delayTime: 400,//切换一张图片时间
+                                    pop_delayTime: 400,//弹出框切换一张图片时间
+                                    order: 0,//当前显示的图片（从0开始）
+                                    picdire: true,//大图滚动方向（true为水平方向滚动）
+                                    mindire: true,//小图滚动方向（true为水平方向滚动）
+                                    min_picnum: 4,//小图显示数量
+                                    pop_up: false,//大图是否有弹出框
+                                    pop_div: '#pop_carousel_box',//弹出框框架
+                                    pop_pic: '#pop_carousel',//弹出框图片框架
+                                    pop_xx: '.pop-carousel-close',//关闭弹出框按钮
+                                    pop_prev: '#pop_carousel_prev',//弹出框左箭头
+                                    pop_next: '#pop_carousel_next',//弹出框右箭头
+                                    mhc: '.carousel-mask'//朦灰层
+                                });
+                            }, 1000);
+                        }
+                    }
+
+                }, function (res) {
+                    this.$Message.error('获取楼盘详情失败');
+                });
+            },
+
+            //分页
+            change(page){
+                this.curPage = page;
+                this.getDetList(); //获取楼盘列表
+                $(window).scrollTop(0);
+            },
+
+            //获取楼盘列表
+            getDetList(){
+                var _this = this;
+                this.buildList = [];
+                this.loadingFlag = true;
+                this.pageFlag = false;
+                this.buildingShowFlag = false;
+                this.house_res_show = false;
+                //价格条件处理(单价)
+                if(this.price_dj != '' && typeof(this.price_dj) == "object"){
+					if(this.price_dj[0] == '' || this.price_dj[0] == null){
+						this.price_dj[0] = 0;
+					}
+					if(this.price_dj[1] == '' || this.price_dj[1] == null){
+						this.price_dj[1] = 0;
+					}
+					this.price_dj = this.price_dj.join(',');//单价查找  
+				}else{
+					this.price_dj = this.price_dj;
+				}
+                //价格条件处理(总价)
+				if(this.price_zj != '' && typeof(this.price_zj) == "object"){
+					if(this.price_zj[0] == '' || this.price_zj[0] == null){
+						this.price_zj[0] = 0;
+					}
+					if(this.price_zj[1] == '' || this.price_zj[1] == null){
+						this.price_zj[1] = 0;
+					}
+					this.price_zj = this.price_zj.join(',');//单价查找  
+				}else{
+					this.price_zj = this.price_zj;
+				}
+				//面积
+				if(this.area != '' && typeof(this.area) == "object"){
+					if(this.area[0] == '' || this.area[0] == null){
+						this.area[0] = 0;
+					}
+					if(this.area[1] == '' || this.area[1] == null){
+						this.area[1] = 0;
+					}
+					this.area = this.area.join(',');//面积查找
+				}else{
+					this.area = this.area;
+				}
+
+                this.$http.post(
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getYsSpaceZdLpxq.do',
+                    {
+                        "parameters": {
+                            "building_id": this.building_id,
+                            "area": this.area,
+                            "price_dj": this.price_dj,
+                            "price_zj": this.price_zj,
+                            "orderby": this.orderby,
+                            "curr_page": this.curPage,
+                            "items_perpage": this.pageSize
+                        },
+                        "foreEndType": 2,
+                        "code": "30000003"
+                    }
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    _this.loadingFlag = false;
+
+                    if (result.success) {
+                        if (result.data.houses.length) {
+
+                            _this.buildList = result.data.houses;//楼盘下的房源数据
+//                          _this.total_items = result.data.total_items == null ? '--' : result.data.total_items;
+                            _this.total_pages = _this.total_items;//总条数
+                            if(_this.total_items % 5 == 0){
+                            	_this.total_pages = _this.total_items / 5;                                	
+                            }else{
+                            	_this.total_pages = parseInt(_this.total_items / 5) + 1;
+                            }
+                            
+                            
+                            if (_this.total_pages <= 1) {
+                                _this.pageFlag = false;
+                            } else {
+                                _this.pageFlag = true;
+                            }
+                            _this.buildingShowFlag = false;
+                            _this.house_res_show = true;
+
+                        } else {
+                            _this.house_res_show = false; //结果不展示
+                            _this.buildingShowFlag = true;
+//                          _this.total_items = 0;
+                            _this.pageFlag = false;
+                        }
+                    } else {
+//                      _this.total_items = 0;
+                        _this.house_res_show = false; //结果不展示
+                        _this.buildingShowFlag = true;
+                        _this.pageFlag = false;
+                    }
+
+                }, function (res) {
+                    this.$Message.error('获取楼盘列表失败');
+                });
+            },
+
+            //查看全部
+            lookAll(){
+                this.$emit('listenchild2');
+            },
+
+            //查看详情
+            lookMore(){
+                this.$emit('listenchild3');
+            },
+
+            //自定义面积
+            self_area(){
+                this.area = [this.bArea, this.eArea];
+                $('#area_qj_wrap a').removeClass('on');
+                this.$refs['pages'].currentPage = 1;
+                this.curPage = 1;
+                this.getDetList();
+            },
+
+            //自定义单价
+            self_price_per(){
+                this.price_dj = [this.bNum, this.eNum];
+                $('#price_dj_wrap a').removeClass('on');
+                this.$refs['pages'].currentPage = 1;
+                this.curPage = 1;
+                this.getDetList();
+            },
+
+            //排序筛选 默认：D ，面积升序：AA，面积降序：AD，价格升序：PA，价格降序：PD
+            buildSort(e){
+                var target = null;
+                if ($(e.target).parent()[0].tagName == 'A') {
+                    target = $(e.target).parent();
+                } else if ($(e.target)[0].tagName == 'A') {
+                    target = $(e.target);
+                }
+                if (target) {
+                    target.addClass('tag').siblings().removeClass('tag');
+                    if (target.find('span').length > 0) {
+                        target.siblings().find('span').hide();
+                        target.find('span').css('display', 'inline-block');
+                        if (target.find('span').hasClass('up')) {
+                            target.find('span').removeClass('up');
+                            target.find('span').html('↓');
+                            if (target.attr('id') == 'areaSort') {
+                                this.orderby = 'A2'; //面积降序：A2
+                            } else if (target.attr('id') == 'priceSort') {
+                                this.orderby = 'P2'; //价格降序：P2
+                            }
+                        } else {
+                            target.find('span').addClass('up').html('↑');
+                            if (target.attr('id') == 'areaSort') {
+                                this.orderby = 'A1'; //面积升序：A1
+                            } else if (target.attr('id') == 'priceSort') {
+                                this.orderby = 'P1'; //价格升序：P1
+                            }
+                        }
+                    } else {
+                        this.orderby = 'D'; //默认排序D
+                    }
+                    this.curPage = 1;
+                    this.getDetList(); //排序后的列表
+                }
+            },
+
+            //改变面积
+            sel_area_list(e){
+                var _this = this;
+                $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
+
+                //清空自定义
+                this.bArea = ''; //起始面积
+                this.eArea = ''; //结束面积
+
+                var min = 0, max = 0;
+                if ($(e.target).html() == '全部') {
+                    this.area = "";
+
+                } else if ($(e.target).hasClass('last')) {
+                    this.area = [];
+                    min = Math.floor($(e.target).html().match(/\d+/g)[0]);
+                    max = "";
+                    this.area.push(min);
+                    this.area.push(max);
+                } else {
+
+                    this.area = [];
+                    var newArr = $(e.target).html().split('-');
+                    min = Math.floor(newArr[0]);
+                    max = Math.floor(newArr[1].match(/\d+/g)[0]);
+                    this.area.push(min);
+                    this.area.push(max);
+                }
+                this.$refs['pages'].currentPage = 1;
+                this.curPage = 1;
+                this.getDetList();
+            },
+
+            //改变单价筛选
+            sel_price_list(e){
+                $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
+
+                //清空自定义
+                this.bNum = ''; //起始价格
+                this.eNum = ''; //结束价格
+
+                var min = 0, max = 0;
+
+                if ($(e.target).html() == '全部') {
+                    this.price_dj = "";
+
+                } else if ($(e.target).hasClass('last')) {
+                    min = Math.floor($(e.target).html().match(/\d+/g));
+                    max = "";
+                    this.price_dj = [];
+                    this.price_dj.push(min);
+                    this.price_dj.push(max);
+                } else {
+                    var newArr = $(e.target).html().split('-');
+                    min = Math.floor(newArr[0]);
+                    max = Math.floor(newArr[1].match(/\d+/g)[0]);
+                    this.price_dj = [];
+                    this.price_dj.push(min);
+                    this.price_dj.push(max);
+                }
+                this.price_zj = ""; //总价置空
+                this.$refs['pages'].currentPage = 1;
+                this.curPage = 1;
+                this.getDetList();
+            },
+
+            //改变总价筛选
+            sel_tot_price_list(e){
+                var _this = this;
+                $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
+
+                //清空自定义
+                this.bNum = ''; //起始价格
+                this.eNum = ''; //结束价格
+
+                var min = 0, max = 0;
+
+                if ($(e.target).html() == '全部') {
+                    this.price_zj = "";
+
+                } else if ($(e.target).hasClass('last')) {
+                    min = Math.floor($(e.target).html().match(/\d+/g));
+                    max = "";
+                    this.price_zj = [];
+                    this.price_zj.push(min * 10000);
+                    this.price_zj.push(max * 10000);
+                } else {
+                    var newArr = $(e.target).html().split('-');
+                    min = Math.floor(newArr[0]);
+                    max = Math.floor(newArr[1].match(/\d+/g)[0]);
+                    this.price_zj = [];
+                    this.price_zj.push(min * 10000);
+                    this.price_zj.push(max * 10000);
+                }
+                this.price_dj = ""; //总价置空
+                this.$refs['pages'].currentPage = 1;
+                this.curPage = 1;
+                this.getDetList();
+
+            },
+        },
+
+        filters: {
+            formatDate(time) {
+                var date = new Date(time);
+                return formatDate(date, "yyyy-MM-dd");
+            }
+        },
+        mounted(){
+            var _this = this;
+
+            this.getSortList(); //获取筛选条件
+			
+			this.getpriceList();//获取价格筛选条件
+			
+            this.getDetail(); //获取楼盘详情
+
+            this.getDetList(); //搜索结果列表
+
+            //单价总价切换
+            $('.conts_option').click(function () {
+                $('#price-list').children('ul').toggleClass('none');
+            });
+
+            //input propertchange事件
+            $('input[name="beginArea"]').on("input propertychange", function () {
+                if (_this.bArea && _this.eArea) {
+                    $('#areaConfirm').show();
+                } else {
+                    $('#areaConfirm').hide();
+                }
+            });
+
+            $('input[name="endArea"]').on("input propertychange", function () {
+                if (_this.bArea && _this.eArea) {
+                    $('#areaConfirm').show();
+                } else {
+                    $('#areaConfirm').hide();
+                }
+            });
+
+            $('input[name="startprice"]').on("input propertychange", function () {
+                if (_this.bNum && _this.eNum) {
+                    $('#priceConfirm').show();
+                } else {
+                    $('#priceConfirm').hide();
+                }
+            });
+            $('input[name="endprice"]').on("input propertychange", function () {
+                if (_this.bNum && _this.eNum) {
+                    $('#priceConfirm').show();
+                } else {
+                    $('#priceConfirm').hide();
+                }
+            });
+
+            //qrcode生成微信二维码
+            var linkUrl = window.location.href;
+            $('#ys_weixin_img').qrcode({
+                width: 78,
+                height: 78,
+                text: "http://omc.urskongjian.com/nx/#/detail?building_id="+this.building_id
+            });
+
+            //微信
+            $('.build_weixin_top').hover(function () {
+                $(this).find('.attention-share-ewm').show();
+            }, function () {
+                $(this).find('.attention-share-ewm').hide();
+            });
+
+            $("#form_send2").validate({
+                debug: true, //调试模式取消submit的默认提交功能
+                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+                focusCleanup: true, //当前元素输入时，移除error
+                rules: {
+                    //全部为input name值
+                    ys_mobile2: {
+                        required: true,
+                        mobile: true
+                    }
+
+                },
+                messages: {
+                    ys_mobile2: {
+                        required: "请输入手机号",
+                        mobile: "请输入有效手机号"
+                    }
+                }
+            });
+
+            $("#wt_form").validate({
+                debug: true, //调试模式取消submit的默认提交功能
+                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+                focusCleanup: true, //当前元素输入时，移除error
+                rules: {
+                    //全部为input name值
+                    ys_mobile2: {
+                        required: true,
+                        mobile: true
+                    },
+                    identify_code2: {
+                        required: true,
+                        identify_four: true
+                    }
+                },
+                messages: {
+                    ys_mobile2: {
+                        required: "请输入手机号",
+                        mobile: "请输入有效手机号"
+                    },
+                    identify_code2: {
+                        required: "请输入验证码",
+                        identify_four: "验证码格式错误"
+                    }
+                }
+            });
+
+            //免费回拨验证码
+            $("#form_send3").validate({
+                debug: true, //调试模式取消submit的默认提交功能
+                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+                focusCleanup: true, //当前元素输入时，移除error
+                rules: {
+                    //全部为input name值
+                    ys_mobile3: {
+                        required: true,
+                        mobile: true
+                    }
+
+                },
+                messages: {
+                    ys_mobile3: {
+                        required: "请输入手机号",
+                        mobile: "请输入有效手机号"
+                    }
+                }
+            });
+
+            //免费回拨
+            $("#free_form").validate({
+                debug: true, //调试模式取消submit的默认提交功能
+                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+                focusCleanup: true, //当前元素输入时，移除error
+                rules: {
+                    //全部为input name值
+                    ys_mobile3: {
+                        required: true,
+                        mobile: true
+                    },
+                    identify_code3: {
+                        required: true,
+                        identify_four: true
+                    }
+                },
+                messages: {
+                    ys_mobile3: {
+                        required: "请输入手机号",
+                        mobile: "请输入有效手机号"
+                    },
+                    identify_code3: {
+                        required: "请输入验证码",
+                        identify_four: "验证码格式错误"
+                    }
+                }
+            });
+        }
+    }
+</script>
