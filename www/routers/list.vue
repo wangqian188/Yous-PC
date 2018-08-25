@@ -355,7 +355,7 @@
                     <div class="office_list pt20">
                         <div class="conditions_result_box clearfix tj_box">
                             <div class="fl mt07">
-                                <i class="sem_icon"></i><em class="result_conts_txt">为您找到 <span
+                                <i class="sem_icon"></i><em class="result_conts_txt">{{isRecommend?'为您找到':'未找到楼盘，为您推荐以下'}} <span
                                     class="font-num" v-text="total_items"></span> 栋写字楼</em>
                             </div>
                         </div>
@@ -546,7 +546,7 @@
 
         data(){
             return {
-
+				isRecommend:true,//是否是推荐房源
                 modal6: false, //弹窗
                 formInline1: {
                     telephone: '',
@@ -1045,6 +1045,7 @@
                     }
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
+                    _this.isRecommend = result.isRecommend;
                     _this.loadingFlag = false;
                     if (result.success) {
                         if (result.data) {//改动测试
