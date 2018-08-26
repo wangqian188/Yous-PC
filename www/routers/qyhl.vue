@@ -1,9 +1,21 @@
 <style lang="less">
 /*页面底部的css样式*/
 	.zuidalage{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;}
-	.lagetop{border:1px solid red;position: absolute;top: 0px;left: 0px;right: 18px;height: 60px;z-index: 12;}/*background-color: #1d1d1d;*/
-	.large{border:1px solid red;position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;min-width: 1200px;overflow: auto;background-color: white;}
-	
+	.lagetop{position: absolute;top: 0px;left: 0px;right: 18px;height: 60px;z-index: 12;}/*background-color: #1d1d1d;*/
+	.large{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;min-width: 1200px;overflow: auto;background-color: white;}
+	.qyhlimg{width: 100%;}
+	.gggjdis{display: flex;}
+	.gxlsdiscenrt{justify-content: center;}
+	.qyhulian{width: 1108px;}
+	.lttb{width:139px;height:139px;background: url(../resources/images/qyhl/zuyiimg.png) no-repeat;background-size: 100% auto;}
+	.zsyh{font-size: 20px;line-height: 20px;color: #333333;margin: 15px 0px 10px;}
+	.zxsqy{width: 210px;font-size: 16px;line-height: 26px;color: #959595;}
+	.qyzhusyhu p:last-child{margin-left: 28px;}
+	.diyigediv{justify-content: space-between;width: 100%;}
+	.pptg{margin-top: 86px;margin-bottom: 72px;}
+	.retou{width:139px;height:139px;background: url(../resources/images/qyhl/tentou.png) no-repeat;background-size: 100% auto;}
+	.zhext{width:139px;height:139px;background: url(../resources/images/qyhl/zexiantu.png) no-repeat;background-size: 100% auto;}
+	.tubiao{width:139px;height:139px;background: url(../resources/images/qyhl/texiangb.png) no-repeat;background-size: 100% auto;}
 </style>
 
 <template>
@@ -14,7 +26,55 @@
 		</div>
 		<!---->
 		<div class="large">
-			企业互联的页面
+			<div class="qyhlimg">
+				<img src="../resources/images/qyhl/qyhlban.png"/>
+			</div>
+			<div class="qyhlimg">
+				<img src="../resources/images/qyhl/hyfl.jpg"/>
+			</div>
+			<div class="gggjdis gxlsdiscenrt">
+				<div class="qyhulian gggjdis">
+					<div class="gggjdis diyigediv">
+						<div class="qyzhusyhu gggjdis">
+							<p class="lttb"></p>
+							<p>
+								<span class="gggjdis zsyh">专属优惠</span>
+								<span class="gggjdis zxsqy">专享受企业优惠套餐，详情请拨打电话或在微信公众号留言咨询</span>
+							</p>
+						</div>
+						<div class="qyzhusyhu gggjdis">
+							<p class="retou"></p>
+							<p>
+								<span class="gggjdis zsyh">专业管家</span>
+								<span class="gggjdis zxsqy">将为您提供全方位服务，专业的企业管家为您处理办公空间烦恼</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="gggjdis gxlsdiscenrt pptg">
+				<div class="qyhulian gggjdis">
+					<div class="gggjdis diyigediv">
+						<div class="qyzhusyhu gggjdis">
+							<p class="zhext"></p>
+							<p>
+								<span class="gggjdis zsyh">品牌推广</span>
+								<span class="gggjdis zxsqy">在我们的app内为您的企业建立专属页面，为您提高企业知名度</span>
+							</p>
+						</div>
+						<div class="qyzhusyhu gggjdis">
+							<p class="tubiao"></p>
+							<p>
+								<span class="gggjdis zsyh">需求发布</span>
+								<span class="gggjdis zxsqy">可以将闲置资源和需求发布到app上进行免费展示</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="qyhlimg">
+				<img src="../resources/images/qyhl/jrhylc.jpg"/>
+			</div>
 		</div>
 	</div>
 </template>

@@ -98,7 +98,7 @@
 				this.$router.push({ path: '/',query:{type:1}});
 			},
 			xiezilou(){
-				
+				this.$router.push({ path: '/list'});
 			},
 			diafwsc(){
 				window.open("http://beta.ursbest.com");

@@ -3,7 +3,7 @@
     @import "../resources/css/index/index.less";
     @import "../resources/css/popup/popup.less";
     /*弹窗*/
-	
+	.pointer{cursor:pointer;}/*鼠标变成小手*/
 	.zuidalage{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;}
 	.lagetop{position: absolute;top: 0px;left: 0px;right: 18px;height: 60px;z-index: 12;}/*background-color: #1d1d1d;*/
 	.large{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;min-width: 1200px;overflow: auto;background-color: white;}
@@ -64,9 +64,13 @@
 	.lsfjxjfw{font-size: 24px;color: #333333;line-height: 24px;margin-top: 18px;}
 	.lswzif{font-size: 14px;color: #959595;line-height: 14px;width: 438px;margin-top: 20px;}
 	.ckgd{font-size: 14px;color: #f15a5a;line-height: 14px;margin-top: 20px;}
-	
-	
-
+	.ivu-carousel-dots-inside{bottom: 20px;}
+	.ivu-carousel-arrow.left{left: 5%;}
+	.ivu-carousel-arrow.right{right: 5%;}
+	.ivu-carousel-arrow{width: 70px;height: 70px;}
+    .ivu-carousel-arrow{font-size: 2.7em;}
+    .gszcimg{height: 50%;}
+    .zszximg{height: 50%;}
 </style>
 
 <template>
@@ -78,14 +82,21 @@
 		<!---->
 		<div class="large">
 	    	<div class="banner">
-				<swiper :options="swiperOption">
+			    <Carousel autoplay>
+			        <Carousel-item v-for="(idx,index) in imgdata">
+			            <div class="demo-carousel pointer"><img :src="$api_jtimg + idx" @click='to_link(index)'/></div>
+			        </Carousel-item>
+			    </Carousel>
+
+
+				<!--<swiper :options="swiperOption">
 					<swiper-slide v-for="idx in imgdata">
 						<img :src="$api_jtimg + idx" alt="">
 					</swiper-slide>
 					<div class="swiper-pagination" slot="pagination"></div>
 					<div class="swiper-button-prev">></div>
 	    			<div class="swiper-button-next"><</div>
-				</swiper>
+				</swiper>-->
 			</div>
 			<div class="laingx">
 				<div class="quanian">领先的全面企业服务提供商</div>
@@ -134,20 +145,22 @@
 					<div class="ggdis remlpidisan">
 						<div class="remlpiwenzi">
 							<span class="remloupziti ggdis">热门楼盘</span>
-							<span class="morremlpip ggdis">更多热门楼盘</span>
+							<span class="morremlpip ggdis"><span class="pointer" @click="gdlppand">更多热门楼盘</span></span>
 							<span class="jvremlpu ggdis">聚热门楼盘  享优质配套</span>
 						</div>
 					</div>
 					<div class="ggdis remlpidisan remmlpdenneirong">
 						<div class="lpimglager ggdis">
-							<div class="lpimgdierss" v-for="item in lpdata">
-								<p>
-									<span class="lping ggdis"><img :src="$api_img_url + item.pic"/></span>
-									<span class="lpmignchlarge">
-										<span class="lpmignch ggdis">{{item.topic}}</span>
-										<span class="cbdhxqq">CBD核心区，高性价比商业之选</span>
-									</span>
-								</p>
+							<div class="lpimgdierss pointer" v-for="item in lpdata">
+								<router-link :to="{path:'/detail',query:{building_id:item.id}}" target="_blank">
+									<p>
+										<span class="lping ggdis"><img :src="$api_img_url + item.pic"/></span>
+										<span class="lpmignchlarge">
+											<span class="lpmignch ggdis">{{item.topic}}</span>
+											<span class="cbdhxqq">CBD核心区，高性价比商业之选</span>
+										</span>
+									</p>
+								</router-link>
 							</div>
 						</div>
 					</div>
@@ -163,21 +176,21 @@
 					<div class="kjdz ggdis">
 						<div class="gozhuce ggdis">
 							<p class="gszcimgla">
-								<span class="gszcimg" @click="diajissc"></span>
-								<span class="zszximg" @click="diajissc"></span>
+								<span class="gszcimg ggdis pointer" @click="diajissc"></span>
+								<span class="zszximg ggdis pointer" @click="diajissc"></span>
 							</p>
 							<p class="bangjv">
-								<span class="bgjjimg ggdis" @click="diajissc"></span>
+								<span class="bgjjimg ggdis pointer" @click="diajissc"></span>
 								<span class="gngypspa ggdis">
-									<span class="bgypimg ggdis" @click="diajissc"></span>
-									<span class="kgbximg ggdis" @click="diajissc"></span>
+									<span class="bgypimg ggdis pointer" @click="diajissc"></span>
+									<span class="kgbximg ggdis pointer" @click="diajissc"></span>
 								</span>
 							</p>
 							<p class="bangjv">
-								<span class="lzfu ggdis" @click="diajissc"></span>
+								<span class="lzfu ggdis pointer" @click="diajissc"></span>
 								<span class="gngypspa ggdis">
-									<span class="qyys ggdis" @click="diajissc"></span>
-									<span class="qybj ggdis" @click="diajissc"></span>
+									<span class="qyys ggdis pointer" @click="diajissc"></span>
+									<span class="qybj ggdis pointer" @click="diajissc"></span>
 								</span>
 							</p>
 						</div>
@@ -218,7 +231,7 @@
 		 },
         data () {
             return {
-				swiperOption: {//轮播图配置
+				/*swiperOption: {//轮播图配置
 					pagination: '.swiper-pagination',//
 					paginationClickable: true,//
 					autoplay: {
@@ -233,7 +246,7 @@
 						type: 'bullets'
 					},
 					parallax : true,
-				},
+				},*/
 				imgdata:["shiye1.jpg","shiye2.jpg","shiye3.jpg","shiye4.jpg","shiye5.jpg"],
 				lpdata:[],
 			}
@@ -258,7 +271,13 @@
 			},
 			diajissc(){
 			 	window.open("http://beta.ursbest.com");
-			}
+			},
+			to_link(index){
+				alert(index);
+			},
+			gdlppand(){
+				this.$router.push({ path: '/list'});
+			},
         },
 
         mounted: function(){
