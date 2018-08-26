@@ -51,7 +51,7 @@
                         <div class="carousel-big" id="carousel_big">
                             <ul>
                                 <li v-for="item in building_images">
-                                    <a><img :src="item" alt=""></a>
+                                    <a><img :src="$api_img_url + item" alt=""></a>
                                 </li>
                             </ul>
                         </div>
@@ -64,7 +64,7 @@
                                     <li class="on" v-for="item1 in building_images">
                                         <a class="pr db cur-pointer">
                                             <div class="small-mask"></div>
-                                            <img :src="item1" alt=""/>
+                                            <img :src="$api_img_url + item1" alt=""/>
                                         </a>
                                     </li>
                                 </ul>
@@ -211,7 +211,7 @@
                 </div>
 
                 <!--右侧悬浮box start-->
-                <div class="sidebar_box">
+                <div class="sidebar_box" v-if="false">
                     <div class="sidebar_main" id="sidebar_fix">
                         <div class="booking_house">
                             <div class="booking_house_mes">
@@ -521,9 +521,8 @@
             //获取楼盘详情
             getDetail(){
                 var _this = this;
-
                 this.$http.post(
-                    this.$api,
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getWxFyxx.do',
                     {
                         "parameters": {
                             "hourse_id": this.$route.query.house_id
@@ -535,27 +534,30 @@
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
                         if (result.data) {
+							var allData = result.data[0];
+                            _this.buildingName = allData.topic;//名称
+                            _this.room_area = allData.fjmj;//房间面积
+                            _this.workstation = allData.krgw;//工位
+                            _this.daily_price = allData.dj;//单价
+                            _this.monthly_price = allData.yzj;//月租金
+                            //图片轮播信息
+							var h_img="";
+							if(allData.housing_icon != ""){
+								var hous_img = allData.housing_icon.split(";");
+								_this.building_images = hous_img;//图片轮播
+							}
 
-                            _this.buildingName = result.data.building_name;
-                            _this.room_area = result.data.room_area;
-                            _this.workstation = result.data.workstation;
-                            _this.daily_price = result.data.daily_price;
-                            _this.monthly_price = result.data.monthly_price;
-                            _this.building_images = result.data.houses_images;
+//                          _this.pid=result.data.pid;
+                            _this.pid='400-078-8800';//销售负责人电话
 
-                            _this.pid=result.data.pid;
-
-                            _this.locat_floor = result.data.locat_floor;
-                            _this.floors = result.data.floors == null ? '--' : result.data.floors;
-                            _this.floor_height = result.data.floor_height;
-                            _this.address = result.data.address;
-                            _this.address = result.data.address;
-                            _this.address = result.data.address;
-                            _this.decoration_level = result.data.decoration_level;  //房间状态
-                            _this.direction = result.data.direction;  //朝向
+                            _this.locat_floor = allData.lc;//楼层
+//                          _this.floors = result.data.floors == null ? '--' : result.data.floors;
+                            _this.floor_height = allData.fjcg;//层高度（米）
+                            _this.address = allData.fd_city_code;//区域位置
+                            _this.decoration_level = allData.fjzt;  //房间状态
+                            _this.direction = allData.chx;  //朝向
                         }
                     }
-
                 }, function (res) {
                     this.$Message.error('获取楼盘详情失败');
                 });
@@ -564,14 +566,13 @@
             //获取物业信息
             getProperty(){
                 var _this = this;
-
                 this.$http.post(
-                    this.$api,
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getYsSpaceZdLpxq.do',
                     {
                         "parameters": {
                             "building_id": this.building_id,
                             "area": "",
-                            "price_dj": "[0,1000000]",
+                            "price_dj": "",
                             "price_zj": "",
                             "orderby": "",
                             "curr_page": "1",
@@ -583,48 +584,88 @@
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
-                        if (result.data) {
-
+                        if (result.data1) {
+						console.log(result.data1);
                           //  _this.building_images = result.data.building_images;
-
-                            _this.positionData = result.data.longitude + ',' + result.data.latitude;
-
+							_this.positionData = result.data1.longitude + ',' + result.data1.latitude;
                             //物业信息
-                            _this.property_company = result.data.property_company; //物业公司
-                            _this.property_fee = result.data.property_fee; //物业费
-                            if (result.data.opening_date) {
-                                _this.opening_date = result.data.opening_date.replace('0:00:00', ''); // 建成年代
+                            _this.property_company = result.data1.wygs; //物业公司
+                            _this.property_fee = result.data1.wyf; //物业费
+							if (result.data1.kprq) {
+                                _this.opening_date = result.data1.kprq.replace('0:00:00', ''); // 建成年代
                             }
+//							楼盘级别（楼盘级别  1:5A   2：甲    3：乙   4:公寓 5:商务 6:综合）
+                            if(result.data1.lpjb == 1){
+                            	_this.building_level = '5A';//楼盘等级                            	
+                            }else if(result.data1.lpjb == 2){
+                            	_this.building_level = '甲';
+                            }else if(result.data1.lpjb == 3){
+                            	_this.building_level = '乙';
+                            }else if(result.data1.lpjb == 4){
+                            	_this.building_level = '公寓';
+                            }else if(result.data1.lpjb == 5){
+                            	_this.building_level = '商务';
+                            }else if(result.data1.lpjb == 6){
+                            	_this.building_level = '综合';
+                            }
+							//产权性质转换文字
+                            var ch1 = result.data1.chqxz;
+							if(ch1 != ""){
+								var ch2 = ch1.split("、");
+								var chs="";
+								for(var i = 0; i < ch2.length; i++){
+									var t = ch2[i];
+									if(t == 1){
+										chs += "写字楼 ";
+									}else if(t == 2){
+										chs += "公寓 ";
+									}else if(t == 3){
+										chs += "商务楼 ";
+									}else if(t == 4){
+										chs += "住宅 ";
+									}else if(t == 5){
+										chs += "商业 ";
+									}else if(t == 6){
+										chs += "酒店 ";
+									}else if(t == 7){
+										chs += "综合 ";
+									}else if(t == 8){
+										chs += "别墅 ";
+									}else if(t == 9){
+										chs += "商业综合体 ";
+									}else if(t == 10){
+										chs += "酒店式公寓 ";
+									}
+								}
+								_this.property_rights = chs; //产权性质
+							}
+							_this.building_area = result.data1.jzzmj;//建筑面积
 
-                            _this.building_level = result.data.building_level; //楼盘级别
-                            _this.property_rights = result.data.property_rights; //产权性质
-                            _this.building_area = result.data.building_area;  //建筑面积
-
-                            setTimeout(function () {
-                                //首屏轮播
-                                $('#carousel_building').banqh({
-                                    box: '#carousel_building',//总框架
-                                    pic: '#carousel_big',//大图框架
-                                    pnum: '#carousel_small',//小图框架
-                                    prev_btn: '#carousel_small_prev',//小图左箭头
-                                    next_btn: '#carousel_small_next',//小图右箭头
-                                    autoplay: true,//是否自动播放
-                                    interTime: 5000,//图片自动切换间隔
-                                    delayTime: 400,//切换一张图片时间
-                                    pop_delayTime: 400,//弹出框切换一张图片时间
-                                    order: 0,//当前显示的图片（从0开始）
-                                    picdire: true,//大图滚动方向（true为水平方向滚动）
-                                    mindire: true,//小图滚动方向（true为水平方向滚动）
-                                    min_picnum: 4,//小图显示数量
-                                    pop_up: false,//大图是否有弹出框
-                                    pop_div: '#pop_carousel_box',//弹出框框架
-                                    pop_pic: '#pop_carousel',//弹出框图片框架
-                                    pop_xx: '.pop-carousel-close',//关闭弹出框按钮
-                                    pop_prev: '#pop_carousel_prev',//弹出框左箭头
-                                    pop_next: '#pop_carousel_next',//弹出框右箭头
-                                    mhc: '.carousel-mask'//朦灰层
-                                });
-                            }, 1000);
+//                          setTimeout(function () {
+//                              //首屏轮播
+//                              $('#carousel_building').banqh({
+//                                  box: '#carousel_building',//总框架
+//                                  pic: '#carousel_big',//大图框架
+//                                  pnum: '#carousel_small',//小图框架
+//                                  prev_btn: '#carousel_small_prev',//小图左箭头
+//                                  next_btn: '#carousel_small_next',//小图右箭头
+//                                  autoplay: true,//是否自动播放
+//                                  interTime: 5000,//图片自动切换间隔
+//                                  delayTime: 400,//切换一张图片时间
+//                                  pop_delayTime: 400,//弹出框切换一张图片时间
+//                                  order: 0,//当前显示的图片（从0开始）
+//                                  picdire: true,//大图滚动方向（true为水平方向滚动）
+//                                  mindire: true,//小图滚动方向（true为水平方向滚动）
+//                                  min_picnum: 4,//小图显示数量
+//                                  pop_up: false,//大图是否有弹出框
+//                                  pop_div: '#pop_carousel_box',//弹出框框架
+//                                  pop_pic: '#pop_carousel',//弹出框图片框架
+//                                  pop_xx: '.pop-carousel-close',//关闭弹出框按钮
+//                                  pop_prev: '#pop_carousel_prev',//弹出框左箭头
+//                                  pop_next: '#pop_carousel_next',//弹出框右箭头
+//                                  mhc: '.carousel-mask'//朦灰层
+//                              });
+//                          }, 1000);
 
                         }
                     }

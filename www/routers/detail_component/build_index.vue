@@ -350,7 +350,7 @@
                             <router-link target="_blank"
                                          :to="{path:'/house_det',query:{building_id:building_id,house_id:item.id}}">
                                 <div class="list-img">
-                                    <img :src="item.housing_icon" alt="">
+                                    <img :src="$api_img_url + item.housing_icon" alt="">
                                 </div>
                                 <div class="list-introduce">
                                     <div class="introduce-primary clearfix">
@@ -433,9 +433,9 @@
             <!--右侧悬浮box start-->
             <div class="sidebar_box">
                 <div class="sidebar_main" id="sidebar_fix">
-                    <div class="side_model_tit mb10"><i></i>快速找房</div>
-                    <div class="booking_house">
-                        <div class="booking_house_mes">
+                    <div class="side_model_tit mb10" v-if="false"><i></i>快速找房</div>
+                    <div class="booking_house" style="box-shadow: none;">
+                        <div class="booking_house_mes" v-if='false'>
                             <div class="side_model_tit cl_blue">快速委托找房</div>
                             <form id="freeLookForm" class="nice-validator n-default">
                                 <div class="form_control form_btn mt10 tc cur_pointer"
@@ -445,13 +445,17 @@
 
                             <p class="nearby">* 客服将在10分钟内联系您</p>
                         </div>
-                        <div class="consult_box tc">
+                        <div class="consult_box tc" style="box-shadow: none;border-bottom: 1px solid rgba(0, 0, 0, 0.03);">
                             <i class="right_logo_icon"></i>咨询热线：<b class="text_pink_app">400-078-8800</b>
                         </div>
                     </div>
-                    <div class="app_download tc">
+                    <div class="app_download tc" style="box-shadow: none;">
                         <img src="../../resources/images/ys_weixin.jpg" alt="扫描二维码关注">
                         <p>随时随地查阅最新房源<br>即刻关注官方微信</p>
+                    </div>
+                    <div class="app_download tc" style="box-shadow: none;">
+                        <img src="../../resources/images/app_link.png" alt="扫描二维码关注">
+                        <p>一站式企业办公服务<br>即刻下载亮狮APP</p>
                     </div>
                 </div>
             </div>
@@ -699,16 +703,11 @@
                 var _this = this;
                 //调用区域查询接口，更新数据
                 this.$http.post(
-                    this.$api,
-                    {
-                        "parameters": {},
-                        "foreEndType": 2,
-                        "code": "90000301"
-                    }
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getLpArea.do',
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
-                        _this.area_arr = result.data.range_areas; //面积arr
+                        _this.area_arr = result.data; //面积arr
 
                         var all_area = {
                             code: "area_all",
@@ -717,22 +716,22 @@
                         _this.area_arr.unshift(all_area);
                         //alert(JSON.stringify(_this.area_arr));
 
-                        _this.range_unit_prices = result.data.range_unit_prices; //单价
-
-
-                        var all_range_unit = {
-                            code: "range_pri_per_all",
-                            name: "全部"
-                        };
-                        _this.range_unit_prices.unshift(all_range_unit);
-
-                        _this.range_total_prices = result.data.range_total_prices; //总价
-
-                        var all_range_total = {
-                            code: "range_pri_tot_all",
-                            name: "全部"
-                        };
-                        _this.range_total_prices.unshift(all_range_total);
+//                      _this.range_unit_prices = result.data.range_unit_prices; //单价
+//
+//
+//                      var all_range_unit = {
+//                          code: "range_pri_per_all",
+//                          name: "全部"
+//                      };
+//                      _this.range_unit_prices.unshift(all_range_unit);
+//
+//                      _this.range_total_prices = result.data.range_total_prices; //总价
+//
+//                      var all_range_total = {
+//                          code: "range_pri_tot_all",
+//                          name: "全部"
+//                      };
+//                      _this.range_total_prices.unshift(all_range_total);
 
                         _this.initFlag = true;
 
@@ -744,47 +743,121 @@
                     this.$Message.error('获取搜索条件失败');
                 });
             },
+			getpriceList(){
+                var _this = this;
+                //调用价格查询接口，更新数据
+                this.$http.post(
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getLpPries.do',
+                    {}
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        _this.range_unit_prices = result.data.unitdata; //单价
+                        var all_range_unit = {
+                            code: "range_pri_per_all",
+                            name: "全部"
+                        };
+                        _this.range_unit_prices.unshift(all_range_unit);
+                        _this.range_total_prices = result.data.totaldata; //总价
+                        var all_range_total = {
+                            code: "range_pri_tot_all",
+                            name: "全部"
+                        };
+                        _this.range_total_prices.unshift(all_range_total);
 
+                        _this.initFlag = true;
+                    } else {
+                        this.$Message.error(result.message);
+                    }
+                }, function (res) {
+                    this.$Message.error('获取价格失败');
+                });
+            },
             //获取楼盘详情
             getDetail(){
                 var _this = this;
 
                 this.building_id = this.$route.query.building_id;
                 this.$http.post(
-                    this.$api_ysapi + '/yhcms/web/lpjbxx/getZdLpxq.do',
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getYsSpaceZdLpxq.do',
                     {
                         "parameters": {
-//                          "building_id": this.building_id,
-//                          "area": "",
-//                          "price_dj": "[0,1000000]",
-//                          "price_zj": "",
-//                          "orderby": "",
-//                          "curr_page": "1",
-//                          "items_perpage": "10"
-							"building_id":this.building_id,
-                            "curr_page":1,
-							"items_perpage":"5",
-                            "area":"写字楼",
-                            "real":1
+                            "building_id": this.building_id,
+                            "area": "",
+                            "price_dj": "",
+                            "price_zj": "",
+                            "orderby": "",
+                            "curr_page": "1",
+                            "items_perpage": "10"
                         },
                         "foreEndType": 2,
                         "code": "30000002"
                     }
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
-                    console.log(result);
                     if (result.success) {
-                        if (result.data) {
+                        if (result.data1) {
+							_this.total_items = result.data1.kzfyS == null || result.data1.kzfyS == '' ? '--' : result.data1.kzfyS;//可租房源数
+							 _this.min_renge_area = result.data1.minArea == null || result.data1.minArea == ''? '--' : result.data1.minArea;//面积范围（小）
+                            _this.max_renge_area = result.data1.maxArea == null || result.data1.maxArea == ''? '--' : result.data1.maxArea;//面积范围（大）
+                            _this.min_renge_price = result.data1.minPrice == null || result.data1.minPrice == '' ? '--' : result.data1.minPrice;//价格范围（小）
+                            _this.max_renge_price = result.data1.maxPrice == null ||  result.data1.maxPrice == ''? '--' : result.data1.maxPrice;//价格范围（大）
+                            //物业信息
+                            _this.property_company = result.data1.wygs; //物业公司
+                            _this.property_fee = result.data1.wyf; //物业费
+                            if (result.data1.kprq) {
+                                _this.opening_date = result.data1.kprq.replace('0:00:00', ''); // 建成年代
+                            }
+//                          楼盘级别（楼盘级别  1:5A   2：甲    3：乙   4:公寓 5:商务 6:综合）
+                            if(result.data1.lpjb == 1){
+                            	_this.building_level = '5A';//楼盘等级                            	
+                            }else if(result.data1.lpjb == 2){
+                            	_this.building_level = '甲';
+                            }else if(result.data1.lpjb == 3){
+                            	_this.building_level = '乙';
+                            }else if(result.data1.lpjb == 4){
+                            	_this.building_level = '公寓';
+                            }else if(result.data1.lpjb == 5){
+                            	_this.building_level = '商务';
+                            }else if(result.data1.lpjb == 6){
+                            	_this.building_level = '综合';
+                            }
+
+                            //产权性质转换文字
+                            var ch1 = result.data1.chqxz;
+							if(ch1 != ""){
+								var ch2 = ch1.split("、");
+								var chs="";
+								for(var i = 0; i < ch2.length; i++){
+									var t = ch2[i];
+									if(t == 1){
+										chs += "写字楼 ";
+									}else if(t == 2){
+										chs += "公寓 ";
+									}else if(t == 3){
+										chs += "商务楼 ";
+									}else if(t == 4){
+										chs += "住宅 ";
+									}else if(t == 5){
+										chs += "商业 ";
+									}else if(t == 6){
+										chs += "酒店 ";
+									}else if(t == 7){
+										chs += "综合 ";
+									}else if(t == 8){
+										chs += "别墅 ";
+									}else if(t == 9){
+										chs += "商业综合体 ";
+									}else if(t == 10){
+										chs += "酒店式公寓 ";
+									}
+								}
+								_this.property_rights = chs; //产权性质
+							}
+                            _this.building_area = result.data1.jzzmj;//建筑面积
 
                             _this.buildingName = result.data1.building_name + '周边配套';
                             _this.buildingNameSingle = result.data1.building_name;
-
-//                          _this.labels = result.data1.label.split('、');
-//                          var obj = {
-//                              name: result.data1.building_name,
-//                              labels: result.data1.label.split('、')
-//                          };
-//                          _this.$emit("listenchild", obj);
 
                             _this.district = result.data1.district == null ? '区域' : result.data1.district; //区域
                             _this.business = result.data1.business == null ? '商圈' : result.data1.business; //商圈
@@ -794,30 +867,10 @@
 								_this.building_images = hous_img;
 							}
 
-
                             _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data1.address;
                             _this.price = result.data1.price == null ? '--' : result.data1.price;
                             _this.positionData = result.data1.longitude + ',' + result.data1.latitude;
-
-
-                            _this.min_renge_area = result.data1.min_renge_area == null ? '--' : result.data1.min_renge_area;
-                            _this.max_renge_area = result.data1.max_renge_area == null ? '--' : result.data1.max_renge_area;
-                            _this.min_renge_price = result.data1.min_renge_price == null ? '--' : result.data1.min_renge_price;
-                            _this.max_renge_price = result.data1.max_renge_price == null ? '--' : result.data1.max_renge_price;
                             _this.lease_nums = result.data.lease_nums == null ? '--' : result.data1.lease_nums;
-
-
-                            //物业信息
-                            _this.property_company = result.data1.property_company; //物业公司
-                            _this.property_fee = result.data1.property_fee; //物业费
-                            if (result.data1.opening_date) {
-                                _this.opening_date = result.data1.opening_date.replace('0:00:00', ''); // 建成年代
-                            }
-
-                            _this.building_level = result.data1.building_level; //楼盘级别
-                            _this.property_rights = result.data1.property_rights; //产权性质
-                            _this.building_area = result.data1.building_area;  //建筑面积
-
 
                             setTimeout(function () {
                                 //首屏轮播
@@ -862,15 +915,50 @@
             //获取楼盘列表
             getDetList(){
                 var _this = this;
-
                 this.buildList = [];
-
                 this.loadingFlag = true;
                 this.pageFlag = false;
                 this.buildingShowFlag = false;
                 this.house_res_show = false;
+                //价格条件处理(单价)
+                if(this.price_dj != '' && typeof(this.price_dj) == "object"){
+					if(this.price_dj[0] == '' || this.price_dj[0] == null){
+						this.price_dj[0] = 0;
+					}
+					if(this.price_dj[1] == '' || this.price_dj[1] == null){
+						this.price_dj[1] = 0;
+					}
+					this.price_dj = this.price_dj.join(',');//单价查找  
+				}else{
+					this.price_dj = this.price_dj;
+				}
+                //价格条件处理(总价)
+				if(this.price_zj != '' && typeof(this.price_zj) == "object"){
+					if(this.price_zj[0] == '' || this.price_zj[0] == null){
+						this.price_zj[0] = 0;
+					}
+					if(this.price_zj[1] == '' || this.price_zj[1] == null){
+						this.price_zj[1] = 0;
+					}
+					this.price_zj = this.price_zj.join(',');//单价查找  
+				}else{
+					this.price_zj = this.price_zj;
+				}
+				//面积
+				if(this.area != '' && typeof(this.area) == "object"){
+					if(this.area[0] == '' || this.area[0] == null){
+						this.area[0] = 0;
+					}
+					if(this.area[1] == '' || this.area[1] == null){
+						this.area[1] = 0;
+					}
+					this.area = this.area.join(',');//面积查找
+				}else{
+					this.area = this.area;
+				}
+
                 this.$http.post(
-                    this.$api,
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getYsSpaceZdLpxq.do',
                     {
                         "parameters": {
                             "building_id": this.building_id,
@@ -891,32 +979,35 @@
                     if (result.success) {
                         if (result.data.houses.length) {
 
-                            _this.buildList = result.data.houses;
-                            _this.total_items = result.data.total_items == null ? '--' : result.data.total_items;
-
-                            _this.total_pages = result.data.total_pages;
-
+                            _this.buildList = result.data.houses;//楼盘下的房源数据
+//                          _this.total_items = result.data.total_items == null ? '--' : result.data.total_items;
+                            _this.total_pages = _this.total_items;//总条数
+                            if(_this.total_items % 5 == 0){
+                            	_this.total_pages = _this.total_items / 5;                                	
+                            }else{
+                            	_this.total_pages = parseInt(_this.total_items / 5) + 1;
+                            }
+                            
+                            
                             if (_this.total_pages <= 1) {
                                 _this.pageFlag = false;
                             } else {
                                 _this.pageFlag = true;
                             }
-
                             _this.buildingShowFlag = false;
                             _this.house_res_show = true;
 
                         } else {
                             _this.house_res_show = false; //结果不展示
                             _this.buildingShowFlag = true;
-                            _this.total_items = 0;
+//                          _this.total_items = 0;
                             _this.pageFlag = false;
                         }
                     } else {
-                        _this.total_items = 0;
+//                      _this.total_items = 0;
                         _this.house_res_show = false; //结果不展示
                         _this.buildingShowFlag = true;
                         _this.pageFlag = false;
-
                     }
 
                 }, function (res) {
@@ -969,16 +1060,16 @@
                             target.find('span').removeClass('up');
                             target.find('span').html('↓');
                             if (target.attr('id') == 'areaSort') {
-                                this.orderby = 'AD'; //面积降序：AD
+                                this.orderby = 'A2'; //面积降序：A2
                             } else if (target.attr('id') == 'priceSort') {
-                                this.orderby = 'PD'; //价格降序：PD
+                                this.orderby = 'P2'; //价格降序：P2
                             }
                         } else {
                             target.find('span').addClass('up').html('↑');
                             if (target.attr('id') == 'areaSort') {
-                                this.orderby = 'AA'; //面积升序：AA
+                                this.orderby = 'A1'; //面积升序：A1
                             } else if (target.attr('id') == 'priceSort') {
-                                this.orderby = 'PA'; //价格升序：PA
+                                this.orderby = 'P1'; //价格升序：P1
                             }
                         }
                     } else {
@@ -1101,7 +1192,9 @@
             var _this = this;
 
             this.getSortList(); //获取筛选条件
-
+			
+			this.getpriceList();//获取价格筛选条件
+			
             this.getDetail(); //获取楼盘详情
 
             this.getDetList(); //搜索结果列表

@@ -173,12 +173,12 @@
 
                 this.building_id = this.$route.query.building_id;
                 this.$http.post(
-                    this.$api,
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getYsSpaceZdLpxq.do',
                     {
                         "parameters": {
                             "building_id": this.building_id,
                             "area": "",
-                            "price_dj": "[0,1000000]",
+                            "price_dj": "",
                             "price_zj": "",
                             "orderby": "",
                             "curr_page": "1",
@@ -190,23 +190,68 @@
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
-                        if (result.data) {
-                            _this.buildingName = result.data.building_name + '详情';
-
-                            _this.developer = result.data.developer;
-                            _this.price = result.data.price;
-                            _this.opening_date = result.data.opening_date == null ? ' -- ' : result.data.opening_date.replace('0:00:00','');
-                            _this.building_level = result.data.building_level;
-                            _this.property_rights = result.data.property_rights;
-                            _this.building_area = result.data.building_area;
-
-                            _this.total_households = result.data.total_households;
-                            _this.use_rate = result.data.use_rate;
-                            _this.property_company = result.data.property_company;
-                            _this.property_fee = result.data.property_fee;
-                            _this.vehicle_number = result.data.vehicle_number;
-                            _this.monthly_rent = result.data.monthly_rent;
-                            _this.building_introduction = result.data.building_introduction;
+                        if (result.data1) {
+                            _this.buildingName = result.data1.building_name + '详情';//标题
+                            _this.developer = result.data1.kfsh;//开发商
+                            _this.price = result.data1.price;//均价
+//                          _this.opening_date = result.data1.opening_date == null ? ' -- ' : result.data1.opening_date.replace('0:00:00','');
+                            if (result.data1.kprq) {// 建成年代
+                                _this.opening_date = result.data1.kprq.replace('0:00:00', '');
+                            }
+//                         	楼盘级别（楼盘级别  1:5A   2：甲    3：乙   4:公寓 5:商务 6:综合）
+                            if(result.data1.lpjb == 1){
+                            	_this.building_level = '5A';//楼盘等级                            	
+                            }else if(result.data1.lpjb == 2){
+                            	_this.building_level = '甲';
+                            }else if(result.data1.lpjb == 3){
+                            	_this.building_level = '乙';
+                            }else if(result.data1.lpjb == 4){
+                            	_this.building_level = '公寓';
+                            }else if(result.data1.lpjb == 5){
+                            	_this.building_level = '商务';
+                            }else if(result.data1.lpjb == 6){
+                            	_this.building_level = '综合';
+                            }
+                            //产权性质转换文字
+                            var ch1 = result.data1.chqxz;
+							if(ch1 != ""){
+								var ch2 = ch1.split("、");
+								var chs="";
+								for(var i = 0; i < ch2.length; i++){
+									var t = ch2[i];
+									if(t == 1){
+										chs += "写字楼 ";
+									}else if(t == 2){
+										chs += "公寓 ";
+									}else if(t == 3){
+										chs += "商务楼 ";
+									}else if(t == 4){
+										chs += "住宅 ";
+									}else if(t == 5){
+										chs += "商业 ";
+									}else if(t == 6){
+										chs += "酒店 ";
+									}else if(t == 7){
+										chs += "综合 ";
+									}else if(t == 8){
+										chs += "别墅 ";
+									}else if(t == 9){
+										chs += "商业综合体 ";
+									}else if(t == 10){
+										chs += "酒店式公寓 ";
+									}
+								}
+								_this.property_rights = chs; //产权性质
+							}
+//							产权性质 如1、2.   1：写字楼  2:公寓 3：商务楼 4:住宅  5：商业  6:酒店  7：综合  8：别墅  9：商业综合体  10：酒店式公寓
+                            _this.building_area = result.data1.jzzmj ;//建筑面积
+                            _this.total_households = result.data1.zhsh;//总户数
+                            _this.use_rate = result.data1.shyl;//使用率
+                            _this.property_company = result.data1.wygs;//物业管理公司
+                            _this.property_fee = result.data1.wyf;//物业费
+                            _this.vehicle_number = result.data1.tcwsl;//停车数量
+                            _this.monthly_rent = result.data1.tcf;//停车费
+                            _this.building_introduction = result.data1.desp;//楼盘简介
                         }
                     }
 

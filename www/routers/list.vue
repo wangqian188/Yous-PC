@@ -26,7 +26,7 @@
         position: relative;
     }
 
-    //分页
+    /*//分页*/
     .page_wrap {
         text-align: center;
         width: 410px;
@@ -42,8 +42,9 @@
         background-color: #3facf8;
         border-color: #3facf8;
     }
-
-
+	#sidebar_fix{
+		box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+	}
 </style>
 
 <template>
@@ -65,7 +66,7 @@
                                    maxlength="30">
                         </div>
                         <a class="map_btn fl ml10" id="bannerSearchbtn" @click="searchClick()">搜索</a>
-                        <router-link target="_blank" :to="{path:'/map_search'}" class="map_find_room fl ml10"><i></i>地图搜索
+                        <router-link v-if='false' target="_blank" :to="{path:'/map_search'}" class="map_find_room fl ml10"><i></i>地图搜索
                         </router-link>
                     </div>
                 </div>
@@ -308,11 +309,11 @@
                         <div class="screening_conts_list clearfix">
                             <span class="screening_title mr15">特色:</span>
                             <a href="javascript:;" v-for="(item4,index) in labels"
-                               :id="item4.code"
+                               :id="item4.id"
                                :class="{active:featureActive == index}"
                                :data-sortType="'sort_lab_'+index"
                                @click="sel_feature_list($event)"
-                               v-text="item4.name"
+                               v-text="item4.topic"
                             ></a>
                         </div>
                     </div>
@@ -354,7 +355,7 @@
                     <div class="office_list pt20">
                         <div class="conditions_result_box clearfix tj_box">
                             <div class="fl mt07">
-                                <i class="sem_icon"></i><em class="result_conts_txt">为您找到 <span
+                                <i class="sem_icon"></i><em class="result_conts_txt">{{isRecommend?'为您找到':'未找到楼盘，为您推荐以下'}} <span
                                     class="font-num" v-text="total_items"></span> 栋写字楼</em>
                             </div>
                         </div>
@@ -398,7 +399,7 @@
                                               v-text="item.min_areas+'-'+item.max_areas"></span>
                                         <span
                                                 class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb" v-text="item.lpkzfy"></span>&nbsp;套
+                                            class="font-num text-black fb" v-text="item.kzfy"></span>&nbsp;套
                                     </dd>
                                     <!-- <dd>
                                         <span><i class="sem_icon item_see"></i>近7天有 <b
@@ -435,8 +436,8 @@
                     <!--右侧栏-->
                     <div class="sidebar_box pt70">
                         <div class="sidebar_main" id="sidebar_fix">
-                            <div class="side_model_tit"><i></i>地图找房</div>
-                            <div class="map_house pr mt10">
+                            <div class="side_model_tit" v-if="false"><i></i>地图找房</div>
+                            <div class="map_house pr mt10" v-if="false">
                                 <div class="map_hover_wrap">
                                     <div class="map_hover_bg"></div>
                                     <div class="pr">
@@ -446,9 +447,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="side_model_tit mb10"><i></i>快速找房</div>
-                            <div class="booking_house">
-                                <div class="booking_house_mes">
+                            <div class="side_model_tit mb10" v-if="false"><i></i>快速找房</div>
+                            <div class="booking_house" style="box-shadow: none;">
+                                <div class="booking_house_mes" v-if="false">
                                     <div class="side_model_tit cl_blue">快速委托找房</div>
                                     <form id="freeLookForm" class="nice-validator n-default">
                                         <div class="form_control form_btn mt10 tc cur_pointer" @click="modal6 = true">
@@ -458,13 +459,17 @@
 
                                     <p class="nearby">* 客服将在10分钟内联系您</p>
                                 </div>
-                                <div class="consult_box tc">
+                                <div class="consult_box tc" style="box-shadow: none;border-bottom: 1px solid rgba(0, 0, 0, 0.03);">
                                     <i class="right_logo_icon"></i>咨询热线：<b class="text_pink_app">400-078-8800</b>
                                 </div>
                             </div>
-                            <div class="app_download tc">
+                            <div class="app_download tc" style="box-shadow: none;">
                                 <img src="../resources/images/ys_weixin.jpg" alt="扫描二维码关注">
                                 <p>随时随地查阅最新房源<br>即刻关注官方微信</p>
+                            </div>
+                            <div class="app_download tc" style="box-shadow: none;">
+                                <img src="../resources/images/app_link.png" alt="扫描二维码关注">
+                                <p>一站式企业办公服务<br>即刻下载亮狮APP</p>
                             </div>
                         </div>
                     </div>
@@ -541,7 +546,7 @@
 
         data(){
             return {
-
+				isRecommend:true,//是否是推荐房源
                 modal6: false, //弹窗
                 formInline1: {
                     telephone: '',
@@ -880,41 +885,7 @@
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
-                        _this.area_arr = result.data.range_areas; //面积arr
-                        var all_area = {
-                            code: "area_all",
-                            name: "全部"
-                        };
-//                      _this.area_arr.unshift(all_area);
-//
-//                      _this.range_unit_prices = result.data.range_unit_prices; //单价
-//
-//
-//                      var all_range_unit = {
-//                          code: "range_pri_per_all",
-//                          name: "全部"
-//                      };
-//                      _this.range_unit_prices.unshift(all_range_unit);
-//
-//                      _this.range_total_prices = result.data.range_total_prices; //总价
-//
-//                      var all_range_total = {
-//                          code: "range_pri_tot_all",
-//                          name: "全部"
-//                      };
-//                      _this.range_total_prices.unshift(all_range_total);
-//
-//                      _this.labels = result.data.labels; //特色
-//
-//                      var all_labels = {
-//                          code: "",
-//                          name: "全部"
-//                      };
-//                      _this.labels.unshift(all_labels);
-
-                        _this.initFlag = true;
-
-
+                       _this.initFlag = true;
                     } else {
                         this.$Message.error(result.message);
                     }
@@ -922,7 +893,83 @@
                     this.$Message.error('获取区域失败');
                 });
             },
-
+			getmainjiList(){
+                var _this = this;
+                //调用面积查询接口，更新数据
+                this.$http.post(
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getLpArea.do',
+                    {}
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        _this.area_arr = result.data; //面积
+                        var all_area = {
+                            code: "area_all",
+                            name: "全部"
+                        };
+                        _this.area_arr.unshift(all_area);
+                        _this.initFlag = true;
+                    } else {
+                        this.$Message.error(result.message);
+                    }
+                }, function (res) {
+                    this.$Message.error('获取面积失败');
+                });
+            },
+            getpriceList(){
+                var _this = this;
+                //调用价格查询接口，更新数据
+                this.$http.post(
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getLpPries.do',
+                    {}
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        _this.range_unit_prices = result.data.unitdata; //单价
+                        var all_range_unit = {
+                            code: "range_pri_per_all",
+                            name: "全部"
+                        };
+                        _this.range_unit_prices.unshift(all_range_unit);
+                        _this.range_total_prices = result.data.totaldata; //总价
+                        var all_range_total = {
+                            code: "range_pri_tot_all",
+                            name: "全部"
+                        };
+                        _this.range_total_prices.unshift(all_range_total);
+                        
+                        _this.initFlag = true;
+                    } else {
+                        this.$Message.error(result.message);
+                    }
+                }, function (res) {
+                    this.$Message.error('获取价格失败');
+                });
+            },
+            gettsbqList(){
+                var _this = this;
+                //调用特色标签查询接口，更新数据
+                this.$http.post(
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getTsbq.do',
+                    {}
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        _this.labels = result.data; //特色
+                        var all_labels = {
+                            code: "",
+                            name: "全部"
+                        };
+                        _this.labels.unshift(all_labels);
+                        
+                        _this.initFlag = true;
+                    } else {
+                        this.$Message.error(result.message);
+                    }
+                }, function (res) {
+                    this.$Message.error('获取特色标签失败');
+                });
+            },
             //获取楼盘列表
             getList(){
                 var _this = this;
@@ -934,9 +981,43 @@
 
                 this.buildingShowFlag = false;
                 this.total_items = '--';
-
+				//处理单价
+				if(this.price_dj != '' || this.price_dj != null){
+					if(typeof(this.price_dj) == "object"){
+						if(this.price_dj[1] == '' || this.price_dj[1] == null){
+							this.price_dj[1] = 10000;							
+						}
+						this.price_dj = [parseInt(this.price_dj[0]),parseInt(this.price_dj[1])];
+					}else{
+						this.price_dj = this.price_dj;
+					}
+					console.log(this.price_dj)
+				}
+				//处理总价
+				if(this.price_zj != '' || this.price_zj != null){
+					if(typeof(this.price_zj) == "object"){
+						if(this.price_zj[1] == '' || this.price_zj[1] == null){
+							this.price_zj[1] = 30*1000000;
+						}
+						this.price_zj = [parseInt(this.price_zj[0]*10000),parseInt(this.price_zj[1])];
+					}else{
+						this.price_zj = this.price_zj;
+					}
+					console.log(this.price_zj)
+				}
+				//处理面积
+				if(this.area != '' || this.area != null){
+					if(typeof(this.area) == "object"){
+						if(this.area[1] == '' || this.area[1] == null){
+							this.area[1] = 10000;
+						}
+					}else{
+						this.area = this.area;
+					}
+					console.log(this.area);
+				}
+					
                 this.search_keywork = this.search_keywork.replace(/(^\s*)|(\s*$)/g, '');
-
                 this.$http.post(
                     this.$api_ysapi+'/yhcms/web/lpjbxx/getZdLpjbxx.do',
                     {
@@ -950,7 +1031,7 @@
                             "station_id": this.station_id, //地铁站点ID
                             "area": this.area, //面积
                             "price_dj": this.price_dj, //价格（[30,100]）单价
-//                          "price_zj": this.price_zj, //价格（[30,100]）总价
+                            "price_zj": this.price_zj, //价格（[30,100]）总价
                             "label": this.label, //特色标签
                             "chqxz":"",
                             "orderby": this.orderby, //排序默认：D ，面积升序：A1，面积降序：A2，价格升序：P1，价格降序：P2
@@ -964,6 +1045,7 @@
                     }
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
+                    _this.isRecommend = result.isRecommend;
                     _this.loadingFlag = false;
                     if (result.success) {
                         if (result.data) {//改动测试
@@ -1675,7 +1757,10 @@
             });
 
             this.getSortList(); //获取筛选条件
-
+			this.getmainjiList();//获取面积筛选条件
+			this.getpriceList();//获取价格筛选条件
+			this.gettsbqList();//获取特色标签筛选条件
+			
             if (this.$route.query.search_keywork) {
                 this.search_keywork = this.$route.query.search_keywork;
             }
