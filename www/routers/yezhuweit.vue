@@ -301,7 +301,7 @@
         },
 
         mounted: function () {
-        	//滚动条滚动的时候，改变底色
+        	//滚动条滚动的时候，改变底色123
         	$(".large").scroll(function(){
         		var top_height = $(".large").scrollTop();
         		if (top_height > 60){
