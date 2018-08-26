@@ -58,11 +58,11 @@ var router = new VueRouter({
         },
         {
             path: '/qyhl',//企业互联的页面
-            component: require('./routers/blanks.vue')
+            component: require('./routers/qyhl.vue')
         },
         {
             path: '/gjfw',//管家服务的页面
-            component: require('./routers/blanks.vue')
+            component: require('./routers/gjfw.vue')
         },
         {
             path: '/blanks',//空白的页面

@@ -50,9 +50,15 @@
 							<span class="gxlsdis">
 								<span class="xiangming">姓名</span>
 								<span class="xminput">
-									<input class="" v-model="name" type="text" placeholder="请输入您的姓名" name="" id="" value="" />
+									<input class="" v-model="name" type="text" placeholder="请输入您的姓名" name="" @blur="sjnames" id="" value="" />
 								</span>
 							</span>
+							
+							<span class="gxlsdis gxlsdisnone shiujitishiname">
+								<span class="xiangming shiujitishi"></span>
+								<span class="xminput shiujitishi shiujitis">请输入姓名</span>
+							</span>
+							
 							<span class="gxlsdis">
 								<span class="xiangming">手机号</span>
 								<span class="sjhinput">
@@ -77,14 +83,18 @@
 							
 							<span class="gxlsdis gxlsdisnone shiujitishisjyzm">
 								<span class="xiangming shiujitishigg"></span>
-								<span class="xminput shiujitishigg">请输入手机验证码</span>
+								<span class="xminput shiujitishigg shjisjyzmwenzi">请输入手机验证码</span>
 							</span>
 							
 							<span class="gxlsdis">
 								<span class="xiangming">房屋信息</span>
 								<span class="xminput">
-									<input class="" v-model="nfwxx" type="text" placeholder="请输入楼盘名称及所在区域" name="" id="" value="" />
+									<input class="" v-model="nfwxx" type="text" placeholder="请输入楼盘名称及所在区域" name="" @blur="sjfwxxs" id="" value="" />
 								</span>
+							</span>
+							<span class="gxlsdis gxlsdisnone shiujitishifwxxx">
+								<span class="xiangming shiujitishigg"></span>
+								<span class="xminput shiujitishigg">请输入房屋信息</span>
 							</span>
 							<span class="gxlsdis">
 								<span class="xiangming">房屋描述</span>
@@ -149,6 +159,15 @@
 
 		},
         methods: {
+        	//姓名的失去焦点事件
+        	sjnames(){
+        		if(this.name == ""){
+					$(".shiujitishiname").removeClass("gxlsdisnone");
+				}else{
+					$(".shiujitishiname").addClass("gxlsdisnone");
+				}
+        	},
+        	//手机号的失去焦点事件
         	sjshjie(){
         		if(this.code == ""){
 					$(".shiujitishiss").removeClass("gxlsdisnone");
@@ -157,6 +176,15 @@
 					$(".shiujitishiss").addClass("gxlsdisnone");
 				}
         	},
+        	//房屋描述的失去焦点事件
+        	sjfwxxs(){
+        		if(this.nfwxx == ""){
+					$(".shiujitishifwxxx").removeClass("gxlsdisnone");
+				}else{
+					$(".shiujitishifwxxx").addClass("gxlsdisnone");
+				}
+        	},
+        	//获取验证码的点击事件
 			jqyzm(){
 				if(this.code == ""){
 					$(".shiujitishiss").removeClass("gxlsdisnone");
@@ -172,64 +200,103 @@
 	                }else{
 	                	$(".shiujitishiss").addClass("gxlsdisnone");
 	                }
-					this.yanzham = false;
-					let me = this;
-					let interval = window.setInterval(function() {
-	                    if ((me.time--) <= 0) {
-	                        me.time = 59;
-	                        me.yanzham = true;
-	                        window.clearInterval(interval);
-	                    }
-	                }, 1000);
 					var cookir = this.getcookit();
 					this.$http.post(
 	          			this.$api_ysapi + "/yskjApp/appYskj/V1/getServiceCode.do",
 	          		{"phone":this.code,"cookie":cookir}
 					).then(function (res) {
 				        var result = JSON.parse(res.bodyText);
+				        if (result.success){
+				        	this.yanzham = false;
+				        	let me = this;
+							let interval = window.setInterval(function() {
+			                    if ((me.time--) <= 0) {
+			                        me.time = 59;
+			                        me.yanzham = true;
+			                        window.clearInterval(interval);
+			                    }
+			                }, 1000);
+				        }else{
+				        	alert(result.message);
+				        }
 			        })
 				}
 				
 			},
+			//生成cookie
 			getcookit(){
 				//生成cookie
 				var cookyezhi = new Date;
 				localStorage.setItem('cookgwyez', JSON.stringify(cookyezhi));
 				return cookyezhi;
 			},
+			//验证码的失去焦点事件
 			sjyazm(){
-				var ss = localStorage.getItem("cookgwyez").replace("\"","").replace("\"","");
 				if(this.sjyazcode == ""){
 					$(".shiujitishisjyzm").removeClass("gxlsdisnone");
 				}else{
 					$(".shiujitishisjyzm").addClass("gxlsdisnone");
-					this.$http.post(
-          				this.$api_ysapi + "/yskjApp/appYskj/V1/compServiceCode.do",
-	          		{"code":this.sjyazcode,"cookie":ss}
-					).then(function (res) {
-				        var result = JSON.parse(res.bodyText);
-				        if (result.success){
-				        	
-				        }else{
-				        	
-				        }
-			        })
 				}
 				
 			},
 			//提交委托的点击事件
 			tiwentui(){
+				if(this.name == ""){
+					$(".shiujitishiname").removeClass("gxlsdisnone");
+					return false;
+				}else{
+					$(".shiujitishiname").addClass("gxlsdisnone");
+				}
+				if(this.code == ""){
+					$(".shiujitishiss").removeClass("gxlsdisnone");
+					$(".shiujitis").text("请输入手机号");
+					return false;
+				}else{
+					$(".shiujitishiss").addClass("gxlsdisnone");
+				}
+				if(this.sjyazcode == ""){
+					$(".shiujitishisjyzm").removeClass("gxlsdisnone");
+					return false;
+				}else{
+					$(".shiujitishisjyzm").addClass("gxlsdisnone");
+				}
+				if(this.nfwxx == ""){
+					$(".shiujitishifwxxx").removeClass("gxlsdisnone");
+					return false;
+				}else{
+					$(".shiujitishifwxxx").addClass("gxlsdisnone");
+				}
+				//校验验证码
+								var ss = localStorage.getItem("cookgwyez").replace("\"","").replace("\"","");
+
 				this.$http.post(
-      				this.$api_ysapi + "/yskjApp/webApp/dataInfo/ownerEntrust.do",
-          		{"name":this.name,"phone":this.code,"repairHouse":this.nfwxx,"memo":this.msfwxx,"uid":null}
+      				this.$api_ysapi + "/yskjApp/appYskj/V1/compServiceCode.do",
+          		{"code":this.sjyazcode,"cookie":ss}
 				).then(function (res) {
 			        var result = JSON.parse(res.bodyText);
 			        if (result.success){
-			        	alert(12123123123);
+			        	this.$http.post(
+		      				this.$api_ysapi + "/yskjApp/webApp/dataInfo/ownerEntrust.do",
+		          		{"name":this.name,"phone":this.code,"repairHouse":this.nfwxx,"memo":this.msfwxx,"uid":null}
+						).then(function (res) {
+					        var result = JSON.parse(res.bodyText);
+					        if (result.success){
+					        	/*const title = '对话框的标题';
+                				const content = '<p>一些对话框内容</p><p>一些对话框内容</p>';
+                				this.$Modal.error({
+		                            title: title,
+		                            content: content
+		                        });*/
+					        	alert(result.message);
+					        }else{
+					        	alert(result.message);
+					        }
+				        });
 			        }else{
-			        	
+			        	$(".shjisjyzmwenzi").text("输入的验证码不正确！");
+			        	$(".shiujitishisjyzm").removeClass("gxlsdisnone");
 			        }
-		        })
+		       });
 			},
         },
 
