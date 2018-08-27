@@ -385,7 +385,7 @@
 
                     <!--page-->
                     <div class="page_wrap mb25" v-show="pageFlag">
-                        <Page ref="pages" :total="total_pages*10" @on-change="change"></Page>
+                        <Page ref="pages" :total="total_pages*10" :current="curPage" @on-change="change"></Page>
                     </div>
 
                 </div>

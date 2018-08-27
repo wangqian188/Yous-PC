@@ -33,7 +33,7 @@
             <div class="breadcrumb-search clearfix">
                 <ul class="breadcrumb fl clearfix">
                     <li>
-                        <router-link :to="{path:'/list'}"><i class="detail-icon"></i>幼狮空间 &gt;</router-link>
+                        <router-link :to="{path:'/list'}"><i class="detail-icon"></i>亮狮网 &gt;</router-link>
                     </li>
                     <li><a href="javascript:;">办公楼</a>&gt;</li>
                     <li><a href="javascript:;" v-text="buildingName"></a>></li>

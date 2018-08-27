@@ -77,7 +77,7 @@
             <div class="address_tit contents">
                 <h1>
                     <i class="sem_icon"></i>
-                    <a href="/">幼狮空间</a>
+                    <a href="/">亮狮网</a>
                     <a class="text_gray6">&gt; 写字楼出租</a>
                 </h1>
             </div>
@@ -418,7 +418,7 @@
 
                         <!--搜索结果list end-->
                         <div class="page_wrap" v-show="pageFlag">
-                            <Page ref="pages" :total="total_pages*10" @on-change="change"></Page>
+                            <Page ref="pages" :total="total_pages*10" :current="curPage" @on-change="change"></Page>
                         </div>
 
                         <!--加载中-->
