@@ -50,8 +50,10 @@
 <template>
     <div class="all">
         <!--header-->
-        <header1></header1>
-
+        <!--<header1></header1>-->
+        <div class="top_box" style="position: relative;background: #1d1d1d;height: 60px;">
+        	<Footertop></Footertop>        	
+        </div>
         <!--list  start-->
         <div list>
 
@@ -393,10 +395,10 @@
                                     </dd>
                                     <dd>
                                         <i class="sem_icon item_area"></i>可租面积
-                                        <span v-if="item.min_areas==item.max_areas" class="text-black fb"
-                                              v-text="item.min_areas"></span>
+                                        <span v-if="item.zxmj==item.zdmj" class="text-black fb"
+                                              v-text="item.zxmj"></span>
                                         <span v-else class="text-black fb"
-                                              v-text="item.min_areas+'-'+item.max_areas"></span>
+                                              v-text="item.zxmj+'-'+item.zdmj"></span>
                                         <span
                                                 class="font-num"> m²</span>, 待租办公室&nbsp;<span
                                             class="font-num text-black fb" v-text="item.kzfy"></span>&nbsp;套
@@ -524,14 +526,16 @@
         <!--list  end-->
 
         <!--footer-->
-        <footer1></footer1>
+        <!--<footer1></footer1>-->
+        <Footerbottom></Footerbottom>
     </div>
 </template>
 <script>
 
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
-
+	import Footertop from './header.vue'
+	import Footerbottom from './dibubotom.vue'
 
     import field from './list_component/field.vue'
     import subway from './list_component/subway.vue'
@@ -541,7 +545,9 @@
             header1,
             footer1,
             field,
-            subway
+            subway,
+            Footertop,
+            Footerbottom
         },
 
         data(){
@@ -1619,6 +1625,7 @@
             //排序筛选 默认：D ，面积升序：AA，面积降序：AD，价格升序：PA，价格降序：PD
             buildSort(e){
                 var target = null;
+               	console.log($(e.target).attr('id'));
                 if ($(e.target).parent()[0].tagName == 'A') {
                     target = $(e.target).parent();
                 } else if ($(e.target)[0].tagName == 'A') {
@@ -1633,6 +1640,9 @@
                             target.find('.sem_icon').removeClass('up');
                             if (target.attr('id') == 'areaSort') {
                                 this.orderby = 'A2'; //面积降序：A2
+//                              this.curPage = 1;
+//                              $('.ivu-page-item').removeClass('ivu-page-item-active');
+//                              $('.ivu-page-item').eq(0).addClass('ivu-page-item-active');
                                 target.find('.bubble').html('点击按面积从大到小排序');
                             } else if (target.attr('id') == 'priceSort') {
                                 this.orderby = 'P2'; //价格降序：P2
@@ -1767,52 +1777,52 @@
             this.curPage = 1;
             this.getList(); //获取楼盘列表
 
-            $("#form_send2").validate({
-                debug: true, //调试模式取消submit的默认提交功能
-                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
-                focusCleanup: true, //当前元素输入时，移除error
-                rules: {
-                    //全部为input name值
-                    ys_mobile2: {
-                        required: true,
-                        mobile: true
-                    }
+//          $("#form_send2").validate({
+//              debug: true, //调试模式取消submit的默认提交功能
+//              focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+//              focusCleanup: true, //当前元素输入时，移除error
+//              rules: {
+//                  //全部为input name值
+//                  ys_mobile2: {
+//                      required: true,
+//                      mobile: true
+//                  }
+//
+//              },
+//              messages: {
+//                  ys_mobile2: {
+//                      required: "请输入手机号",
+//                      mobile: "请输入有效手机号"
+//                  }
+//              }
+//          });
 
-                },
-                messages: {
-                    ys_mobile2: {
-                        required: "请输入手机号",
-                        mobile: "请输入有效手机号"
-                    }
-                }
-            });
-
-            $("#wt_form").validate({
-                debug: true, //调试模式取消submit的默认提交功能
-                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
-                focusCleanup: true, //当前元素输入时，移除error
-                rules: {
-                    //全部为input name值
-                    ys_mobile2: {
-                        required: true,
-                        mobile: true
-                    },
-                    identify_code2: {
-                        required: true,
-                        identify_four: true
-                    }
-                },
-                messages: {
-                    ys_mobile2: {
-                        required: "请输入手机号",
-                        mobile: "请输入有效手机号"
-                    },
-                    identify_code2: {
-                        required: "请输入验证码",
-                        identify_four: "验证码格式错误"
-                    }
-                }
-            });
+//          $("#wt_form").validate({
+//              debug: true, //调试模式取消submit的默认提交功能
+//              focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+//              focusCleanup: true, //当前元素输入时，移除error
+//              rules: {
+//                  //全部为input name值
+//                  ys_mobile2: {
+//                      required: true,
+//                      mobile: true
+//                  },
+//                  identify_code2: {
+//                      required: true,
+//                      identify_four: true
+//                  }
+//              },
+//              messages: {
+//                  ys_mobile2: {
+//                      required: "请输入手机号",
+//                      mobile: "请输入有效手机号"
+//                  },
+//                  identify_code2: {
+//                      required: "请输入验证码",
+//                      identify_four: "验证码格式错误"
+//                  }
+//              }
+//          });
 
         },
 

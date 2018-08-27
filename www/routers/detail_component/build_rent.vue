@@ -595,6 +595,43 @@
                     this.$Message.error('获取价格失败');
                 });
             },
+            //获取楼盘详情
+            getDetail(){
+                var _this = this;
+
+                this.building_id = this.$route.query.building_id;
+                this.$http.post(
+                    this.$api_ysapi + '/yhcms/web/lpjbxx/getYsSpaceZdLpxq.do',
+                    {
+                        "parameters": {
+                            "building_id": this.building_id,
+                            "area": "",
+                            "price_dj": "",
+                            "price_zj": "",
+                            "orderby": "",
+                            "curr_page": "1",
+                            "items_perpage": "10"
+                        },
+                        "foreEndType": 2,
+                        "code": "30000002"
+                    }
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        if (result.data1) {
+                        	_this.total_items = result.data1.kzfyS == null || result.data1.kzfyS == '' ? '--' : result.data1.kzfyS;//可租房源数///////分页
+                            if(_this.total_items1 % 5 == 0){
+                            	_this.total_pages = _this.total_items / 5;    
+                            }else{
+                            	_this.total_pages = parseInt(_this.total_items / 5) + 1;
+                            }
+                        }
+                    }
+
+                }, function (res) {
+                    this.$Message.error('获取楼盘详情失败');
+                });
+            },
             //获取楼盘列表
             getDetList(){
                 var _this = this;
@@ -660,10 +697,11 @@
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
                     _this.loadingFlag = false;
-					if (result.data1) {
-						_this.total_items = result.data1.kzfyS == null || result.data1.kzfyS == '' ? '--' : result.data1.kzfyS;//可租房源数
-					}
+//					if (result.data1) {
+//						_this.total_items = result.data1.kzfyS == null || result.data1.kzfyS == '' ? '--' : result.data1.kzfyS;//可租房源数
+//					}
                     if (result.success) {
+                    	_this.total_items = result.total == null || result.total == '' ? '--' : result.total;//可租房源数///////分页
                         if (result.data.houses.length) {
 
                             _this.buildList = result.data.houses;
@@ -864,8 +902,10 @@
 
         mounted(){
             var _this = this;
-
+			
             this.getSortList(); //获取筛选条件
+
+//			this.getDetail();
 
 			this.getpriceList();//获取价格
 
@@ -908,52 +948,52 @@
                 }
             });
 
-            $("#form_send2").validate({
-                debug: true, //调试模式取消submit的默认提交功能
-                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
-                focusCleanup: true, //当前元素输入时，移除error
-                rules: {
-                    //全部为input name值
-                    ys_mobile2: {
-                        required: true,
-                        mobile: true
-                    }
+//          $("#form_send2").validate({
+//              debug: true, //调试模式取消submit的默认提交功能
+//              focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+//              focusCleanup: true, //当前元素输入时，移除error
+//              rules: {
+//                  //全部为input name值
+//                  ys_mobile2: {
+//                      required: true,
+//                      mobile: true
+//                  }
+//
+//              },
+//              messages: {
+//                  ys_mobile2: {
+//                      required: "请输入手机号",
+//                      mobile: "请输入有效手机号"
+//                  }
+//              }
+//          });
 
-                },
-                messages: {
-                    ys_mobile2: {
-                        required: "请输入手机号",
-                        mobile: "请输入有效手机号"
-                    }
-                }
-            });
-
-            $("#wt_form").validate({
-                debug: true, //调试模式取消submit的默认提交功能
-                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
-                focusCleanup: true, //当前元素输入时，移除error
-                rules: {
-                    //全部为input name值
-                    ys_mobile2: {
-                        required: true,
-                        mobile: true
-                    },
-                    identify_code2: {
-                        required: true,
-                        identify_four: true
-                    }
-                },
-                messages: {
-                    ys_mobile2: {
-                        required: "请输入手机号",
-                        mobile: "请输入有效手机号"
-                    },
-                    identify_code2: {
-                        required: "请输入验证码",
-                        identify_four: "验证码格式错误"
-                    }
-                }
-            });
+//          $("#wt_form").validate({
+//              debug: true, //调试模式取消submit的默认提交功能
+//              focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+//              focusCleanup: true, //当前元素输入时，移除error
+//              rules: {
+//                  //全部为input name值
+//                  ys_mobile2: {
+//                      required: true,
+//                      mobile: true
+//                  },
+//                  identify_code2: {
+//                      required: true,
+//                      identify_four: true
+//                  }
+//              },
+//              messages: {
+//                  ys_mobile2: {
+//                      required: "请输入手机号",
+//                      mobile: "请输入有效手机号"
+//                  },
+//                  identify_code2: {
+//                      required: "请输入验证码",
+//                      identify_four: "验证码格式错误"
+//                  }
+//              }
+//          });
         }
 
     }

@@ -12,7 +12,10 @@
 <template>
     <div class="all">
         <!--header-->
-        <header1></header1>
+        <!--<header1></header1>-->
+        <div class="top_box" style="position: relative;background: #1d1d1d;height: 60px;">
+        	<Footertop></Footertop>        	
+        </div>
 
         <!--list  start-->
         <div detail>
@@ -94,13 +97,16 @@
 
 
         <!--footer-->
-        <footer1></footer1>
+        <!--<footer1></footer1>-->
+        <Footerbottom></Footerbottom>
     </div>
 </template>
 <script>
 
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
+    import Footertop from './header.vue'
+	import Footerbottom from './dibubotom.vue'
 
     //引入五个tab组件
     import build_index from './detail_component/build_index.vue';
@@ -113,7 +119,8 @@
         components: {
             header1,
             footer1,
-
+            Footertop,
+			Footerbottom,
             //五大组件tab
             build_index,
             build_rent,

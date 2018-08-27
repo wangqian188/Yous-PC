@@ -334,7 +334,7 @@
                             <a href="javascript:;" id="priceSort">价格<span></span></a>
                             <a href="javascript:;" id="areaSort">面积<span></span></a>
                         </div>
-                        <div class="fr sort-meet-result ">共 <b v-text="total_items"></b> 套房源符合条件</div>
+                        <div class="fr sort-meet-result ">共 <b v-text="total_items1"></b> 套房源符合条件</div>
                     </div>
 
                     <!--加载中-->
@@ -597,6 +597,7 @@
 
                 buildList: [], //楼盘列表，搜索结果
                 total_items: '--', //结果总数
+                total_items1:'--',//筛选结果总数
                 total_pages: 0, //总页数
                 //分页
                 pageSize: 5, //每页个数
@@ -970,24 +971,22 @@
                             "items_perpage": this.pageSize
                         },
                         "foreEndType": 2,
-                        "code": "30000003"
+                        "code": "30000002"
                     }
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
                     _this.loadingFlag = false;
 
                     if (result.success) {
+                    	_this.total_items1 = result.total == null || result.total == '' ? '--' : result.total;//可租房源数///////分页
                         if (result.data.houses.length) {
-
                             _this.buildList = result.data.houses;//楼盘下的房源数据
-//                          _this.total_items = result.data.total_items == null ? '--' : result.data.total_items;
-                            _this.total_pages = _this.total_items;//总条数
-                            if(_this.total_items % 5 == 0){
-                            	_this.total_pages = _this.total_items / 5;                                	
+                            _this.total_items1 = result.total == null || result.total == '' ? '--' : result.total;//可租房源数///////分页
+                            if(_this.total_items1 % 5 == 0){
+                            	_this.total_pages = _this.total_items1 / 5;    
                             }else{
-                            	_this.total_pages = parseInt(_this.total_items / 5) + 1;
+                            	_this.total_pages = parseInt(_this.total_items1 / 5) + 1;
                             }
-                            
                             
                             if (_this.total_pages <= 1) {
                                 _this.pageFlag = false;
@@ -1251,101 +1250,101 @@
                 $(this).find('.attention-share-ewm').hide();
             });
 
-            $("#form_send2").validate({
-                debug: true, //调试模式取消submit的默认提交功能
-                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
-                focusCleanup: true, //当前元素输入时，移除error
-                rules: {
-                    //全部为input name值
-                    ys_mobile2: {
-                        required: true,
-                        mobile: true
-                    }
+//          $("#form_send2").validate({
+//              debug: true, //调试模式取消submit的默认提交功能
+//              focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+//              focusCleanup: true, //当前元素输入时，移除error
+//              rules: {
+//                  //全部为input name值
+//                  ys_mobile2: {
+//                      required: true,
+//                      mobile: true
+//                  }
+//
+//              },
+//              messages: {
+//                  ys_mobile2: {
+//                      required: "请输入手机号",
+//                      mobile: "请输入有效手机号"
+//                  }
+//              }
+//          });
 
-                },
-                messages: {
-                    ys_mobile2: {
-                        required: "请输入手机号",
-                        mobile: "请输入有效手机号"
-                    }
-                }
-            });
-
-            $("#wt_form").validate({
-                debug: true, //调试模式取消submit的默认提交功能
-                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
-                focusCleanup: true, //当前元素输入时，移除error
-                rules: {
-                    //全部为input name值
-                    ys_mobile2: {
-                        required: true,
-                        mobile: true
-                    },
-                    identify_code2: {
-                        required: true,
-                        identify_four: true
-                    }
-                },
-                messages: {
-                    ys_mobile2: {
-                        required: "请输入手机号",
-                        mobile: "请输入有效手机号"
-                    },
-                    identify_code2: {
-                        required: "请输入验证码",
-                        identify_four: "验证码格式错误"
-                    }
-                }
-            });
+//          $("#wt_form").validate({
+//              debug: true, //调试模式取消submit的默认提交功能
+//              focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+//              focusCleanup: true, //当前元素输入时，移除error
+//              rules: {
+//                  //全部为input name值
+//                  ys_mobile2: {
+//                      required: true,
+//                      mobile: true
+//                  },
+//                  identify_code2: {
+//                      required: true,
+//                      identify_four: true
+//                  }
+//              },
+//              messages: {
+//                  ys_mobile2: {
+//                      required: "请输入手机号",
+//                      mobile: "请输入有效手机号"
+//                  },
+//                  identify_code2: {
+//                      required: "请输入验证码",
+//                      identify_four: "验证码格式错误"
+//                  }
+//              }
+//          });
 
             //免费回拨验证码
-            $("#form_send3").validate({
-                debug: true, //调试模式取消submit的默认提交功能
-                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
-                focusCleanup: true, //当前元素输入时，移除error
-                rules: {
-                    //全部为input name值
-                    ys_mobile3: {
-                        required: true,
-                        mobile: true
-                    }
-
-                },
-                messages: {
-                    ys_mobile3: {
-                        required: "请输入手机号",
-                        mobile: "请输入有效手机号"
-                    }
-                }
-            });
+//          $("#form_send3").validate({
+//              debug: true, //调试模式取消submit的默认提交功能
+//              focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+//              focusCleanup: true, //当前元素输入时，移除error
+//              rules: {
+//                  //全部为input name值
+//                  ys_mobile3: {
+//                      required: true,
+//                      mobile: true
+//                  }
+//
+//              },
+//              messages: {
+//                  ys_mobile3: {
+//                      required: "请输入手机号",
+//                      mobile: "请输入有效手机号"
+//                  }
+//              }
+//          });
 
             //免费回拨
-            $("#free_form").validate({
-                debug: true, //调试模式取消submit的默认提交功能
-                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
-                focusCleanup: true, //当前元素输入时，移除error
-                rules: {
-                    //全部为input name值
-                    ys_mobile3: {
-                        required: true,
-                        mobile: true
-                    },
-                    identify_code3: {
-                        required: true,
-                        identify_four: true
-                    }
-                },
-                messages: {
-                    ys_mobile3: {
-                        required: "请输入手机号",
-                        mobile: "请输入有效手机号"
-                    },
-                    identify_code3: {
-                        required: "请输入验证码",
-                        identify_four: "验证码格式错误"
-                    }
-                }
-            });
+//          $("#free_form").validate({
+//              debug: true, //调试模式取消submit的默认提交功能
+//              focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+//              focusCleanup: true, //当前元素输入时，移除error
+//              rules: {
+//                  //全部为input name值
+//                  ys_mobile3: {
+//                      required: true,
+//                      mobile: true
+//                  },
+//                  identify_code3: {
+//                      required: true,
+//                      identify_four: true
+//                  }
+//              },
+//              messages: {
+//                  ys_mobile3: {
+//                      required: "请输入手机号",
+//                      mobile: "请输入有效手机号"
+//                  },
+//                  identify_code3: {
+//                      required: "请输入验证码",
+//                      identify_four: "验证码格式错误"
+//                  }
+//              }
+//          });
         }
     }
 </script>
