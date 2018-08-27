@@ -54,6 +54,9 @@
         <div class="top_box" style="position: relative;background: #1d1d1d;height: 60px;">
         	<Footertop></Footertop>        	
         </div>
+        <div style="position: absolute;left: 0;right: 0;bottom: 0;top: 60px;overflow: auto;">
+        	
+        <!--</div>-->
         <!--list  start-->
         <div list>
 
@@ -528,6 +531,7 @@
         <!--footer-->
         <!--<footer1></footer1>-->
         <Footerbottom></Footerbottom>
+        </div>
     </div>
 </template>
 <script>
