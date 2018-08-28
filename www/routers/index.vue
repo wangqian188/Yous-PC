@@ -62,7 +62,7 @@
 	.gwanjiawen{margin-left: 110px;display:flex;align-items: center;}
 	.gjfuw{font-size: 40px;color: #f15a5a;line-height: 40px;}
 	.lsfjxjfw{font-size: 24px;color: #333333;line-height: 24px;margin-top: 18px;}
-	.lswzif{font-size: 14px;color: #959595;line-height: 14px;width: 438px;margin-top: 20px;}
+	.lswzif{font-size: 14px;color: #959595;line-height: 24px;width: 438px;margin-top: 20px;}
 	.ckgd{font-size: 14px;color: #f15a5a;line-height: 14px;margin-top: 20px;}
 	.ivu-carousel-dots-inside{bottom: 20px;}
 	.ivu-carousel-arrow.left{left: 5%;}
@@ -82,7 +82,7 @@
 		<!---->
 		<div class="large">
 	    	<div class="banner">
-			    <Carousel autoplay>
+			    <Carousel autoplay  autoplay-speed=5000>
 			        <Carousel-item v-for="(idx,index) in imgdata">
 			            <div class="demo-carousel pointer"><img :src="$api_jtimg + idx" @click='to_link(index)'/></div>
 			        </Carousel-item>
@@ -157,7 +157,7 @@
 										<span class="lping ggdis"><img :src="$api_img_url + item.pic"/></span>
 										<span class="lpmignchlarge">
 											<span class="lpmignch ggdis">{{item.topic}}</span>
-											<span class="cbdhxqq">CBD核心区，高性价比商业之选</span>
+											<span class="cbdhxqq">{{item.explain}}</span>
 										</span>
 									</p>
 								</router-link>
@@ -204,7 +204,7 @@
 								<span class="gjfuw ggdis">管家服务</span>
 								<span class="lsfjxjfw ggdis">亮狮管家“星”级服务</span>
 								<span class="lswzif ggdis">亮狮网自成立以来一直致力于为商业地产投资者、持有者和运营者提供 全新的空间一站式管家服务，包括提供空间招商、物业对接、装饰装修亮狮网自成立以来一直致力于为商业地产投资者、持有者和运营者提供 全新的空间一站式管家服务，包括提供空间招商、物业对接、装饰装修</span>
-								<span class="ckgd ggdis">查看更多</span>
+								<span class="ckgd ggdis pointer" @click="jsckgd">查看更多</span>
 							</span>
 							
 						</p>
@@ -247,7 +247,7 @@
 					},
 					parallax : true,
 				},*/
-				imgdata:["shiye1.jpg","shiye2.jpg","shiye3.jpg","shiye4.jpg","shiye5.jpg"],
+				imgdata:["shiye3.jpg","shiye5.jpg","shiye2.jpg","shiye1.jpg","shiye4.jpg"],
 				lpdata:[],
 			}
         },
@@ -264,6 +264,21 @@
 			        /*Indicator.close();*/
 			        if (result.success){
 			            this.lpdata = result.data;
+			            for(var i=0;i<this.lpdata.length;i++){
+			            	if(i == 0){
+			            		this.lpdata[i].explain = "CBD核心区，高性价比商业之选";
+			            	}
+			            	if(i == 1){
+			            		this.lpdata[i].explain = "时尚文化前沿，商业休闲首选";
+			            	}
+			            	if(i == 2){
+			            		this.lpdata[i].explain = "传奇CBD卫城，富矿商务地带";
+			            	}
+			            	if(i == 3){
+			            		this.lpdata[i].explain = "交通网络完善，市中心繁华商业地段";
+			            	}
+			            	
+			            }
 			            /*_this.floors = data.zglc || '暂无数据';
 			            _this.topic = result.data[0].topic;*/
 			        }
@@ -273,10 +288,27 @@
 			 	window.open("http://beta.ursbest.com");
 			},
 			to_link(index){
-				alert(index);
+				if(index == 0){
+					this.$router.push({ path: '/list',query:{type:2}});
+				}
+				if(index == 1){
+					window.open("http://beta.ursbest.com");
+				}
+				if(index == 2){
+					this.$router.push({ path: '/yezhuweit',query:{type:4}});
+				}
+				if(index == 3){
+					this.$router.push({ path: '/qyhl',query:{type:5}});
+				}
+				if(index == 4){
+					this.$router.push({ path: '/gjfw',query:{type:6}});
+				}
 			},
 			gdlppand(){
-				this.$router.push({ path: '/list'});
+				this.$router.push({ path: '/list',query:{type:2}});
+			},
+			jsckgd(){
+				this.$router.push({ path: '/gjfw',query:{type:6}});
 			},
         },
 

@@ -20,7 +20,8 @@
 	.gsdz{margin-top: 24px;}
 	.erweima{display: flex;align-items: center;}
 	.erweimaerji p:first-child{margin-right: 43px;}
-	.erweimaimg{width: 110px;height: 110px;background: url(../resources/images/shouye/lsapp.png) no-repeat;background-size: 100% auto;}
+	.erweimaimg{width: 110px;height: 110px;background: url(../resources/images/ywzhuweit/erwmaapp.png) no-repeat;background-size: 100% auto;}
+	.lsgzhimg{width: 110px;height: 110px;background: url(../resources/images/ywzhuweit/lswwem.jpg) no-repeat;background-size: 100% auto;}
 	.lsapp{width: 110px;font-size: 14px;line-height: 14px;color: #ffffff;margin-top: 10px;justify-content: center;}
 	.lsicp{margin-top: 20px;margin-bottom: 42px;width: 1310px;}
 	
@@ -59,7 +60,7 @@
 							<span class="lsapp ggdis">亮狮APP</span>
 						</p>
 						<p>
-							<span class="erweimaimg ggdis"></span>
+							<span class="lsgzhimg ggdis"></span>
 							<span class="lsapp ggdis">亮狮公众号</span>
 						</p>
 					</div>

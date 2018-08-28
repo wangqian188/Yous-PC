@@ -288,6 +288,7 @@
 		                            content: content
 		                        });*/
 					        	alert(result.message);
+					        	location.reload();
 					        }else{
 					        	alert(result.message);
 					        }
