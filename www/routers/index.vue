@@ -2,6 +2,55 @@
     @import "../../src/styles/index.less";
     @import "../resources/css/index/index.less";
     @import "../resources/css/popup/popup.less";
+    /* 当展现页面的宽度大于1000px且小于1400px时，的样式。 */
+	@media screen and (min-width: 1000px) and (max-width: 1400px) {
+	.reportClass{
+		cursor: pointer;
+		display: inline-block;
+		line-height: 32px;
+		font-size: 16px !important;
+		font-weight: 500 !important;
+		border-radius: 5px !important;
+		background: rgb(239,242,247) !important;
+		color: rgb(50,168,238) !important;
+		border-left: 0px solid white !important;
+		width: 136px;
+		text-align: center;
+	}
+	.reportcss{margin-top: 32px;height: 130px;background-color: #f8f8f8;overflow: auto;}
+	.countClass p{border:1px solid #cccccc;height: 95px;width:178px;display: flex;margin-right:94px;border-radius: 5px;}
+	.xshouarea{height: 12px;display: flex;width: 3px;background-color: #35a7f0;}
+	.areanpnt{margin-left: 11px;height: 12px;display: flex;align-items: center;font-size: 12px;color: #30373f;}
+	.areashuzi{height: 60px;width: 178px;color: #35a7f0;font-size: 24px;display: flex;align-items: center;justify-content: center;font-weight: 600}
+	}
+	/* 当展现页面的宽度大于1400px时的样式。 */
+	@media screen and (min-width: 1400px){
+	.reportClass{
+		cursor: pointer;
+		display: inline-block;
+		line-height: 32px;
+		font-size: 16px !important;
+		font-weight: 500 !important;
+		border-radius: 5px !important;
+		background: rgb(239,242,247) !important;
+		color: rgb(50,168,238) !important;
+		border-left: 0px solid white !important;
+		width: 136px;
+		text-align: center;
+	}
+	.reportcss{margin-top: 32px;height: 190px;background-color: #f8f8f8;overflow: auto;}
+	.countClass p{border:1px solid #cccccc;height: 138px;width:326px;display: flex;margin-right:94px;border-radius: 5px;}
+	.xshouarea{height: 18px;display: flex;width: 3px;background-color: #35a7f0;}
+	.areanpnt{margin-left: 11px;height: 18px;display: flex;align-items: center;font-size: 16px;color: #30373f;}
+	.areashuzi{height: 98px;width: 326px;color: #35a7f0;font-size: 36px;display: flex;align-items: center;justify-content: center;font-weight: 600}
+	}
+	
+	
+	
+	
+	
+	
+	
     /*弹窗*/
 	.pointer{cursor:pointer;}/*鼠标变成小手*/
 	.zuidalage{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;}
@@ -203,7 +252,7 @@
 							<span class="">
 								<span class="gjfuw ggdis">管家服务</span>
 								<span class="lsfjxjfw ggdis">亮狮管家“星”级服务</span>
-								<span class="lswzif ggdis">亮狮网自成立以来一直致力于为商业地产投资者、持有者和运营者提供 全新的空间一站式管家服务，包括提供空间招商、物业对接、装饰装修亮狮网自成立以来一直致力于为商业地产投资者、持有者和运营者提供 全新的空间一站式管家服务，包括提供空间招商、物业对接、装饰装修</span>
+								<span class="lswzif ggdis">亮狮网自成立以来一直致力于为商业地产投资者、持有者和运营者提供全新的空间一站式管家服务，包括提供空间招商、物业对接、装饰装修各项费用代缴、租金结算、 日常设备设施维护、投融资对接等完善的服务体系，为投资者创造全新的办公空间管家式服务体验。</span>
 								<span class="ckgd ggdis pointer" @click="jsckgd">查看更多</span>
 							</span>
 							
