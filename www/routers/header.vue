@@ -98,7 +98,7 @@
 				this.$router.push({ path: '/',query:{type:1}});
 			},
 			xiezilou(){
-				this.$router.push({ path: '/list'});
+				this.$router.push({ path: '/list',query:{type:2}});
 			},
 			diafwsc(){
 				window.open("http://beta.ursbest.com");
@@ -147,6 +147,15 @@
         		var obj = $(".wemaappimg");
 				for(var i=0;i<obj.length;i++){
 					if(i ==0){
+						$(".wemaappimg:eq("+i+")").addClass("dobubkdianji");
+					}
+				}
+        	}
+        	if(this.$route.query.type == 2){
+        		var obj = $(".wemaappimg");
+				for(var i=0;i<obj.length;i++){
+					$(".wemaappimg:eq("+i+")").removeClass("dobubkdianji");
+					if(i == 1){
 						$(".wemaappimg:eq("+i+")").addClass("dobubkdianji");
 					}
 				}

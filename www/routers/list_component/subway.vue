@@ -96,7 +96,6 @@
             //获取车站名称
             getStation(e){
                 var _this = this;
-
                 $(e.target).addClass('active').siblings().removeClass('active');
 
 

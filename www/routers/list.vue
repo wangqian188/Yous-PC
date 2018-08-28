@@ -1044,7 +1044,7 @@
                             "price_zj": this.price_zj, //价格（[30,100]）总价
                             "label": this.label, //特色标签
                             "chqxz":"",
-                            "orderby": this.orderby, //排序默认：D ，面积升序：A1，面积降序：A2，价格升序：P1，价格降序：P2
+                            "sort": this.orderby, //排序默认：D ，面积升序：A1，面积降序：A2，价格升序：P1，价格降序：P2
                             "curr_page": this.curPage,
                             "items_perpage": this.pageSize
                         },
@@ -1626,7 +1626,7 @@
             },
 
 
-            //排序筛选 默认：D ，面积升序：AA，面积降序：AD，价格升序：PA，价格降序：PD
+            //排序筛选 默认：D ，面积升序：A1，面积降序：A2，价格升序：P1，价格降序：P2
             buildSort(e){
                 var target = null;
                	console.log($(e.target).attr('id'));

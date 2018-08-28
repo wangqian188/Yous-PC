@@ -4,6 +4,13 @@
         margin: 0 auto;
         width: 400px;
     }
+    .fjh_zdh{
+    	margin-bottom: 16px;
+    	white-space: nowrap;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    width: 100%;
+    }
 </style>
 
 
@@ -353,12 +360,16 @@
                                     <img :src="$api_img_url + item.housing_icon" alt="">
                                 </div>
                                 <div class="list-introduce">
+                                	<div class="introduce-primary clearfix">
+                                        <span class="font20 fjh_zdh">{{item.zdh}}-{{item.fybh}}</span>
+                                    </div>
+                                	
                                     <div class="introduce-primary clearfix">
-                                        <span class="font20" v-if="item.decoration_level==null">
+                                        <span class="font20" v-if="item.fjzt==null || item.fjzt==''">
                                           {{item.housing_area}}<em class="font-num">m²</em>{{item.decoration_level}}
                                         </span>
                                         <span class="font20" v-else>
-                                           {{item.housing_area}}<em class="font-num">m²</em>·{{item.decoration_level}}
+                                           {{item.housing_area}}<em class="font-num">m²</em>·{{item.fjzt}}
                                         </span>
 
                                         <div>

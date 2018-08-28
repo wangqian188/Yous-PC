@@ -43,7 +43,7 @@
             <!--搜索 end-->
             <!--logo-->
             <div class="building-label clearfix">
-                <h2 class="detail_ld_name" v-text="buildingName"></h2>
+                <h2 class="detail_ld_name" v-text="buildingName + ' ' + all_data.zdh + '-' + all_data.fybh"></h2>
             </div>
 
             <!--img detail-->
@@ -374,7 +374,8 @@
                 property_rights: '', //产权性质
                 building_area: '', //建筑面积
                 decoration_level:"",
-                direction:""
+                direction:"",
+                all_data:{},
 
             }
         },
@@ -544,6 +545,7 @@
                     if (result.success) {
                         if (result.data) {
 							var allData = result.data[0];
+							this.all_data = result.data[0];
                             _this.buildingName = allData.topic;//名称
                             _this.room_area = allData.fjmj;//房间面积
                             _this.workstation = allData.krgw;//工位

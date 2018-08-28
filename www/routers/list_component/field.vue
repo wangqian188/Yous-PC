@@ -104,7 +104,6 @@
             //点击获取各区二级模块
             getSubDistrict(e){
                 var _this = this;
-
                 $(e.target).addClass('active').siblings().removeClass('active');
 
                 var emitObj = {
