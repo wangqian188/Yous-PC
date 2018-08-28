@@ -207,7 +207,7 @@
 						<p class="dituimg"><span class="gxlsdis"></span></p>
 						<p class="mmrjgs">
 							<span class="lagemmgs">
-								<span class="rjgszitti gxlsdis">北京幼狮科技有限公司</span>
+								<span class="rjgszitti gxlsdis">北京亮狮企服科技有限公司</span>
 								<span class="dizhiranj gxlsdis">地址：<i>北京市朝阳区东三环中路39号建外SOHO东区A座2906</i></span>
 								<span class="dizhiranj gxlsdis">电话：<i>400-078-8800</i></span>
 								<span class="dizhiranj gxlsdis">网址：<i>软件公司软件公司软件公司</i></span>
