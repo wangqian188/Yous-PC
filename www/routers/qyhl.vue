@@ -39,7 +39,7 @@
 							<p class="lttb"></p>
 							<p>
 								<span class="gggjdis zsyh">专属优惠</span>
-								<span class="gggjdis zxsqy">专享受企业优惠套餐，详情请拨打电话或在微信公众号留言咨询</span>
+								<span class="gggjdis zxsqy">专属享受企业优惠套餐，详情请拨打电话或在微信公众号留言咨询</span>
 							</p>
 						</div>
 						<div class="qyzhusyhu gggjdis">
@@ -75,15 +75,22 @@
 			<div class="qyhlimg">
 				<img src="../resources/images/qyhl/jrhylc.jpg"/>
 			</div>
+			
+			<!--公共的底部-->
+			<div class="lagebottom">
+				<Footerbottom></Footerbottom>
+			</div>
 		</div>
 	</div>
 </template>
 <script>
 	import Footertop from './header.vue'
+	import Footerbottom from './dibubotom.vue'
 	
     export default {
     	components: {
 		    Footertop,
+		    Footerbottom
 		 },
         data () {
         	return {

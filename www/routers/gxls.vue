@@ -33,7 +33,7 @@
 	.zxnslagedier:first-child{margin-top: 0px;}
 	.badudid{margin-top: 30px;background-color: #fbfdfd;border: 1px solid #e4eaec;}
 	.dituimg{width: 640px;padding: 10px;border-right: 1px solid #e4eaec;}
-	.dituimg span{width: 474px;height:340px;background: url(../resources/images/gyls/dt.jpg) no-repeat;background-size: 100% auto;}
+	.dituimg span{width: 530px;height:340px;background: url(../resources/images/gyls/dt.jpg) no-repeat;background-size: 100% auto;}
 	.mmrjgs{width: 640px;display: flex;align-items: center;}
 	.lagemmgs{margin-left: 10px;}
 	.rjgszitti{font-size: 18px;line-height: 18px;color: #333333;}
@@ -69,18 +69,15 @@
 一体的商业地产全产业链服务平台，旗下拥有华亮房产、幼狮科技、幼狮装饰、航远投资、华亮致新五家分公司。亮狮网旨在以空间为载体，以企业升级服务为依托，专注于满足企业进阶中的核心需求，致力于打造高成长性的企业生态圈。
 					</div>
 					<div class="cheliy">
-						目前“亮狮网”在北京各大核心商圈已构建30万㎡办公空间，100多个产品项目，并拥有2000多家入驻企业，未来“亮狮网”将搭建全新的办公生态体系，用更近的距离、更
-好的服务，助力每一家亮狮企业更省更快走向强大。
+						目前“亮狮网”在北京各大核心商圈已构建30万㎡办公空间，100多个产品项目，并拥有2000多家入驻企业，未来“亮狮网”将搭建全新的办公生态体系，用更近的距离、更好的服务，助力每一家亮狮企业更省更快走向强大。
 					</div>
 					<div class="cheliy">
 						亮狮坚持同一个梦想，承载着“为业主解忧，助企业成长”的使命，服务客户，成就他人。以提升企业效率作为企业宗旨， 真正实现三个百分百满意，即：定制服务百分百；
-入住服务百分百；售后服务百分百。一直以来亮狮人都秉持着，不怕苦、不服输、不断超越的企业精神不断前行，我们希望用亮狮创造的服务与空间让100万家企业的升级
-之路无限延伸。
+入住服务百分百；售后服务百分百。一直以来亮狮人都秉持着，不怕苦、不服输、不断超越的企业精神不断前行，我们希望用亮狮创造的服务与空间让100万家企业的升级之路无限延伸。
 					</div>
 					<div class="lswtt">亮狮网团队</div>
 					<div class="cheliy">
-						创始人长期专注于地产领域，连续成功创业，对企业运营管理有独立思考和亲身实践。核心团队均有丰富的运营管理和业务拓展经验。亮狮拥有以人为本的创业文化，激
-情四射的专业团队，团结有爱的亮狮家人，欢迎有抱负有理想的人加入我们。
+						创始人长期专注于地产领域，连续成功创业，对企业运营管理有独立思考和亲身实践。核心团队均有丰富的运营管理和业务拓展经验。亮狮拥有以人为本的创业文化，激情四射的专业团队，团结有爱的亮狮家人，欢迎有抱负有理想的人加入我们。
 					</div>
 					<div class="lswgyssing"><img src="../resources/images/gyls/lswgys.png"/></div>
 				</div>
