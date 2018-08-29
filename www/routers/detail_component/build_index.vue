@@ -355,7 +355,7 @@
                     <ul class="detail-office-list" v-show="house_res_show">
                         <li v-for="item in buildList">
                             <router-link target="_blank"
-                                         :to="{path:'/house_det',query:{building_id:building_id,house_id:item.id}}">
+                                         :to="{path:'/house_det',query:{building_id:building_id,house_id:item.id,type:2}}">
                                 <div class="list-img">
                                     <img :src="$api_img_url + item.housing_icon" alt="">
                                 </div>

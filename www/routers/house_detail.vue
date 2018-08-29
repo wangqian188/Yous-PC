@@ -23,8 +23,8 @@
     <div class="all">
         <!--header-->
         <!--<header1></header1>-->
-        <div class="top_box" style="position: relative;background: #1d1d1d;height: 60px;">
-        	<Footertop></Footertop>        	
+        <div class="top_box" style="position: relative;background: #fff;height: 400px;">
+        	<Footertop style='background: #1d1d1d;'></Footertop>        	
         </div>
 		<div style="position: absolute;left: 0;right: 0;bottom: 0;top: 60px;overflow: auto;">
         <!--list  start-->

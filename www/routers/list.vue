@@ -51,8 +51,8 @@
     <div class="all">
         <!--header-->
         <!--<header1></header1>-->
-        <div class="top_box" style="position: relative;background: #1d1d1d;height: 60px;">
-        	<Footertop></Footertop>        	
+        <div class="top_box" style="position: relative;background: #fff;height: 400px;">
+        	<Footertop style='background: #1d1d1d;'></Footertop>        	
         </div>
         <div style="position: absolute;left: 0;right: 0;bottom: 0;top: 60px;overflow: auto;">
         	
@@ -377,7 +377,7 @@
                         <!--搜索结果list start-->
 
                         <div class="office_list_item" v-for="(item,index) in buildList">
-                            <router-link :to="{path:'/detail',query:{building_id:item.id}}" class="db pr clearfix"
+                            <router-link :to="{path:'/detail',query:{building_id:item.id,type:2}}" class="db pr clearfix"
                                          :id="item.id" target="_blank">
                                 <div class="fl pr">
                                     <img :src="$api_img_url + item.img_path" :alt="item.img_alt">
@@ -1207,6 +1207,7 @@
 
             //改变区域筛选
             selList(obj){
+            	this.business = '';
                 this.district = obj.id;
                 this.compareStr(obj, this.chosenArr);
             },
@@ -1219,6 +1220,7 @@
 
             //改变地铁线路
             selList_lines(obj){
+            	this.station_id = '';
                 this.line_id = obj.id;
                 this.compareStr(obj, this.chosenArr);
             },
