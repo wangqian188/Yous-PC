@@ -92,10 +92,14 @@
                     this.$Message.error('获取地铁线路失败');
                 });
             },
-
+			line_reset(){
+                $('#sub_line a').removeClass('active');
+                $('#sub_line a:first-child').addClass('active');
+            },
             //获取车站名称
             getStation(e){
                 var _this = this;
+                this.line_reset();
                 $(e.target).addClass('active').siblings().removeClass('active');
 
 

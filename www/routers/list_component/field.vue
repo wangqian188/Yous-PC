@@ -98,11 +98,12 @@
             businessInit(){
                 $('#sub_district a').removeClass('active');
                 $('#sub_district a:first-child').addClass('active');
-
             },
 
             //点击获取各区二级模块
             getSubDistrict(e){
+				this.businessInit();//重置
+				
                 var _this = this;
                 $(e.target).addClass('active').siblings().removeClass('active');
 

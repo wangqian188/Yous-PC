@@ -842,7 +842,8 @@
                 }
 
                 $('#sub_line').hide();
-
+				$('.interval input').val('');//输入框置空
+				$("input").attr("value","");
                 $('#areaSort_wrap a').removeClass('active');  //面积回到全部
                 $('#area_all').addClass('active');
 
@@ -851,8 +852,16 @@
                 $('#range_pri_tot_all').addClass('active');
 
                 $('#label_all').parent().find('>a').removeClass('active');
+                $('.screening_conts_list a').removeClass('active');
                 $('#label_all').addClass('active');
-
+				//清空面积
+				this.bArea = ""; //起始面积
+                this.eArea = ""; //结束面积
+				//清空自定义
+                this.bNum = ''; //起始价格
+                this.eNum = ''; //结束价格
+                this.bNum_tot = ''; //起始价格
+                this.eNum_tot = ''; //结束价格
                 //清空条件
                 this.search_keywork = ""; //模糊查询
                 this.district = "";//区域
