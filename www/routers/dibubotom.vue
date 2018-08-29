@@ -1,29 +1,58 @@
 ﻿<style lang="less">
 /*页面底部的css样式*/
+	/* 当展现页面的宽度大于1000px且小于1400px时，的样式。 */
+	@media screen and (min-width: 1000px) and (max-width: 1400px) {
+		.yqljer{height: 52px;line-height: 52px;text-align: center;}
+		.yqljwenz{font-size: 14px;color: #ffffff;}
+		.hytz{font-size: 14px;color: #7e7e7e;}
+		.hlzx{font-size: 14px;color: #7e7e7e;}
+		.hlfc{font-size: 14px;color: #7e7e7e;}
+		.yszs{font-size: 14px;color: #7e7e7e;}
+		.bjlsw{border-top: 1px solid #434343;border-bottom: 1px solid #434343;width: 1150px;display: flex;justify-content: space-between;padding-right: 5px;}
+		.lswkejysgs{margin-top: 39px;font-size: 14px;line-height: 14px;color: #d6d6d6;}
+		.bjlslarg{padding-bottom: 39px;}
+		.dianuhua{margin-top: 20px;}
+		.dainhutubiao{display: flex;width: 16px;height: 16px;background: url(../resources/images/shouye/dianhua.png) no-repeat;background-size: 100% auto;}
+		.shiujha{font-size: 12px;line-height: 12px;color: #d6d6d6;margin-left: 15px;align-items: center;}
+		.gsjj{margin-top: 20px;}
+		.gsjjzt{font-size: 12px;line-height: 12px;color: #7b7b7b;}
+		.gsjjhgs{margin-left: 12px;margin-right: 12px;}
+		.gsdz{margin-top: 21px;}
+		.erweimaerji p:first-child{margin-right: 38px;}
+		.erweimaimg{width: 96px;height: 96px;background: url(../resources/images/ywzhuweit/erwmaapp.png) no-repeat;background-size: 100% auto;}
+		.lsgzhimg{width: 96px;height: 96px;background: url(../resources/images/ywzhuweit/lswwem.jpg) no-repeat;background-size: 100% auto;}
+		.lsapp{width: 96px;font-size: 12px;line-height: 12px;color: #ffffff;margin-top: 10px;justify-content: center;}
+		.lsicp{margin-top: 18px;margin-bottom: 37px;width: 1150px;}
+	}
+	/* 当展现页面的宽度大于1400px时的样式。 */
+	@media screen and (min-width: 1400px){
+		.yqljer{height: 60px;line-height: 60px;text-align: center;}
+		.yqljwenz{font-size: 16px;color: #ffffff;}
+		.hytz{font-size: 16px;color: #7e7e7e;}
+		.hlzx{font-size: 16px;color: #7e7e7e;}
+		.hlfc{font-size: 16px;color: #7e7e7e;}
+		.yszs{font-size: 16px;color: #7e7e7e;}
+		.bjlsw{border-top: 1px solid #434343;border-bottom: 1px solid #434343;width: 1310px;display: flex;justify-content: space-between;padding-right: 6px;}
+		.lswkejysgs{margin-top: 44px;font-size: 16px;line-height: 16px;color: #d6d6d6;}
+		.bjlslarg{padding-bottom: 44px;}
+		.dianuhua{margin-top: 22px;}
+		.dainhutubiao{display: flex;width: 19px;height: 19px;background: url(../resources/images/shouye/dianhua.png) no-repeat;background-size: 100% auto;}
+		.shiujha{font-size: 14px;line-height: 14px;color: #d6d6d6;margin-left: 17px;align-items: center;}
+		.gsjj{margin-top: 22px;}
+		.gsjjzt{font-size: 14px;line-height: 14px;color: #7b7b7b;}
+		.gsjjhgs{margin-left: 14px;margin-right: 14px;}
+		.gsdz{margin-top: 24px;}
+		.erweimaerji p:first-child{margin-right: 43px;}
+		.erweimaimg{width: 110px;height: 110px;background: url(../resources/images/ywzhuweit/erwmaapp.png) no-repeat;background-size: 100% auto;}
+		.lsgzhimg{width: 110px;height: 110px;background: url(../resources/images/ywzhuweit/lswwem.jpg) no-repeat;background-size: 100% auto;}
+		.lsapp{width: 110px;font-size: 14px;line-height: 14px;color: #ffffff;margin-top: 10px;justify-content: center;}
+		.lsicp{margin-top: 20px;margin-bottom: 42px;width: 1310px;}
+	}
 	.pointer{cursor:pointer;}/*鼠标变成小手*/
 	.yqlj{background-color: #1d1d1d;}
-	.yqljer{height: 60px;line-height: 60px;text-align: center;}
-	.yqljwenz{font-size: 16px;color: #ffffff;}
-	.hytz{font-size: 16px;color: #7e7e7e;}
-	.hlzx{font-size: 16px;color: #7e7e7e;}
-	.hlfc{font-size: 16px;color: #7e7e7e;}
-	.yszs{font-size: 16px;color: #7e7e7e;}
-	.bjlsw{border-top: 1px solid #434343;border-bottom: 1px solid #434343;width: 1310px;display: flex;justify-content: space-between;padding-right: 6px;}
-	.lswkejysgs{margin-top: 44px;font-size: 16px;line-height: 16px;color: #d6d6d6;}
-	.bjlslarg{padding-bottom: 44px;}
-	.dianuhua{margin-top: 22px;}
-	.dainhutubiao{display: flex;width: 19px;height: 19px;background: url(../resources/images/shouye/dianhua.png) no-repeat;background-size: 100% auto;}
-	.shiujha{font-size: 14px;line-height: 14px;color: #d6d6d6;margin-left: 17px;align-items: center;}
-	.gsjj{margin-top: 22px;}
-	.gsjjzt{font-size: 14px;line-height: 14px;color: #7b7b7b;}
-	.gsjjhgs{margin-left: 14px;margin-right: 14px;}
-	.gsdz{margin-top: 24px;}
+	
 	.erweima{display: flex;align-items: center;}
-	.erweimaerji p:first-child{margin-right: 43px;}
-	.erweimaimg{width: 110px;height: 110px;background: url(../resources/images/ywzhuweit/erwmaapp.png) no-repeat;background-size: 100% auto;}
-	.lsgzhimg{width: 110px;height: 110px;background: url(../resources/images/ywzhuweit/lswwem.jpg) no-repeat;background-size: 100% auto;}
-	.lsapp{width: 110px;font-size: 14px;line-height: 14px;color: #ffffff;margin-top: 10px;justify-content: center;}
-	.lsicp{margin-top: 20px;margin-bottom: 42px;width: 1310px;}
+	
 	
 </style>
 

@@ -156,7 +156,7 @@
 		<!---->
 		<div class="large">
 	    	<div class="banner">
-			    <Carousel autoplay>
+			    <Carousel autoplay :autoplay-speed='autoplaySpeed'>
 			        <Carousel-item v-for="(idx,index) in imgdata">
 			            <div class="demo-carousel pointer"><img :src="$api_jtimg + idx" @click='to_link(index)'/></div>
 			        </Carousel-item>
@@ -305,6 +305,7 @@
 		 },
         data () {
             return {
+            	autoplaySpeed:5000,
 				/*swiperOption: {//轮播图配置
 					pagination: '.swiper-pagination',//
 					paginationClickable: true,//
