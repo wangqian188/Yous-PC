@@ -1,43 +1,87 @@
 <style lang="less">
 /*页面底部的css样式*/
+	/* 当展现页面的宽度大于1000px且小于1400px时，的样式。 */
+	@media screen and (min-width: 1000px) and (max-width: 1400px) {
+		.lagetop{position: absolute;top: 0px;left: 0px;right: 0px;height: 52px;z-index: 12;}/*background-color: #1d1d1d;*/
+		.gxlswidt{width: 1150px;padding-bottom: 43px;}
+		.qyjj{margin-top: 54px;justify-content: center;}
+		.qyjj p{width: 1150px;}
+		.qyjjziti{font-size: 12px;line-height: 12px;width: 80px;height: 26px;align-items: center;justify-content: center;margin-left: 13px;}
+		.lageqyjj{margin-top: 36px;padding-top: 26px;}
+		.gylishwang{font-size: 21px;line-height: 21px;color: #2d2d2d;}
+		.cheliy{font-size: 14px;line-height: 26px;color: #666666;margin-top: 31px;}
+		.lswtt{font-size: 21px;line-height: 21px;color: #2d2d2d;margin-top: 61px;}
+		.lswgyssing{width: 100%;margin-top: 35px;margin-bottom: 70px;}
+		.zxnslagedier{background-color: #ffffff;border: 1px solid #efefef;border-radius: 5px;padding: 35px 26px;margin-top: 26px;}
+		.zhiwei{font-size: 21px;line-height: 21px;color: #2d2d2d;}
+		.neirong{border-top: 1px solid #e4eaec;border-bottom: 1px solid #e4eaec;margin-top: 33px;padding: 17px 13px 43px;}
+		.zhuygznr{font-size: 14px;line-height: 14px;color: #666666;}
+		.fuwqiy{padding-left: 28px;margin-top: 22px;}
+		.gwyq{margin-top: 22px;}
+		.neirong ul{margin-top: 10px;padding-left: 35px;}
+		.neirong ul{line-height: 35px;font-size: 14px;color: #666666;}
+		.qingjijil{padding:26px 14px 0px;font-size: 14px;line-height: 14px;color: #666666;}
+		.qingjijil i{font-style: normal;padding-left: 5px;color: #2B70D8;}
+		.badudid{margin-top: 26px;background-color: #fbfdfd;border: 1px solid #e4eaec;}
+		.dituimg{width: 560px;padding: 8px;border-right: 1px solid #e4eaec;}
+		.dituimg span{width: 463px;height:297px;background: url(../resources/images/gyls/dt.jpg) no-repeat;background-size: 100% auto;}
+		.mmrjgs{width: 560px;display: flex;align-items: center;}
+		.lagemmgs{margin-left: 8px;}
+		.rjgszitti{font-size: 15px;line-height: 15px;color: #333333;}
+		.dizhiranj{font-size: 14px;line-height: 14px;color: #2B70D8;margin-top: 15px;}
+	}
+	/* 当展现页面的宽度大于1400px时的样式。 */
+	@media screen and (min-width: 1400px){
+		.lagetop{position: absolute;top: 0px;left: 0px;right: 0px;height: 60px;z-index: 12;}/*background-color: #1d1d1d;*/
+		.gxlswidt{width: 1310px;padding-bottom: 50px;}
+		.qyjj{margin-top: 62px;justify-content: center;}
+		.qyjj p{width: 1310px;}
+		.qyjjziti{font-size: 14px;line-height: 14px;width: 92px;height: 30px;align-items: center;justify-content: center;margin-left: 15px;}
+		.lageqyjj{margin-top: 42px;padding-top: 30px;}
+		.gylishwang{font-size: 24px;line-height: 24px;color: #2d2d2d;}
+		.cheliy{font-size: 16px;line-height: 30px;color: #666666;margin-top: 36px;}
+		.lswtt{font-size: 24px;line-height: 24px;color: #2d2d2d;margin-top: 70px;}
+		.lswgyssing{width: 100%;margin-top: 40px;margin-bottom: 80px;}
+		.zxnslagedier{background-color: #ffffff;border: 1px solid #efefef;border-radius: 5px;padding: 40px 30px;margin-top: 30px;}
+		.zhiwei{font-size: 24px;line-height: 24px;color: #2d2d2d;}
+		.neirong{border-top: 1px solid #e4eaec;border-bottom: 1px solid #e4eaec;margin-top: 38px;padding: 20px 15px 50px;}
+		.zhuygznr{font-size: 16px;line-height: 16px;color: #666666;}
+		.fuwqiy{padding-left: 32px;margin-top: 26px;}
+		.gwyq{margin-top: 26px;}
+		.neirong ul{margin-top: 12px;padding-left: 40px;}
+		.neirong ul{line-height: 40px;font-size: 16px;color: #666666;}
+		.qingjijil{padding:30px 16px 0px;font-size: 16px;line-height: 16px;color: #666666;}
+		.qingjijil i{font-style: normal;padding-left: 5px;color: #2B70D8;}
+		.badudid{margin-top: 30px;background-color: #fbfdfd;border: 1px solid #e4eaec;}
+		.dituimg{width: 640px;padding: 10px;border-right: 1px solid #e4eaec;}
+		.dituimg span{width: 530px;height:340px;background: url(../resources/images/gyls/dt.jpg) no-repeat;background-size: 100% auto;}
+		.mmrjgs{width: 640px;display: flex;align-items: center;}
+		.lagemmgs{margin-left: 10px;}
+		.rjgszitti{font-size: 18px;line-height: 18px;color: #333333;}
+		.dizhiranj{font-size: 16px;line-height: 16px;color: #2B70D8;margin-top: 18px;}
+	
+	
+	}
+	
+	
+	
+	
 	.pointer{cursor:pointer;}/*鼠标变成小手*/
 	.zuidalage{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;}
-	.lagetop{position: absolute;top: 0px;left: 0px;right: 0px;height: 60px;z-index: 12;}/*background-color: #1d1d1d;*/
+	
 	.large{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;min-width: 1200px;overflow: auto;background-color: white;}
 	.lagebottom{background-color: #1d1d1d;padding: 0px;}
 	.banimg{width:100%;}
 	.gxlsdis{display: flex;}
 	.gxlsdisjust{justify-content: center;}
-	.gxlswidt{width: 1310px;padding-bottom: 50px;}
-	.qyjj{margin-top: 62px;justify-content: center;}
-	.qyjj p{width: 1310px;}
-	.qyjjziti{font-size: 14px;line-height: 14px;width: 92px;height: 30px;align-items: center;justify-content: center;margin-left: 15px;}
+	
 	.qyjj p span:first-child{margin-left: 0px;}
 	.gbzihcss{color: #ffffff;background-color: #2b70d8;}
-	.lageqyjj{margin-top: 42px;padding-top: 30px;}
-	.gylishwang{font-size: 24px;line-height: 24px;color: #2d2d2d;}
-	.cheliy{font-size: 16px;line-height: 30px;color: #666666;margin-top: 36px;}
-	.lswtt{font-size: 24px;line-height: 24px;color: #2d2d2d;margin-top: 70px;}
-	.lswgyssing{width: 100%;margin-top: 40px;margin-bottom: 80px;}
+	
 	.zxnslage{background-color: #f2f2f2;}
-	.zxnslagedier{background-color: #ffffff;border: 1px solid #efefef;border-radius: 5px;padding: 40px 30px;margin-top: 30px;}
-	.zhiwei{font-size: 24px;line-height: 24px;color: #2d2d2d;}
-	.neirong{border-top: 1px solid #e4eaec;border-bottom: 1px solid #e4eaec;margin-top: 38px;padding: 20px 15px 50px;}
-	.zhuygznr{font-size: 16px;line-height: 16px;color: #666666;}
-	.fuwqiy{padding-left: 32px;margin-top: 26px;}
-	.gwyq{margin-top: 26px;}
-	.neirong ul{margin-top: 12px;padding-left: 40px;}
-	.neirong ul{line-height: 40px;font-size: 16px;color: #666666;}
-	.qingjijil{padding:30px 16px 0px;font-size: 16px;line-height: 16px;color: #666666;}
-	.qingjijil i{font-style: normal;padding-left: 5px;color: #2B70D8;}
+	
 	.zxnslagedier:first-child{margin-top: 0px;}
-	.badudid{margin-top: 30px;background-color: #fbfdfd;border: 1px solid #e4eaec;}
-	.dituimg{width: 640px;padding: 10px;border-right: 1px solid #e4eaec;}
-	.dituimg span{width: 530px;height:340px;background: url(../resources/images/gyls/dt.jpg) no-repeat;background-size: 100% auto;}
-	.mmrjgs{width: 640px;display: flex;align-items: center;}
-	.lagemmgs{margin-left: 10px;}
-	.rjgszitti{font-size: 18px;line-height: 18px;color: #333333;}
-	.dizhiranj{font-size: 16px;line-height: 16px;color: #2B70D8;margin-top: 18px;}
+	
 	.dizhiranj i{font-style: normal;color: #666666;}
 	.gxlsdisno{display: none !important;}
 </style>
