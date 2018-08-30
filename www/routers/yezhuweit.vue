@@ -1,33 +1,66 @@
 <style lang="less">
 /*页面底部的css样式*/
+/* 当展现页面的宽度大于1000px且小于1400px时，的样式。 */
+	@media screen and (min-width: 1000px) and (max-width: 1400px) {
+		.lagetop{position: absolute;top: 0px;left: 0px;right: 0px;height: 52px;z-index: 12;}/*background-color: #1d1d1d;*/
+		.lagebiaot{margin-top: 66px;}
+		.biaot{width: 1150px;padding: 0px 110px;}
+		.ggwid{width: 1150px;}
+		.biaot p{margin-left: 88px;}
+		.xiangming{border-bottom:1px solid #e5e5e5;font-size: 12px;line-height:54px;width: 110px;color: #333333;}
+		.xminput{border-bottom:1px solid #e5e5e5;width:407px;line-height:54px;}
+		.xminput input{width:407px;border:none;font-size: 12px;color: #333333;}
+		.sjhinput{border-bottom:1px solid #e5e5e5;width:318px;line-height:54px;}
+		.sjhinput input{width:318px;border:none;font-size: 12px;color: #333333;}
+		.yazhanma{border-bottom:1px solid #e5e5e5;font-size: 12px;line-height:54px;width: 78px;color: #999999;padding-left: 8px;}
+		.fwmsk{width: 516px;height: 152px;}
+		.fwmsk textarea{width: 516px;height: 152px;border-bottom: 1px solid #e5e5e5;border-top: 0px solid #e5e5e5;border-left: 1px solid #e5e5e5;border-right: 1px solid #e5e5e5;padding: 17px 14px;font-size: 12px;color: #333333;}
+		.anweweit{width: 319px;height: 407px;background: url(../resources/images/ywzhuweit/anweiweitu.png) no-repeat;background-size: 100% auto;margin-top: 24px;}
+		.lagetijiao{margin-top: 87px;align-items: center;justify-content: center;}
+		.tijiaoweit{width: 168px;height: 49px;border-radius: 5px;font-size: 17px;color: #ffffff;background-color: #3785ba;display: flex;align-items: center;justify-content: center;}
+		.weitlc{margin-top: 115px;align-items: center;}
+		.xianyi{border-top: 1px solid #e5e5e5;width: 483px;}
+		.wetkcwezi{width: 180px;text-align: center;font-size: 17px;line-height: 17px;color: #666666;}
+		.wetlcimg{width:100%;height:106px;background: url(../resources/images/ywzhuweit/lctimg.png) no-repeat;background-size: 100% auto;margin-top: 35px;margin-bottom: 87px;}
+	}
+	/* 当展现页面的宽度大于1400px时的样式。 */
+	@media screen and (min-width: 1400px){
+		.lagetop{position: absolute;top: 0px;left: 0px;right: 0px;height: 60px;z-index: 12;}/*background-color: #1d1d1d;*/
+		.lagebiaot{margin-top: 75px;}
+		.biaot{width: 1310px;padding: 0px 126px;}
+		.ggwid{width: 1310px;}
+		.biaot p{margin-left: 100px;}
+		.xiangming{border-bottom:1px solid #e5e5e5;font-size: 14px;line-height:62px;width: 126px;color: #333333;}
+		.xminput{border-bottom:1px solid #e5e5e5;width:466px;line-height:62px;}
+		.xminput input{width:466px;border:none;font-size: 14px;color: #333333;}
+		.sjhinput{border-bottom:1px solid #e5e5e5;width:364px;line-height:62px;}
+		.sjhinput input{width:364px;border:none;font-size: 14px;color: #333333;}
+		.yazhanma{border-bottom:1px solid #e5e5e5;font-size: 14px;line-height:62px;width: 90px;color: #999999;padding-left: 10px;}
+		.fwmsk{width: 590px;height: 174px;}
+		.fwmsk textarea{width: 590px;height: 174px;border-bottom: 1px solid #e5e5e5;border-top: 0px solid #e5e5e5;border-left: 1px solid #e5e5e5;border-right: 1px solid #e5e5e5;padding: 20px 16px;font-size: 14px;color: #333333;}
+		.anweweit{width: 365px;height: 466px;background: url(../resources/images/ywzhuweit/anweiweitu.png) no-repeat;background-size: 100% auto;margin-top: 28px;}
+		.lagetijiao{margin-top: 100px;align-items: center;justify-content: center;}
+		.tijiaoweit{width: 192px;height: 56px;border-radius: 5px;font-size: 20px;color: #ffffff;background-color: #3785ba;display: flex;align-items: center;justify-content: center;}
+		.weitlc{margin-top: 132px;align-items: center;}
+		.xianyi{border-top: 1px solid #e5e5e5;width: 552px;}
+		.wetkcwezi{width: 206px;text-align: center;font-size: 20px;line-height: 20px;color: #666666;}
+		.wetlcimg{width:100%;height:122px;background: url(../resources/images/ywzhuweit/lctimg.png) no-repeat;background-size: 100% auto;margin-top: 40px;margin-bottom: 100px;}
+	}
+	
+	
 	.pointer{cursor:pointer;}/*鼠标变成小手*/
 	.zuidalage{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;}
-	.lagetop{position: absolute;top: 0px;left: 0px;right: 0px;height: 60px;z-index: 12;}/*background-color: #1d1d1d;*/
+	
 	.large{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;min-width: 1200px;overflow: auto;background-color: white;}
 	.banimg{width:100%;}
-	.lagebiaot{margin-top: 75px;}
+	
 	.gxlsdis{display: flex;}
 	.gxlsdisnone{display: none;}
 	.gxlsdiscenrt{justify-content: center;}
-	.biaot{width: 1310px;padding: 0px 126px;}
-	.ggwid{width: 1310px;}
-	.biaot p{margin-left: 100px;}
+	
 	.biaot p:first-child{margin-left: 0px;}
-	.xiangming{border-bottom:1px solid #e5e5e5;font-size: 14px;line-height:62px;width: 126px;color: #333333;}
-	.xminput{border-bottom:1px solid #e5e5e5;width:466px;line-height:62px;}
-	.xminput input{width:466px;border:none;font-size: 14px;color: #333333;}
-	.sjhinput{border-bottom:1px solid #e5e5e5;width:364px;line-height:62px;}
-	.sjhinput input{width:364px;border:none;font-size: 14px;color: #333333;}
-	.yazhanma{border-bottom:1px solid #e5e5e5;font-size: 14px;line-height:62px;width: 90px;color: #999999;padding-left: 10px;}
-	.fwmsk{width: 590px;height: 174px;}
-	.fwmsk textarea{width: 590px;height: 174px;border-bottom: 1px solid #e5e5e5;border-top: 0px solid #e5e5e5;border-left: 1px solid #e5e5e5;border-right: 1px solid #e5e5e5;padding: 20px 16px;font-size: 14px;color: #333333;}
-	.anweweit{width: 365px;height: 466px;background: url(../resources/images/ywzhuweit/anweiweitu.png) no-repeat;background-size: 100% auto;margin-top: 28px;}
-	.lagetijiao{margin-top: 100px;align-items: center;justify-content: center;}
-	.tijiaoweit{width: 192px;height: 56px;border-radius: 5px;font-size: 20px;color: #ffffff;background-color: #3785ba;display: flex;align-items: center;justify-content: center;}
-	.weitlc{margin-top: 132px;align-items: center;}
-	.xianyi{border-top: 1px solid #e5e5e5;width: 552px;}
-	.wetkcwezi{width: 206px;text-align: center;font-size: 20px;line-height: 20px;color: #666666;}
-	.wetlcimg{width:100%;height:122px;background: url(../resources/images/ywzhuweit/lctimg.png) no-repeat;background-size: 100% auto;margin-top: 40px;margin-bottom: 100px;}
+	
+	
 	.shiujitishi{border-bottom: 0px solid red;color: red;}
 	.shiujitishigg{border-bottom: 0px solid red;color: red;}
 </style>
