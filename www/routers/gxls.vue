@@ -2,7 +2,7 @@
 /*页面底部的css样式*/
 	.pointer{cursor:pointer;}/*鼠标变成小手*/
 	.zuidalage{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;}
-	.lagetop{position: absolute;top: 0px;left: 0px;right: 18px;height: 60px;z-index: 12;}/*background-color: #1d1d1d;*/
+	.lagetop{position: absolute;top: 0px;left: 0px;right: 0px;height: 60px;z-index: 12;}/*background-color: #1d1d1d;*/
 	.large{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;min-width: 1200px;overflow: auto;background-color: white;}
 	.lagebottom{background-color: #1d1d1d;padding: 0px;}
 	.banimg{width:100%;}
