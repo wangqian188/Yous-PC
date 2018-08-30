@@ -22,12 +22,12 @@
 		.ropxsl span{margin-left: 26px;}
 		.topbu p:last-child{display: flex;padding-top: 18px;}
 		.topbu p:first-child{padding-top: 5px;}
-		.weimacss{width: 133px;height: 164px;position: absolute;top: 53px;right: 268px;display: none;}
+		.weimacss{width: 133px;height: 164px;position: absolute;top: 53px;right: 77px;display: none;}
 		#triangle-up{width: 0;height: 0;border-left: 9px solid transparent;border-right: 9px solid transparent;border-bottom: 14px solid #ffffff;margin-left: 86px;}
 		.weimaing{width:100%;height: 119px;background: url(../resources/images/ywzhuweit/erwmaapp.png) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 		.weerimalae{padding: 7px;background-color: #ffffff;padding-bottom: 2.5px;}
 		.fmxaapp{background-color: #ffffff;font-size: 12px;color: #333333;padding-bottom: 6px;text-align: center;}
-		.weilaswcss{width: 133px;height: 164px;position: absolute;top: 52px;right: 318px;display: none;}
+		.weilaswcss{width: 133px;height: 164px;position: absolute;top: 52px;right: 122px;display: none;}
 		.lasdwamass{width:100%;height: 119px;background: url(../resources/images/ywzhuweit/lswwem.jpg) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 	}
 	/* 当展现页面的宽度大于1400px时的样式。 */
