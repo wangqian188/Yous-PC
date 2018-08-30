@@ -3,7 +3,6 @@
 	/* 当展现页面的宽度大于1000px且小于1400px时，的样式。 */
 	@media screen and (min-width: 1000px) and (max-width: 1400px) {
 		.topbu_box{
-			position: absolute;
 			z-index: 99999;
 			width: 100%;
 			height: 52px;
@@ -34,7 +33,6 @@
 	/* 当展现页面的宽度大于1400px时的样式。 */
 	@media screen and (min-width: 1400px){
 		.topbu_box{
-			position: absolute;
 			z-index: 99999;
 			width: 100%;
 			height: 60px;
