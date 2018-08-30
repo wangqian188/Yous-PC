@@ -20,7 +20,7 @@
 		.appimg{width: 14px;height: 33px;background: url(../resources/images/shouye/app.png) no-repeat;background-size: 100% auto;}
 		.wemaappimg{height: 26px;}
 		.ropxsl span{margin-left: 26px;}
-		.erweomaleft{margin-left: 26px;}
+		.erweomaleft{margin-left: 26px;position: relative;}
 		.dierdivcss{display: flex;padding-top: 18px;}
 		.topbu p:first-child{padding-top: 5px;}
 		.weimacss{width: 133px;height: 164px;position: absolute;top: 40px;right: -36px;display: none;}
@@ -115,14 +115,16 @@
 				    	</div>
 	    			</div>
 	    			<div class="wemaappimg pointer topgudis erweomaleft" @mouseover="lsapp" @mouseout="laappout">
-	    				<div class="appimg topgudis"></div>
-	    				<div class="weimacss">
-				    		<div id="triangle-up"></div>
-				    		<div class="weerimalae">
-				    			<div class="weimaing"></div>
-				    		</div>
-				    		<div class="fmxaapp">扫码下载亮狮APP</div>
-				    	</div>
+	    				<div class="appimg topgudis">
+	    					<div class="weimacss">
+					    		<div id="triangle-up"></div>
+					    		<div class="weerimalae">
+					    			<div class="weimaing"></div>
+					    		</div>
+					    		<div class="fmxaapp">扫码下载亮狮APP</div>
+					    	</div>
+	    				</div>
+	    				
 	    			</div>
 	    		</div>
 	    	</div>
