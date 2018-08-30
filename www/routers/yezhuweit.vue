@@ -63,10 +63,16 @@
 	
 	.shiujitishi{border-bottom: 0px solid red;color: red;}
 	.shiujitishigg{border-bottom: 0px solid red;color: red;}
+	.zhezhaoceshx{position: fixed;top: 0px;bottom: 0px;left: 0px;right: 0px;background-color: rgba(255,255,255,0.4);z-index:12;display: flex;align-items: center;justify-content: center;}
+	.zhahacner{font-size: 22px;color: #000000;}
+	.zhezhaoceshxdisf{display: none;}
 </style>
 
 <template>
 	<div class="zuidalage">
+		<div class="zhezhaoceshx zhezhaoceshxdisf">
+			<div class="zhahacner">正在提交......</div>
+		</div>
 		<!--公共的头部-->
 		<div class="lagetop">
 			<Footertop></Footertop>
@@ -274,6 +280,7 @@
 			},
 			//提交委托的点击事件
 			tiwentui(){
+				$(".zhezhaoceshx").removeClass("zhezhaoceshxdisf");
 				if(this.name == ""){
 					$(".shiujitishiname").removeClass("gxlsdisnone");
 					return false;
@@ -320,7 +327,6 @@
 		                            title: title,
 		                            content: content
 		                        });*/
-					        	alert(result.message);
 					        	location.reload();
 					        }else{
 					        	alert(result.message);
