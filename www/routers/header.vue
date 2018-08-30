@@ -7,7 +7,10 @@
 			z-index: 99999;
 			width: 100%;
 			height: 52px;
+			min-width: 1200px;
+			width: 1150px;
 		}
+		
 		.toplswimg{width: 113px;height: 38px;background: url(../resources/images/shouye/logo.png) no-repeat;background-size: 100% auto;}
 		.shouye{font-size: 14px;line-height:14px;color: #ffffff;width: 31px;}
 		.xzlcz{width: 78px;font-size: 14px;line-height:14px;color: #ffffff;}
@@ -16,14 +19,14 @@
 		.appimg{width: 14px;height: 33px;background: url(../resources/images/shouye/app.png) no-repeat;background-size: 100% auto;}
 		.wemaappimg{height: 26px;}
 		.ropxsl span{margin-left: 26px;}
-		.topbu p:last-child{display: flex;margin-right: 241px;padding-top: 18px;}
-		.topbu p:first-child{margin-left:275px;padding-top: 5px;}
-		.weimacss{width: 133px;height: 164px;position: absolute;top: 53px;right: 209px;display: none;}
+		.topbu p:last-child{display: flex;padding-top: 18px;}
+		.topbu p:first-child{padding-top: 5px;}
+		.weimacss{width: 133px;height: 164px;position: absolute;top: 53px;right: -36px;display: none;}
 		#triangle-up{width: 0;height: 0;border-left: 9px solid transparent;border-right: 9px solid transparent;border-bottom: 14px solid #ffffff;margin-left: 86px;}
 		.weimaing{width:100%;height: 119px;background: url(../resources/images/ywzhuweit/erwmaapp.png) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 		.weerimalae{padding: 7px;background-color: #ffffff;padding-bottom: 2.5px;}
 		.fmxaapp{background-color: #ffffff;font-size: 12px;color: #333333;padding-bottom: 6px;text-align: center;}
-		.weilaswcss{width: 133px;height: 164px;position: absolute;top: 52px;right: 252px;display: none;}
+		.weilaswcss{width: 133px;height: 164px;position: absolute;top: 52px;right: 14px;display: none;}
 		.lasdwamass{width:100%;height: 119px;background: url(../resources/images/ywzhuweit/lswwem.jpg) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 	}
 	/* 当展现页面的宽度大于1400px时的样式。 */
@@ -33,6 +36,8 @@
 			z-index: 99999;
 			width: 100%;
 			height: 60px;
+			min-width: 1200px;
+			width: 1310px;
 		}
 		.toplswimg{width: 130px;height: 44px;background: url(../resources/images/shouye/logo.png) no-repeat;background-size: 100% auto;}
 		.shouye{font-size: 16px;line-height:16px;color: #ffffff;width: 36px;}
@@ -42,18 +47,18 @@
 		.appimg{width: 16px;height: 38px;background: url(../resources/images/shouye/app.png) no-repeat;background-size: 100% auto;}
 		.wemaappimg{height: 38px;}
 		.ropxsl span{margin-left: 30px;}
-		.topbu p:last-child{display: flex;margin-right: 276px;padding-top: 20px;}
-		.topbu p:first-child{margin-left:314px;padding-top: 6px;}
-		.weimacss{width: 152px;height: 188px;position: absolute;top: 60px;right: 239px;display: none;}
+		.topbu p:last-child{display: flex;padding-top: 20px;}
+		.topbu p:first-child{padding-top: 6px;}
+		.weimacss{width: 152px;height: 188px;position: absolute;top: 60px;right: -36px;display: none;}
 		#triangle-up{width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent;border-bottom: 16px solid #ffffff;margin-left: 98px;}
 		.weimaing{width:100%;height: 136px;background: url(../resources/images/ywzhuweit/erwmaapp.png) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 		.weerimalae{padding: 8px;background-color: #ffffff;padding-bottom: 3px;}
 		.fmxaapp{background-color: #ffffff;font-size: 13px;color: #333333;padding-bottom: 6px;text-align: center;}
-		.weilaswcss{width: 152px;height: 188px;position: absolute;top: 60px;right: 288px;display: none;}
+		.weilaswcss{width: 152px;height: 188px;position: absolute;top: 60px;right: 14px;display: none;}
 		.lasdwamass{width:100%;height: 136px;background: url(../resources/images/ywzhuweit/lswwem.jpg) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 	}
 	.pointer{cursor:pointer;}/*鼠标变成小手*/
-	
+	.topbu{display: flex;justify-content: space-between;}
 	.topgudis{display: flex;}
 	.topbu{justify-content: space-between;}
 	
