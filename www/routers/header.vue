@@ -20,14 +20,15 @@
 		.appimg{width: 14px;height: 33px;background: url(../resources/images/shouye/app.png) no-repeat;background-size: 100% auto;}
 		.wemaappimg{height: 26px;}
 		.ropxsl span{margin-left: 26px;}
-		.topbu p:last-child{display: flex;padding-top: 18px;}
+		.erweomaleft{margin-left: 26px;}
+		.dierdivcss{display: flex;padding-top: 18px;}
 		.topbu p:first-child{padding-top: 5px;}
-		.weimacss{width: 133px;height: 164px;position: absolute;top: 53px;right: 77px;display: none;}
+		.weimacss{width: 133px;height: 164px;position: absolute;top: 40px;right: -36px;display: none;}
 		#triangle-up{width: 0;height: 0;border-left: 9px solid transparent;border-right: 9px solid transparent;border-bottom: 14px solid #ffffff;margin-left: 86px;}
 		.weimaing{width:100%;height: 119px;background: url(../resources/images/ywzhuweit/erwmaapp.png) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 		.weerimalae{padding: 7px;background-color: #ffffff;padding-bottom: 2.5px;}
 		.fmxaapp{background-color: #ffffff;font-size: 12px;color: #333333;padding-bottom: 6px;text-align: center;}
-		.weilaswcss{width: 133px;height: 164px;position: absolute;top: 52px;right: 122px;display: none;}
+		.weilaswcss{width: 133px;height: 164px;position: absolute;top: 10px;right: -32px;display: none;}
 		.lasdwamass{width:100%;height: 119px;background: url(../resources/images/ywzhuweit/lswwem.jpg) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 	}
 	/* 当展现页面的宽度大于1400px时的样式。 */
@@ -50,14 +51,15 @@
 		.appimg{width: 16px;height: 38px;background: url(../resources/images/shouye/app.png) no-repeat;background-size: 100% auto;}
 		.wemaappimg{height: 38px;}
 		.ropxsl span{margin-left: 30px;}
-		.topbu p:last-child{display: flex;padding-top: 20px;}
+		.erweomaleft{margin-left: 30px;position: relative;}
+		.dierdivcss{display: flex;padding-top: 20px;}
 		.topbu p:first-child{padding-top: 6px;}
-		.weimacss{width: 152px;height: 188px;position: absolute;top: 60px;right: 268px;display: none;}
+		.weimacss{width: 152px;height: 188px;position: absolute;top: 40px;right: -36px;display: none;}
 		#triangle-up{width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent;border-bottom: 16px solid #ffffff;margin-left: 98px;}
 		.weimaing{width:100%;height: 136px;background: url(../resources/images/ywzhuweit/erwmaapp.png) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 		.weerimalae{padding: 8px;background-color: #ffffff;padding-bottom: 3px;}
 		.fmxaapp{background-color: #ffffff;font-size: 13px;color: #333333;padding-bottom: 6px;text-align: center;}
-		.weilaswcss{width: 152px;height: 188px;position: absolute;top: 60px;right: 318px;display: none;}
+		.weilaswcss{width: 152px;height: 188px;position: absolute;top: 40px;right: -32px;display: none;}
 		.lasdwamass{width:100%;height: 136px;background: url(../resources/images/ywzhuweit/lswwem.jpg) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 	}
 	
@@ -80,7 +82,7 @@
 	    		<p>
 	    			<span @click="diazshoiye" class="toplswimg topgudis pointer"></span>
 	    		</p>
-	    		<p class="ropxsl" @mouseout="lswzdout">
+	    		<div class="ropxsl topgudis dierdivcss" @mouseout="lswzdout">
 	    			<span class="wemaappimg dobubkdianji pointer" @click="diazshoiye" @mouseover="tjiacsbot($event)">
 	    				<span class="shouye topgudis">首页</span>
 	    			</span>
@@ -102,29 +104,31 @@
 	    			<span class="wemaappimg pointer" @click="gxlswa" @mouseover="tjiacsbot($event)">
 	    				<span class="fwsc topgudis">关于亮狮</span>
 	    			</span>
-	    			<span class="wemaappimg pointer" @mouseover="laswwem" @mouseout="laswwemout">
-	    				<span class="weixins topgudis"></span>
-	    			</span>
-	    			<span class="wemaappimg pointer" @mouseover="lsapp" @mouseout="laappout">
-	    				<span class="appimg topgudis"></span>
-	    			</span>
-	    		</p>
+	    			<div class="wemaappimg pointer erweomaleft" @mouseover="laswwem" @mouseout="laswwemout">
+	    				<div class="weixins topgudis"></div>
+	    				<div class="weilaswcss">
+				    		<div id="triangle-up"></div>
+				    		<div class="weerimalae">
+				    			<div class="lasdwamass"></div>
+				    		</div>
+				    		<div class="fmxaapp">扫码关注亮狮公众号</div>
+				    	</div>
+	    			</div>
+	    			<div class="wemaappimg pointer topgudis erweomaleft" @mouseover="lsapp" @mouseout="laappout">
+	    				<div class="appimg topgudis"></div>
+	    				<div class="weimacss">
+				    		<div id="triangle-up"></div>
+				    		<div class="weerimalae">
+				    			<div class="weimaing"></div>
+				    		</div>
+				    		<div class="fmxaapp">扫码下载亮狮APP</div>
+				    	</div>
+	    			</div>
+	    		</div>
 	    	</div>
     	</div>
-    	<div class="weimacss">
-    		<div id="triangle-up"></div>
-    		<div class="weerimalae">
-    			<div class="weimaing"></div>
-    		</div>
-    		<div class="fmxaapp">扫码下载亮狮APP</div>
-    	</div>
-    	<div class="weilaswcss">
-    		<div id="triangle-up"></div>
-    		<div class="weerimalae">
-    			<div class="lasdwamass"></div>
-    		</div>
-    		<div class="fmxaapp">扫码关注亮狮公众号</div>
-    	</div>
+    	
+    	
     </div>
 </template>
 <script>
