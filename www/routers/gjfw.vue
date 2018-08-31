@@ -1,4 +1,5 @@
 <style lang="less">
+	@import "../resources/plugin/animate/animate.min.css";
 /*页面底部的css样式*/
 	/* 当展现页面的宽度大于1000px且小于1400px时，的样式。 */
 	@media screen and (min-width: 1000px) and (max-width: 1400px) {
@@ -93,14 +94,14 @@
 				<img src="../resources/images/gjfu/gjfu.jpg"/>
 			</div>
 			<div class="lageyezhufjfu gggjdis">
-				<span class="gggjdis">企业管家服务</span>
+				<span class="gggjdis" id="dongh9">业主管家服务</span>
 			</div>
 			<div class="scdwe">
 				<div class="gggjdis gxlsdiscenrt">
 					<div class="biaotgj">
 						<div class="qdscdiwe gggjdis">
 							<p class="gggjdis">
-								<span class="">
+								<span class="" id="dongh">
 									<span class="bnindwe gggjdis">帮您确定房源市场定位</span>
 									<span class="gjfygez gggjdis">根据房源各项指标对比、历史成交价格对比、同类型可租房源对比等 进行评估，精准定位。分析房源竞争优势，取得市场最大竞争力。</span>
 								</span>
@@ -114,7 +115,7 @@
 						<div class="gggjdis">
 							<p class="fanzjglas gggjdis"></p>
 							<p class="gggjdis fwxgggdl">
-								<span class="">
+								<span class="" id="dongh1">
 									<span class="bnindwe gggjdis">房屋相关费用代缴代办，做省心业主</span>
 									<span class="gjfygez gggjdis sczdjzl">房子交给亮狮，我们为您提供房屋相关费用代收代 缴服务，解决缴费烦恼，做省心业主。</span>
 								</span>
@@ -126,7 +127,7 @@
 					<div class="biaotgj">
 						<div class="gggjdis lasfzsys">
 							<p class="gggjdis fzsy">
-								<span class="">
+								<span class="" id="dongh2">
 									<span class="bnindwe gggjdis">帮您快速取得房租收益</span>
 									<span class="gjfygez gggjdis lstgzx">亮狮提供装修升级服务，专业设计，提升房子的品质。</span>
 									<span class="gjfygez gggjdis lstgzx"> 线上线下推广，增加房子曝光度，达到快速出租。</span>
@@ -141,7 +142,7 @@
 						<div class="gggjdis">
 							<p class="bydx gggjdis"></p>
 							<p class="gggjdis fwxgggdl">
-								<span class="">
+								<span class="" id="dongh3">
 									<span class="bnindwe gggjdis">多渠道推广，跟踪客户经营状态，保障收益长期稳定</span>
 									<span class="gjfygez gggjdis fwwggg">房屋托管服务，委托亮狮后，由亮狮全程负责房子的一切事务。</span>
 									<span class="gjfygez gggjdis fwwggg">针对租户迁出、到期、违约，业主不再担心，亮狮持续跟踪企业的经营状态，及时做出预案反馈，保障收益持续稳定。</span>
@@ -154,14 +155,14 @@
 			</div>
 			
 			<div class="lageyezhufjfu gggjdis">
-				<span class="gggjdis">业主管家服务</span>
+				<span class="gggjdis" id="dongh8">企业管家服务</span>
 			</div>
 			<div class="yezhugjfw">
 				<div class="gggjdis gxlsdiscenrt">
 					<div class="biaotgj">
 						<div class="qdscdiwe gggjdis">
 							<p class="gggjdis">
-								<span class="">
+								<span class="" id="dongh4">
 									<span class="bnindwe gggjdis">解决客户日常维护烦恼</span>
 									<span class="gjfygez gggjdis lstgrcwx">亮狮提供日常维修，保洁、桶装水、绿植服务，解决 企业日常维护及采购麻烦，节约企业维护成本，提高 企业办公效率。</span>
 								</span>
@@ -175,7 +176,7 @@
 						<div class="gggjdis">
 							<p class="zlqycz gggjdis"></p>
 							<p class="gggjdis zdqycl">
-								<span class="">
+								<span class="" id="dongh5">
 									<span class="bnindwe gggjdis">助力企业成长</span>
 									<span class="gjfygez gggjdis flyzfu">针对企业成立和运营中的所需，提供工商税务服务、法律援助服务， 企业续租、换房、退租服务，助企业成长,为企业解忧。</span>
 								</span>
@@ -187,7 +188,7 @@
 					<div class="biaotgj">
 						<div class="gggjdis lasfzsys">
 							<p class="gggjdis fzsy">
-								<span class="">
+								<span class="" id="dongh6">
 									<span class="bnindwe gggjdis">随时随地，在线报修</span>
 									<span class="gjfygez gggjdis zhktg">住户可通过手机线上填写报修信息、上传图片，发起报修。</span>
 									<span class="gjfygez gggjdis zhktg">亮狮管家实时跟进，根据报修情况及时处理，住户可通过亮狮APP中的消息通知查看报修状态，提升企业对接效率。</span>
@@ -202,7 +203,7 @@
 						<div class="gggjdis">
 							<p class="zxdzfw gggjdis"></p>
 							<p class="gggjdis lzyzxtfgc">
-								<span class="">
+								<span class="" id="dongh7">
 									<span class="bnindwe gggjdis">装修定制服务</span>
 									<span class="gjfygez gggjdis lszfyf">亮狮自有装修团队，从设计、预算、材料再到施工，一体化服务，从专业的设计和可实现的角度，为客户营造更舒适的办公环境。亮狮自主研发升级施工工艺、环保材料及管理，合理设计空间布局，让有限的空间发挥更大的价值。</span>
 								</span>
@@ -232,7 +233,7 @@
 		 },
         data () {
         	return {
-
+				scrollUpdate:true,
         	}
         },
 		created(){
@@ -253,6 +254,45 @@
 	                $('.lagetop').css("background","none");
 	            }
         	});
-        }
+        	var _this = this;
+        	$(".large").scroll(function(){
+        		var scoll_top = $(".large").scrollTop();
+        		console.log($('#dongh2').offset().top);
+        		console.log(scoll_top + $(".large").height()-100);
+        		if(_this.scrollUpdate){
+	        		if ($('#dongh').offset().top < scoll_top + $(".large").height()-200) { 
+					 	$('#dongh').addClass('animated bounceInLeft');
+					}
+	        		if ($('#dongh1').offset().top < scoll_top + $(".large").height()-200) { 
+					 	$('#dongh1').addClass('animated bounceInRight');
+					}
+	        		if ($('#dongh2').offset().top < scoll_top + $(".large").height()-800) { 
+					 	$('#dongh2').addClass('animated bounceInLeft');
+					}
+	        		if ($('#dongh3').offset().top < scoll_top + $(".large").height()-1200) { 
+					 	$('#dongh3').addClass('animated bounceInRight');
+					}
+	        		if ($('#dongh4').offset().top < scoll_top + $(".large").height()-2000) { 
+					 	$('#dongh4').addClass('animated bounceInLeft');
+					}
+	        		if ($('#dongh5').offset().top < scoll_top + $(".large").height()-2600) { 
+					 	$('#dongh5').addClass('animated bounceInRight');
+					}
+	        		if ($('#dongh6').offset().top < scoll_top + $(".large").height()-3000) { 
+					 	$('#dongh6').addClass('animated bounceInLeft');
+					}
+	        		if ($('#dongh7').offset().top < scoll_top + $(".large").height()-3400) { 
+					 	$('#dongh7').addClass('animated fadeInUpBig');
+					}
+	        		if ($('#dongh8').offset().top < scoll_top + $(".large").height()-1800) { 
+					 	$('#dongh8').addClass('animated fadeInRight');
+					}
+        		}
+        	});
+        	$('#dongh9').addClass('animated fadeInRight');
+        },
+        destroyed () { 
+			this.scrollUpdate = false; 
+		} 
     }
 </script>

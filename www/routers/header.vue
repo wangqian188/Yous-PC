@@ -22,12 +22,12 @@
 		.erweomaleft{margin-left: 26px;position: relative;}
 		.dierdivcss{display: flex;padding-top: 18px;}
 		.topbu p:first-child{padding-top: 5px;}
-		.weimacss{width: 133px;height: 164px;position: absolute;top: 35px;right: -31.5px;display: none;}
+		.weimacss{width: 133px;height: 164px;position: absolute;top: 35px;right: -31.5px;display: none;z-index: 99999;}
 		#triangle-up{width: 0;height: 0;border-left: 9px solid transparent;border-right: 9px solid transparent;border-bottom: 14px solid #ffffff;margin-left: 86px;}
 		.weimaing{width:100%;height: 119px;background: url(../resources/images/ywzhuweit/erwmaapp.png) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 		.weerimalae{padding: 7px;background-color: #ffffff;padding-bottom: 2.5px;}
 		.fmxaapp{background-color: #ffffff;font-size: 12px;color: #333333;padding-bottom: 6px;text-align: center;}
-		.weilaswcss{width: 133px;height: 164px;position: absolute;top: 35px;right: -28px;display: none;}
+		.weilaswcss{width: 133px;height: 164px;position: absolute;top: 35px;right: -28px;display: none;z-index: 99999;}
 		.lasdwamass{width:100%;height: 119px;background: url(../resources/images/ywzhuweit/lswwem.jpg) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 	}
 	/* 当展现页面的宽度大于1400px时的样式。 */
@@ -52,12 +52,12 @@
 		.erweomaleft{margin-left: 30px;position: relative;}
 		.dierdivcss{display: flex;padding-top: 20px;}
 		.topbu p:first-child{padding-top: 6px;}
-		.weimacss{width: 152px;height: 188px;position: absolute;top: 40px;right: -36px;display: none;}
+		.weimacss{width: 152px;height: 188px;position: absolute;top: 40px;right: -36px;display: none;z-index: 99999;}
 		#triangle-up{width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent;border-bottom: 16px solid #ffffff;margin-left: 98px;}
 		.weimaing{width:100%;height: 136px;background: url(../resources/images/ywzhuweit/erwmaapp.png) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 		.weerimalae{padding: 8px;background-color: #ffffff;padding-bottom: 3px;}
 		.fmxaapp{background-color: #ffffff;font-size: 13px;color: #333333;padding-bottom: 6px;text-align: center;}
-		.weilaswcss{width: 152px;height: 188px;position: absolute;top: 40px;right: -32px;display: none;}
+		.weilaswcss{width: 152px;height: 188px;position: absolute;top: 40px;right: -32px;display: none;z-index: 99999;}
 		.lasdwamass{width:100%;height: 136px;background: url(../resources/images/ywzhuweit/lswwem.jpg) no-repeat;background-size: auto 100%;background-color: #ffffff;}
 	}
 	
