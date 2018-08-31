@@ -450,7 +450,8 @@
 
                     <!--右侧栏-->
                     <div class="sidebar_box pt70" style="width: 292px;">
-                    	<img src="../resources/images/list/celan_bg.png" width="100%" height="auto">
+                    	<a href="http://mall.liangshipower.com/index.php" target="_blank">
+                    	<img src="../resources/images/list/celan_bg.png" width="100%" height="auto"></a>
                         <div class="sidebar_main" id="sidebar_fix" v-if="false">
                             <div class="side_model_tit" v-if="false"><i></i>地图找房</div>
                             <div class="map_house pr mt10" v-if="false">
