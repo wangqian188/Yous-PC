@@ -392,7 +392,7 @@
 					this.$router.push({ path: '/list',query:{type:2}});
 				}
 				if(index == 1){
-					window.open("http://beta.ursbest.com");
+					window.open("http://mall.liangshipower.com/index.php");
 				}
 				if(index == 2){
 					this.$router.push({ path: '/yezhuweit',query:{type:4}});
