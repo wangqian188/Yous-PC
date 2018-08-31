@@ -25,16 +25,19 @@ Vue.use(VueLazyload, {
 
 //const变量
 Vue.prototype.$api = "http://116.62.71.76:8001/api/GetServiceApiResult" //api地址
-Vue.prototype.$api_ysapi = "http://116.62.68.26:8080" //api地址
 Vue.prototype.$youapp_api = 'http://app.ursoffice.com/';//幼狮app的api地址
-Vue.prototype.$api_img_url = 'http://116.62.68.26/';//图片的地址
 Vue.prototype.$api_jtimg = "http://omc.urskongjian.com:81/guangwan/" //api地址
 //Vue.prototype.$api = "http://localhost:8001/api/GetServiceApiResult" //api地址
 Vue.prototype.$resouceUrl = "http://localhost:8081/"  //资源文件地址
-//测试服接口地址 
-//var url = 'http://116.62.68.26:8080';//测试服接口地址
-//var Interface_url = 'http://116.62.68.26:8080';//测试接口地址
-//var img_url = 'http://116.62.68.26/';//图片的地址
+//测试
+//Vue.prototype.$api_ysapi = "http://116.62.68.26:8080" //yhcms
+//Vue.prototype.$api_ysapi_zs = "http://116.62.68.26:8080" //api地址
+//Vue.prototype.$api_img_url = 'http://116.62.68.26/';//图片的地址
+//正式
+Vue.prototype.$api_ysapi = "http://omc.urskongjian.com"; //yhcms
+Vue.prototype.$api_ysapi_zs = "http://app.ursoffice.com";//app后台正式服域名(Mr.long /yskjApp/)
+Vue.prototype.$api_img_url = 'http://omc.urskongjian.com:81/';//图片的地址
+
 
 // 开启debug模式
 Vue.config.debug = true;
