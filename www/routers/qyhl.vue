@@ -92,31 +92,31 @@
 						</p>
 						<p>
 							<span class="lsfyx2 gggjdis lsfyxwid"></span>
-							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+							<span class="hlwyy gggjdis">亮狮会员企业联谊会</span>
 						</p>
 						<p>
 							<span class="lsfyx3 gggjdis lsfyxwid"></span>
-							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+							<span class="hlwyy gggjdis">亮狮商学院：企业绩效与考核管理</span>
 						</p>
 						<p>
 							<span class="lsfyx4 gggjdis lsfyxwid"></span>
-							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+							<span class="hlwyy gggjdis">中秋节欢庆会</span>
 						</p>
 						<p>
 							<span class="lsfyx5 gggjdis lsfyxwid"></span>
-							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+							<span class="hlwyy gggjdis">亮狮商学院：执行力和目标管理</span>
 						</p>
 						<p>
 							<span class="lsfyx6 gggjdis lsfyxwid"></span>
-							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+							<span class="hlwyy gggjdis">亮狮商学院：商务礼仪</span>
 						</p>
 						<p>
 							<span class="lsfyx7 gggjdis lsfyxwid"></span>
-							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+							<span class="hlwyy gggjdis">亮狮商学院：创业企业如何生存</span>
 						</p>
 						<p>
 							<span class="lsfyx8 gggjdis lsfyxwid"></span>
-							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+							<span class="hlwyy gggjdis">战略合作论坛</span>
 						</p>
 					</div>
 				</div>
