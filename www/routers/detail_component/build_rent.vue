@@ -11,6 +11,8 @@
 
 <template>
     <div class="common-info clearfix">
+    	<!--客服窗口-->
+		<Kefu></Kefu>
         <!--building 信息分类start-->
         <div class="category-message-box clearfix ">
 
@@ -365,7 +367,12 @@
 </template>
 
 <script>
+	import Kefu from '../kefu.vue'
+	
     export default {
+    	components: {
+            Kefu
+        },
         data(){
             return {
 

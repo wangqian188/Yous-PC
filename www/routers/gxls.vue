@@ -92,6 +92,9 @@
 		<div class="lagetop">
 			<Footertop></Footertop>
 		</div>
+		<!--客服窗口-->
+		<Kefu></Kefu>
+		
 		<!---->
 		<div class="large">
 			<div class="banimg">
@@ -254,7 +257,7 @@
 								<span class="rjgszitti gxlsdis">北京亮狮企服科技有限公司</span>
 								<span class="dizhiranj gxlsdis">地址：<i>北京市朝阳区东三环中路39号建外SOHO东区A座2906</i></span>
 								<span class="dizhiranj gxlsdis">电话：<i>400-078-8800</i></span>
-								<span class="dizhiranj gxlsdis">网址：<i>软件公司软件公司软件公司</i></span>
+								<span class="dizhiranj gxlsdis">网址：<i>http://www.youshispace.com</i></span>
 							</span>
 						</p>
 					</div>
@@ -274,11 +277,13 @@
 <script>
 	import Footertop from './header.vue'
 	import Footerbottom from './dibubotom.vue'
+	import Kefu from './kefu.vue'
 	
     export default {
     	components: {
 		    Footertop,
-		    Footerbottom
+		    Footerbottom,
+		    Kefu
 		 },
         data () {
         	return {

@@ -16,6 +16,8 @@
         <div class="top_box" style="position: relative;background: #fff;height: 400px;">
         	<Footertop style='background: #1d1d1d;'></Footertop>        	
         </div>
+        <!--客服窗口-->
+		<Kefu></Kefu>
 		<div style="position: absolute;left: 0;right: 0;bottom: 0;top: 60px;overflow: auto;">
         <!--list  start-->
         <div detail>
@@ -108,6 +110,7 @@
     import footer1 from '../components/footer.vue';
     import Footertop from './header.vue'
 	import Footerbottom from './dibubotom.vue'
+	import Kefu from './kefu.vue'
 
     //引入五个tab组件
     import build_index from './detail_component/build_index.vue';
@@ -127,7 +130,8 @@
             build_rent,
             surrounds,
             build_det,
-            price_history
+            price_history,
+            Kefu
         },
         data(){
             return {

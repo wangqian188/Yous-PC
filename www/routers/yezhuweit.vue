@@ -60,7 +60,8 @@
 	
 	.biaot p:first-child{margin-left: 0px;}
 	
-	
+	.tijiaoweit:hover{background-color: #4f8ff0;}
+	.yazhanma{color: #333333;}
 	.shiujitishi{border-bottom: 0px solid red;color: red;}
 	.shiujitishigg{border-bottom: 0px solid red;color: red;}
 	.zhezhaoceshx{position: fixed;top: 0px;bottom: 0px;left: 0px;right: 0px;background-color: rgba(255,255,255,0.4);z-index:12;display: flex;align-items: center;justify-content: center;}
@@ -77,6 +78,10 @@
 		<div class="lagetop">
 			<Footertop></Footertop>
 		</div>
+		
+		<!--客服窗口-->
+		<Kefu></Kefu>
+		
 		<!---->
 		<div class="large">
 			<div class="banimg">
@@ -177,11 +182,13 @@
 	import Footertop from './header.vue'
 	import Footerbottom from './dibubotom.vue'
 	import { Toast } from 'mint-ui'; //toast
+	import Kefu from './kefu.vue'
 	
     export default {
     	components: {
 		    Footertop,
-		    Footerbottom
+		    Footerbottom,
+		    Kefu
 		 },
         data () {
         	return {
@@ -241,7 +248,7 @@
 	                }
 					var cookir = this.getcookit();
 					this.$http.post(
-	          			this.$api_ysapi + "/yskjApp/appYskj/V1/getServiceCode.do",
+	          			this.$api_ysapi_zs + "/yskjApp/appYskj/V1/getServiceCode.do",
 	          		{"phone":this.code,"cookie":cookir}
 					).then(function (res) {
 				        var result = JSON.parse(res.bodyText);
@@ -310,13 +317,13 @@
 								var ss = localStorage.getItem("cookgwyez").replace("\"","").replace("\"","");
 
 				this.$http.post(
-      				this.$api_ysapi + "/yskjApp/appYskj/V1/compServiceCode.do",
+      				this.$api_ysapi_zs + "/yskjApp/appYskj/V1/compServiceCode.do",
           		{"code":this.sjyazcode,"cookie":ss}
 				).then(function (res) {
 			        var result = JSON.parse(res.bodyText);
 			        if (result.success){
 			        	this.$http.post(
-		      				this.$api_ysapi + "/yskjApp/webApp/dataInfo/ownerEntrust.do",
+		      				this.$api_ysapi_zs + "/yskjApp/webApp/dataInfo/ownerEntrust.do",
 		          		{"name":this.name,"phone":this.code,"repairHouse":this.nfwxx,"memo":this.msfwxx,"uid":null}
 						).then(function (res) {
 					        var result = JSON.parse(res.bodyText);

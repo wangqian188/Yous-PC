@@ -62,6 +62,8 @@
         <div class="top_box" style="position: relative;background: #fff;height: 400px;">
         	<Footertop style='background: #1d1d1d;'></Footertop>        	
         </div>
+        <!--客服窗口-->
+		<Kefu></Kefu>
         <div style="position: absolute;left: 0;right: 0;bottom: 0;top: 60px;overflow: auto;">
         	
         <!--</div>-->
@@ -552,6 +554,7 @@
 
     import field from './list_component/field.vue'
     import subway from './list_component/subway.vue'
+    import Kefu from './kefu.vue'
 
     export default {
         components: {
@@ -560,7 +563,8 @@
             field,
             subway,
             Footertop,
-            Footerbottom
+            Footerbottom,
+            Kefu
         },
 
         data(){
