@@ -145,18 +145,18 @@
                 marker.cb = data.callback;
                 return marker;
             },
-            getinfoboxhtml: function (title, content, id, cb) {
-                if (cb) {
-                    title = '<a target="_bank" href="' + cb + '" class="maplink">' + title + '</a>';
-                    content = '符合查询条件' + content + '套</br>';
-                }
-                return '<img src="http://img2.static.uban.com/www/images/map/box_top.png" width="228" height="16">' +
-                    '<div style="width:228px; background:url(http://img2.static.uban.com/www/images/map/box_content.png) repeat-y; background-size:228px 100%; margin:-1px 0 -2px; padding:5px 0;" >' +
-                    '<p style="margin:auto; width:185px; font-size:18px; color:#555; font-weight:700;">' + title +'</p>' +
-                    '<p style="margin:auto; width:181px; font-size:14px; color:$999; line-height:20px; margin-top:5px; word-break:break-all; white-space:normal; overflow:auto;">' + content + '</p>' +
-                    '</div>' +
-                    '<img src="http://img2.static.uban.com/www/images/map/box_bottom.png" width="228" height="22">';
-            },
+//          getinfoboxhtml: function (title, content, id, cb) {
+//              if (cb) {
+//                  title = '<a target="_bank" href="' + cb + '" class="maplink">' + title + '</a>';
+//                  content = '符合查询条件' + content + '套</br>';
+//              }
+//              return '<img src="http://img2.static.uban.com/www/images/map/box_top.png" width="228" height="16">' +
+//                  '<div style="width:228px; background:url(http://img2.static.uban.com/www/images/map/box_content.png) repeat-y; background-size:228px 100%; margin:-1px 0 -2px; padding:5px 0;" >' +
+//                  '<p style="margin:auto; width:185px; font-size:18px; color:#555; font-weight:700;">' + title +'</p>' +
+//                  '<p style="margin:auto; width:181px; font-size:14px; color:$999; line-height:20px; margin-top:5px; word-break:break-all; white-space:normal; overflow:auto;">' + content + '</p>' +
+//                  '</div>' +
+//                  '<img src="http://img2.static.uban.com/www/images/map/box_bottom.png" width="228" height="22">';
+//          },
             addclickhandler: function (marker) {
                 var this_ = this;
                 marker.addEventListener("mouseover", function (e) {
