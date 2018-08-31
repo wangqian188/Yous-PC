@@ -26,6 +26,8 @@
         <div class="top_box" style="position: relative;background: #fff;height: 400px;">
         	<Footertop style='background: #1d1d1d;'></Footertop>        	
         </div>
+        <!--客服窗口-->
+		<Kefu></Kefu>
 		<div style="position: absolute;left: 0;right: 0;bottom: 0;top: 60px;overflow: auto;">
         <!--list  start-->
         <div detail>
@@ -299,6 +301,7 @@
     import footer1 from '../components/footer.vue';
     import Footertop from './header.vue'
 	import Footerbottom from './dibubotom.vue'
+	import Kefu from './kefu.vue'
 
     import mapPart from '../components/map-part.vue';
     import '../resources/plugin/pic_tab/pic_tab.js';
@@ -311,7 +314,8 @@
             footer1,
             Footertop,
             Footerbottom,
-            mapPart
+            mapPart,
+            Kefu
         },
         data(){
             return {

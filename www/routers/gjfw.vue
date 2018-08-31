@@ -88,6 +88,8 @@
 		<div class="lagetop">
 			<Footertop></Footertop>
 		</div>
+		<!--客服窗口-->
+		<Kefu></Kefu>
 		<!---->
 		<div class="large">
 			<div class="gjfuimg">
@@ -225,11 +227,13 @@
 <script>
 	import Footertop from './header.vue'
 	import Footerbottom from './dibubotom.vue'
+	import Kefu from './kefu.vue'
 	
     export default {
     	components: {
 		    Footertop,
-		    Footerbottom
+		    Footerbottom,
+		    Kefu
 		 },
         data () {
         	return {
