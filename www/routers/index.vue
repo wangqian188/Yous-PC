@@ -149,8 +149,8 @@
 	.gszcimg:hover,.zszximg:hover{opacity:0.3;background-color: white;}
 	
 	
-	.ivu-carousel-arrow.left{left: 5%;display: flex;align-items: center;justify-content: center;}
-	.ivu-carousel-arrow.right{right: 5%;display: flex;align-items: center;justify-content: center;}
+	.ivu-carousel-arrow.left{left: 5%;}
+	.ivu-carousel-arrow.right{right: 5%;}
 	
     .ivu-carousel-arrow{font-size: 2.7em;}
     .gszcimg{height: 45%;}
