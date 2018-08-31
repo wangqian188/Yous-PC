@@ -272,21 +272,21 @@
 					<div class="kjdz ggdis">
 						<div class="gozhuce ggdis">
 							<p class="gszcimgla">
-								<span class="gszcimg ggdis pointer" @click="diajissc"></span>
-								<span class="zszximg ggdis pointer" @click="diajissc"></span>
+								<span class="gszcimg ggdis pointer" @click="diajissc1"></span>
+								<span class="zszximg ggdis pointer" @click="diajissc2"></span>
 							</p>
 							<p class="bangjv">
-								<span class="bgjjimg ggdis pointer" @click="diajissc"></span>
+								<span class="bgjjimg ggdis pointer" @click="diajissc3"></span>
 								<span class="gngypspa ggdis">
-									<span class="bgypimg ggdis pointer" @click="diajissc"></span>
-									<span class="kgbximg ggdis pointer" @click="diajissc"></span>
+									<span class="bgypimg ggdis pointer" @click="diajissc4"></span>
+									<span class="kgbximg ggdis pointer" @click="diajissc5"></span>
 								</span>
 							</p>
 							<p class="bangjv">
-								<span class="lzfu ggdis pointer" @click="diajissc"></span>
+								<span class="lzfu ggdis pointer" @click="diajissc6"></span>
 								<span class="gngypspa ggdis">
-									<span class="qyys ggdis pointer" @click="diajissc"></span>
-									<span class="qybj ggdis pointer" @click="diajissc"></span>
+									<span class="qyys ggdis pointer" @click="diajissc7"></span>
+									<span class="qybj ggdis pointer" @click="diajissc8"></span>
 								</span>
 							</p>
 						</div>
@@ -384,9 +384,31 @@
 			        }
 		        })
 			},
-			diajissc(){
-			 	window.open("http://beta.ursbest.com");
+			diajissc1(){
+			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1213");
 			},
+			diajissc2(){
+			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1211");
+			},
+			diajissc3(){
+			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1210");
+			},
+			diajissc4(){
+			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1217");
+			},
+			diajissc5(){
+			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1212");
+			},
+			diajissc6(){
+			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1214");
+			},
+			diajissc7(){
+			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1215");
+			},
+			diajissc8(){
+			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1216");
+			},
+			
 			to_link(index){
 				if(index == 0){
 					this.$router.push({ path: '/list',query:{type:2}});
