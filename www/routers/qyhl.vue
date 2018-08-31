@@ -3,38 +3,59 @@
 	/* 当展现页面的宽度大于1000px且小于1400px时，的样式。 */
 	@media screen and (min-width: 1000px) and (max-width: 1400px) {
 		.lagetop{position: absolute;top: 0px;left: 0px;right: 0px;height: 52px;z-index: 12;}/*background-color: #1d1d1d;*/
-		.qyhulian{width: 959px;}
-		.lttb{width:121px;height:121px;background: url(../resources/images/qyhl/zuyiimg.png) no-repeat;background-size: 100% auto;}
-		.zsyh{font-size: 17px;line-height: 17px;color: #333333;margin: 13px 0px 8px;}
-		.zxsqy{width: 183px;font-size: 14px;line-height: 22px;color: #959595;}
-		.qyzhusyhu p:last-child{margin-left: 24px;}
-		.pptg{margin-top: 75px;margin-bottom: 63px;}
-		.retou{width:121px;height:121px;background: url(../resources/images/qyhl/tentou.png) no-repeat;background-size: 100% auto;}
-		.zhext{width:121px;height:121px;background: url(../resources/images/qyhl/zexiantu.png) no-repeat;background-size: 100% auto;}
-		.tubiao{width:121px;height:121px;background: url(../resources/images/qyhl/texiangb.png) no-repeat;background-size: 100% auto;}
+		.qyhl{margin-top: 63px;}
+		.biaotwid{width: 1150px;}
+		.beidi{height: 29px;background-color: #282828;width: 7px;border-radius: 3px;}
+		.hyhd{font-size: 26px;line-height: 29px;color: #000000;margin-left: 12px;}
+		.rndsh{font-size: 15px;line-height: 21px;color: #323232;height: 21px;margin-left: 24px;}
+		.ingyhhdne{margin-top: 29px;flex-wrap: wrap;justify-content: space-between;margin-bottom: 61px;}
+		.ingyhhdne p:nth-child(1),.ingyhhdne p:nth-child(2),.ingyhhdne p:nth-child(3),.ingyhhdne p:nth-child(4){margin-bottom: 42px;}
+		.lsfyxwid{width: 268px;height: 195px;}
+		.hlwyy{height: 50px;line-height: 50px;justify-content: center;}
+		.chweyhz{width: 100%;}
+		.hyqy{margin-top: 63px;}
+		.rjwdtd{width: 1213px;margin-top: 9px;margin-bottom: 44px;}
 	}
 	/* 当展现页面的宽度大于1400px时的样式。 */
 	@media screen and (min-width: 1400px){
 		.lagetop{position: absolute;top: 0px;left: 0px;right: 0px;height: 60px;z-index: 12;}/*background-color: #1d1d1d;*/
-		.qyhulian{width: 1108px;}
-		.lttb{width:139px;height:139px;background: url(../resources/images/qyhl/zuyiimg.png) no-repeat;background-size: 100% auto;}
-		.zsyh{font-size: 20px;line-height: 20px;color: #333333;margin: 15px 0px 10px;}
-		.zxsqy{width: 210px;font-size: 16px;line-height: 26px;color: #959595;}
-		.qyzhusyhu p:last-child{margin-left: 28px;}
-		.pptg{margin-top: 86px;margin-bottom: 72px;}
-		.retou{width:139px;height:139px;background: url(../resources/images/qyhl/tentou.png) no-repeat;background-size: 100% auto;}
-		.zhext{width:139px;height:139px;background: url(../resources/images/qyhl/zexiantu.png) no-repeat;background-size: 100% auto;}
-		.tubiao{width:139px;height:139px;background: url(../resources/images/qyhl/texiangb.png) no-repeat;background-size: 100% auto;}
+		.qyhl{margin-top: 72px;}
+		.biaotwid{width: 1310px;}
+		.beidi{height: 34px;background-color: #282828;width: 8px;border-radius: 3px;}
+		.hyhd{font-size: 30px;line-height: 34px;color: #000000;margin-left: 14px;}
+		.rndsh{font-size: 18px;line-height: 24px;color: #323232;height: 24px;margin-left: 28px;}
+		.ingyhhdne{margin-top: 34px;flex-wrap: wrap;justify-content: space-between;margin-bottom: 70px;}
+		.ingyhhdne p:nth-child(1),.ingyhhdne p:nth-child(2),.ingyhhdne p:nth-child(3),.ingyhhdne p:nth-child(4){margin-bottom: 48px;}
+		.lsfyxwid{width: 307px;height: 223px;}
+		.hlwyy{height: 58px;line-height: 58px;justify-content: center;}
+		.chweyhz{width: 100%;}
+		.hyqy{margin-top: 72px;}
+		.rjwdtd{width: 1384px;margin-top: 10px;margin-bottom: 50px;}
 	}
 	
 	
-	.zuidalage{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;}
+	.ffdc{align-items: flex-end;}
 	
+	.ingyhhdne p{background-color: #f8f8f8;}
+	
+	.lsfyx1{background: url(../resources/images/qyhl/zqjl1.jpg) no-repeat;background-size: 100% auto;}
+	.lsfyx2{background: url(../resources/images/qyhl/zqjl2.jpg) no-repeat;background-size: 100% auto;}
+	.lsfyx3{background: url(../resources/images/qyhl/zqjl3.jpg) no-repeat;background-size: 100% auto;}
+	.lsfyx4{background: url(../resources/images/qyhl/zqjl4.jpg) no-repeat;background-size: 100% auto;}
+	.lsfyx5{background: url(../resources/images/qyhl/zqjl5.jpg) no-repeat;background-size: 100% auto;}
+	.lsfyx6{background: url(../resources/images/qyhl/zqjl6.jpg) no-repeat;background-size: 100% auto;}
+	.lsfyx7{background: url(../resources/images/qyhl/zqjl7.jpg) no-repeat;background-size: 100% auto;}
+	.lsfyx8{background: url(../resources/images/qyhl/zqjl8.jpg) no-repeat;background-size: 100% auto;}
+	
+	
+	
+	
+	
+	.zuidalage{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;}
 	.large{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;min-width: 1200px;overflow: auto;background-color: white;}
 	.qyhlimg{width: 100%;}
 	.gggjdis{display: flex;}
 	.gxlsdiscenrt{justify-content: center;}
-	
 	.diyigediv{justify-content: space-between;width: 100%;}
 	
 </style>
@@ -45,57 +66,93 @@
 		<div class="lagetop">
 			<Footertop></Footertop>
 		</div>
+		<!--客服窗口-->
+		<Kefu></Kefu>
 		<!---->
 		<div class="large">
 			<div class="qyhlimg">
 				<img src="../resources/images/qyhl/qyhlban.png"/>
 			</div>
-			<div class="qyhlimg">
-				<img src="../resources/images/qyhl/hyfl.jpg"/>
+			<div class="qyhlimg qyhl">
+				<div class="gggjdis gxlsdiscenrt">
+					<div class="biaotwid gggjdis ffdc">
+						<span class="beidi gggjdis"></span>
+						<span class="gggjdis hyhd">会员活动</span>
+						<span class="gggjdis rndsh">让您的生活丰富多彩</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="gggjdis gxlsdiscenrt">
+				<div class="biaotwid gggjdis">
+					<div class="ingyhhdne gggjdis">
+						<p>
+							<span class="lsfyx1 gggjdis lsfyxwid"></span>
+							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+						</p>
+						<p>
+							<span class="lsfyx2 gggjdis lsfyxwid"></span>
+							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+						</p>
+						<p>
+							<span class="lsfyx3 gggjdis lsfyxwid"></span>
+							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+						</p>
+						<p>
+							<span class="lsfyx4 gggjdis lsfyxwid"></span>
+							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+						</p>
+						<p>
+							<span class="lsfyx5 gggjdis lsfyxwid"></span>
+							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+						</p>
+						<p>
+							<span class="lsfyx6 gggjdis lsfyxwid"></span>
+							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+						</p>
+						<p>
+							<span class="lsfyx7 gggjdis lsfyxwid"></span>
+							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+						</p>
+						<p>
+							<span class="lsfyx8 gggjdis lsfyxwid"></span>
+							<span class="hlwyy gggjdis">亮狮商学院：互联网运营</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="chweyhz">
+				<img src="../resources/images/qyhl/zxzbz.jpg"/>
 			</div>
 			<div class="gggjdis gxlsdiscenrt">
-				<div class="qyhulian gggjdis">
-					<div class="gggjdis diyigediv">
-						<div class="qyzhusyhu gggjdis">
-							<p class="lttb"></p>
-							<p>
-								<span class="gggjdis zsyh">专属优惠</span>
-								<span class="gggjdis zxsqy">专属享受企业优惠套餐，详情请拨打电话或在微信公众号留言咨询</span>
-							</p>
-						</div>
-						<div class="qyzhusyhu gggjdis">
-							<p class="retou"></p>
-							<p>
-								<span class="gggjdis zsyh">专业管家</span>
-								<span class="gggjdis zxsqy">将为您提供全方位服务，专业的企业管家为您处理办公空间烦恼</span>
-							</p>
-						</div>
+				<div class="biaotwid gggjdis">
+					<div class="hyqy gggjdis ffdc">
+						<span class="beidi gggjdis"></span>
+						<span class="gggjdis hyhd">会员企业</span>
+						<span class="gggjdis rndsh">诚邀您成为我们的一员</span>
 					</div>
 				</div>
 			</div>
-			<div class="gggjdis gxlsdiscenrt pptg">
-				<div class="qyhulian gggjdis">
-					<div class="gggjdis diyigediv">
-						<div class="qyzhusyhu gggjdis">
-							<p class="zhext"></p>
-							<p>
-								<span class="gggjdis zsyh">品牌推广</span>
-								<span class="gggjdis zxsqy">在我们的app内为您的企业建立专属页面，为您提高企业知名度</span>
-							</p>
-						</div>
-						<div class="qyzhusyhu gggjdis">
-							<p class="tubiao"></p>
-							<p>
-								<span class="gggjdis zsyh">需求发布</span>
-								<span class="gggjdis zxsqy">可以将闲置资源和需求发布到app上进行免费展示</span>
-							</p>
-						</div>
-					</div>
+			<div class="gggjdis gxlsdiscenrt">
+				<div class="rjwdtd gggjdis">
+					<img src="../resources/images/qyhl/rjgs.png"/>
 				</div>
 			</div>
-			<div class="qyhlimg">
-				<img src="../resources/images/qyhl/jrhylc.jpg"/>
-			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			<!--公共的底部-->
 			<div class="lagebottom">
@@ -107,11 +164,13 @@
 <script>
 	import Footertop from './header.vue'
 	import Footerbottom from './dibubotom.vue'
+	import Kefu from './kefu.vue'
 	
     export default {
     	components: {
 		    Footertop,
-		    Footerbottom
+		    Footerbottom,
+		    Kefu
 		 },
         data () {
         	return {

@@ -17,7 +17,7 @@
 		.fwmsk textarea{width: 516px;height: 152px;border-bottom: 1px solid #e5e5e5;border-top: 0px solid #e5e5e5;border-left: 1px solid #e5e5e5;border-right: 1px solid #e5e5e5;padding: 17px 14px;font-size: 12px;color: #333333;}
 		.anweweit{width: 319px;height: 407px;background: url(../resources/images/ywzhuweit/anweiweitu.png) no-repeat;background-size: 100% auto;margin-top: 24px;}
 		.lagetijiao{margin-top: 87px;align-items: center;justify-content: center;}
-		.tijiaoweit{width: 168px;height: 49px;border-radius: 5px;font-size: 17px;color: #ffffff;background-color: #2B70D8;display: flex;align-items: center;justify-content: center;}
+		.tijiaoweit{width: 168px;height: 49px;border-radius: 5px;font-size: 17px;color: #ffffff;background-color: #0271b7;display: flex;align-items: center;justify-content: center;}
 		.weitlc{margin-top: 115px;align-items: center;}
 		.xianyi{border-top: 1px solid #e5e5e5;width: 483px;}
 		.wetkcwezi{width: 180px;text-align: center;font-size: 17px;line-height: 17px;color: #666666;}
@@ -40,7 +40,7 @@
 		.fwmsk textarea{width: 590px;height: 174px;border-bottom: 1px solid #e5e5e5;border-top: 0px solid #e5e5e5;border-left: 1px solid #e5e5e5;border-right: 1px solid #e5e5e5;padding: 20px 16px;font-size: 14px;color: #333333;}
 		.anweweit{width: 365px;height: 466px;background: url(../resources/images/ywzhuweit/anweiweitu.png) no-repeat;background-size: 100% auto;margin-top: 28px;}
 		.lagetijiao{margin-top: 100px;align-items: center;justify-content: center;}
-		.tijiaoweit{width: 192px;height: 56px;border-radius: 5px;font-size: 20px;color: #ffffff;background-color: #2B70D8;display: flex;align-items: center;justify-content: center;}
+		.tijiaoweit{width: 192px;height: 56px;border-radius: 5px;font-size: 20px;color: #ffffff;background-color: #0271b7;display: flex;align-items: center;justify-content: center;}
 		.weitlc{margin-top: 132px;align-items: center;}
 		.xianyi{border-top: 1px solid #e5e5e5;width: 552px;}
 		.wetkcwezi{width: 206px;text-align: center;font-size: 20px;line-height: 20px;color: #666666;}
@@ -60,7 +60,7 @@
 	
 	.biaot p:first-child{margin-left: 0px;}
 	
-	.tijiaoweit:hover{background-color: #4f8ff0;}
+	.tijiaoweit:hover{background-color: #0081d2;}
 	.yazhanma{color: #333333;}
 	.shiujitishi{border-bottom: 0px solid red;color: red;}
 	.shiujitishigg{border-bottom: 0px solid red;color: red;}
@@ -100,7 +100,7 @@
 							
 							<span class="gxlsdis gxlsdisnone shiujitishiname">
 								<span class="xiangming shiujitishi"></span>
-								<span class="xminput shiujitishi shiujitis">请输入姓名</span>
+								<span class="xminput shiujitishi">请输入姓名</span>
 							</span>
 							
 							<span class="gxlsdis">
