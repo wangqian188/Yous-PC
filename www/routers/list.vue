@@ -45,6 +45,14 @@
 	#sidebar_fix{
 		box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
 	}
+	/*.del_ion{
+		background: url(../resources/images/list/del_ion.png) no-repeat center !important;
+		background-size: 100% auto !important;
+	}
+	.del1_ion{
+		background: url(../resources/images/list/del_ion1.png) no-repeat center !important;
+		background-size: auto 100% !important;
+	}*/
 </style>
 
 <template>
@@ -331,24 +339,24 @@
                             <a href="javascript:;" v-for="sort_item in chosenArr"
                                :data-sortType="sort_item.sortType"
                                v-if="sort_item.sort_two == 1">{{sort_item.min + '-' + sort_item.max + sort_item.unit}}<i
-                                    class="sem_icon hover" @click="del_one($event)"></i>
+                                    class="sem_icon hover del_ion" @click="del_one($event)"></i>
                             </a>
                             <template v-else>
                                 <a href="javascript:;" v-if="sort_item.sort_two == 2"
                                    :data-sortType="sort_item.sortType"
                                    :class="sort_item.class">{{'>' + sort_item.min + sort_item.unit}}<i
-                                        class="sem_icon hover"
+                                        class="sem_icon hover del_ion"
                                         @click="del_one($event)"></i>
                                 </a>
                                 <a href="javascript:;" v-else
                                    :data-sortType="sort_item.sortType"
-                                   :class="sort_item.class">{{sort_item.name}}<i class="sem_icon hover"
+                                   :class="sort_item.class">{{sort_item.name}}<i class="sem_icon hover del_ion"
                                                                                  @click="del_one($event)"></i>
                                 </a>
                             </template>
 
 
-                            <span class="del_all cursor" @click="del_all()"><i class="sem_icon"></i>全部清除</span>
+                            <span class="del_all cursor" @click="del_all()"><i class="sem_icon del1_ion"></i>全部清除</span>
 
                         </div>
                     </div>
@@ -439,8 +447,9 @@
                     </div>
 
                     <!--右侧栏-->
-                    <div class="sidebar_box pt70">
-                        <div class="sidebar_main" id="sidebar_fix">
+                    <div class="sidebar_box pt70" style="width: 292px;">
+                    	<img src="../resources/images/list/celan_bg.png" width="100%" height="auto">
+                        <div class="sidebar_main" id="sidebar_fix" v-if="false">
                             <div class="side_model_tit" v-if="false"><i></i>地图找房</div>
                             <div class="map_house pr mt10" v-if="false">
                                 <div class="map_hover_wrap">

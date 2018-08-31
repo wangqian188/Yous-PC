@@ -73,8 +73,8 @@
             },
             initMap: function(x, y, z, title){
                 var map = {},this_=this, point={}, markerico=null,markerico2=null;
-                markerico =new BMap.Icon('http://img2.static.uban.com/www/map/images/local.png', new BMap.Size(24, 32), {anchor: new BMap.Size(9, 44), imageSize: new BMap.Size(24,32)});
-                markerico2 = new BMap.Icon('http://img2.static.uban.com/www/map/images/marker2.png', new BMap.Size(24, 32),{anchor: new BMap.Size(12, 38), imageSize: new BMap.Size(24,32)});
+                markerico =new BMap.Icon('http://omc.urskongjian.com:81/yskjapp/youshispace/ditu_ion.png', new BMap.Size(24, 32), {anchor: new BMap.Size(9, 44), imageSize: new BMap.Size(24,32)});
+                markerico2 = new BMap.Icon('http://omc.urskongjian.com:81/yskjapp/youshispace/ditu_ion.png', new BMap.Size(24, 32),{anchor: new BMap.Size(12, 38), imageSize: new BMap.Size(24,32)});
                 
                 this.mapData.markerico = markerico;
                 this.mapData.markerico2 = markerico2;

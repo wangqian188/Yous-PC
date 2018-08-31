@@ -442,8 +442,9 @@
             </div>
 
             <!--右侧悬浮box start-->
-            <div class="sidebar_box">
-                <div class="sidebar_main" id="sidebar_fix">
+            <div class="sidebar_box" style="width: 292px;">
+                <img src="../../resources/images/list/celan_bg.png" width="100%" height="auto">
+                <div class="sidebar_main" id="sidebar_fix" v-if="false">
                     <div class="side_model_tit mb10" v-if="false"><i></i>快速找房</div>
                     <div class="booking_house" style="box-shadow: none;">
                         <div class="booking_house_mes" v-if='false'>
