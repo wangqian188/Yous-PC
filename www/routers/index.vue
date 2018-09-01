@@ -361,9 +361,9 @@
           		this.$api_ysapi + "/yhcms/web/jcsj/getHotBuilding.do",
 				).then(function (res) {
 			        var result = JSON.parse(res.bodyText);
-			        /*Indicator.close();*/
 			        if (result.success){
 			            this.lpdata = result.data;
+			            /*alert(JSON.stringify(this.lpdata));*/
 			            for(var i=0;i<this.lpdata.length;i++){
 			            	if(i == 0){
 			            		this.lpdata[i].explain = "CBD核心区，高性价比商业之选";
@@ -377,7 +377,9 @@
 			            	if(i == 3){
 			            		this.lpdata[i].explain = "交通网络完善，市中心繁华商业地段";
 			            	}
-			            	
+			            	if(this.lpdata[i].pic.indexOf("thumb-")){
+			            		this.lpdata[i].pic = this.lpdata[i].pic.replace(/thumb-/ig,"");
+			            	}
 			            }
 			            /*_this.floors = data.zglc || '暂无数据';
 			            _this.topic = result.data[0].topic;*/

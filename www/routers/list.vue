@@ -1095,6 +1095,11 @@
 
                                 }
                                 _this.buildList = result.data.buildings;
+                                for(var i=0;i<_this.buildList.length;i++){
+                                	if(_this.buildList[i].img_path.indexOf("thumb-")){
+					            		_this.buildList[i].img_path = _this.buildList[i].img_path.replace(/thumb-/ig,"");
+					            	}
+                                }
                                 _this.total_items = result.total;
 //                              _this.total_pages = result.data.total_pages;
                                 if(_this.total_items % 10 == 0){

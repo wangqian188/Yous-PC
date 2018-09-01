@@ -14,7 +14,11 @@
 		.hlwyy{height: 50px;line-height: 50px;justify-content: center;}
 		.chweyhz{width: 100%;}
 		.hyqy{margin-top: 63px;}
-		.rjwdtd{width: 1213px;margin-top: 9px;margin-bottom: 44px;}
+		.rjwdtd{width: 1150px;margin-top: 30px;margin-bottom: 61px;}
+		.zhkrff p{width: 255px;height: 362px;justify-content: center;box-shadow:0px 0px 14px #c4c4c4;margin-left: 40px;}
+		.wendinongr{margin-top: 162px;}
+		.zkrjkjffgs{font-size: 15px;line-height: 15px;color: #000000;justify-content: center;}
+		.zyrjcyf{font-size: 12px;line-height: 12px;color: #666666;margin-top: 17px;}
 	}
 	/* 当展现页面的宽度大于1400px时的样式。 */
 	@media screen and (min-width: 1400px){
@@ -30,7 +34,11 @@
 		.hlwyy{height: 58px;line-height: 58px;justify-content: center;}
 		.chweyhz{width: 100%;}
 		.hyqy{margin-top: 72px;}
-		.rjwdtd{width: 1384px;margin-top: 10px;margin-bottom: 50px;}
+		.rjwdtd{width: 1310px;margin-top: 35px;margin-bottom: 70px;}
+		.zhkrff p{width: 292px;height: 300px;justify-content: center;box-shadow:0px 0px 16px #c4c4c4;margin-left: 46px;}
+		.wendinongr{margin-top: 186px;}
+	.zkrjkjffgs{font-size: 18px;line-height: 18px;color: #000000;justify-content: center;}
+	.zyrjcyf{font-size: 14px;line-height: 14px;color: #666666;margin-top: 20px;}
 	}
 	
 	
@@ -57,6 +65,18 @@
 	.gggjdis{display: flex;}
 	.gxlsdiscenrt{justify-content: center;}
 	.diyigediv{justify-content: space-between;width: 100%;}
+	
+	
+	
+	
+	
+	
+	.zhkrff p:first-child{margin-left: 0px;}
+	.zhkrff1{background: url(../resources/images/qyhl/rjgs1.png) no-repeat;background-size: 100% auto;}
+	.zhkrff2{background: url(../resources/images/qyhl/rjgs2.png) no-repeat;background-size: 100% auto;}
+	.zhkrff3{background: url(../resources/images/qyhl/rjgs3.png) no-repeat;background-size: 100% auto;}
+	.zhkrff4{background: url(../resources/images/qyhl/rjgs4.png) no-repeat;background-size: 100% auto;}
+	
 	
 </style>
 
@@ -135,7 +155,32 @@
 			</div>
 			<div class="gggjdis gxlsdiscenrt">
 				<div class="rjwdtd gggjdis">
-					<img src="../resources/images/qyhl/rjgs.png"/>
+					<div class="zhkrff gggjdis">
+						<p class="zhkrff1 gggjdis">
+							<span class="wendinongr">
+								<span class="zkrjkjffgs gggjdis">中科软科技股份有限公司</span>
+								<span class="zyrjcyf gggjdis">主营软件产品研发，系统集成与服务</span>
+							</span>
+						</p>
+						<p class="zhkrff2 gggjdis">
+							<span class="wendinongr">
+								<span class="zkrjkjffgs gggjdis">中科软科技股份有限公司</span>
+								<span class="zyrjcyf gggjdis">主营软件产品研发，系统集成与服务</span>
+							</span>
+						</p>
+						<p class="zhkrff3 gggjdis">
+							<span class="wendinongr">
+								<span class="zkrjkjffgs gggjdis">中科软科技股份有限公司</span>
+								<span class="zyrjcyf gggjdis">主营软件产品研发，系统集成与服务</span>
+							</span>
+						</p>
+						<p class="zhkrff4 gggjdis">
+							<span class="wendinongr">
+								<span class="zkrjkjffgs gggjdis">中科软科技股份有限公司</span>
+								<span class="zyrjcyf gggjdis">主营软件产品研发，系统集成与服务</span>
+							</span>
+						</p>
+					</div>
 				</div>
 			</div>
 			

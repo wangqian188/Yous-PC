@@ -60,7 +60,7 @@
 	<div class="yqlj">
 		<div class="yqljer">
 			<span class="yqljwenz">友情链接：</span>
-			<span class="hytz pointer" @click="diandhytz">/ 航远投资 </span>
+			<!--<span class="hytz pointer" @click="diandhytz">/ 航远投资 </span>-->
 			<span class="hlzx pointer" @click="diandhlzx">/ 华亮致新 </span>
 			<span class="hlfc pointer" @click="diandhlfc">/ 华亮房产 </span>
 			<span class="yszs pointer" @click="diandyszs">/ 幼狮装饰</span>
@@ -112,9 +112,9 @@
 
 		},
         methods: {
-			 diandhytz(){
+			 /*diandhytz(){
 			 	window.open("http://www.ursdream.com/");
-			 },
+			 },*/
 			 diandhlzx(){
 			 	window.open("http://www.ursbest.com/");
 			 },
