@@ -4,7 +4,7 @@
     @import "../resources/css/popup/popup.less";
     @import "../resources/css/popup/popup.less";
     /* 当展现页面的宽度大于1000px且小于1400px时，的样式。 */
-	@media screen and (min-width: 1000px) and (max-width: 1400px) {
+	@media screen and (min-width: 100px) and (max-width: 1400px) {
 		.lagetop{position: absolute;top: 0px;left: 0px;right: 0px;height: 52px;z-index: 12;display: flex;align-items: center;justify-content: center;}/*background-color: #1d1d1d;*/
 		.laingx{margin-top: 63px;max-height: 205px;width: 100%;min-width: 1200px;}
 		.quanian{font-size: 26px;color: #333333;text-align: center;line-height: 26px;}

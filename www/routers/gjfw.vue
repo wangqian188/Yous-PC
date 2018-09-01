@@ -2,7 +2,7 @@
 	@import "../resources/plugin/animate/animate.min.css";
 /*页面底部的css样式*/
 	/* 当展现页面的宽度大于1000px且小于1400px时，的样式。 */
-	@media screen and (min-width: 1000px) and (max-width: 1400px) {
+	@media screen and (min-width: 100px) and (max-width: 1400px) {
 		.lagetop{position: absolute;top: 0px;left: 0px;right: 0px;height: 52px;z-index: 12;}/*background-color: #1d1d1d;*/
 		.lageyezhufjfu{margin-top: 40px;justify-content: center;}
 		.biaotgj{width: 1150px;}
