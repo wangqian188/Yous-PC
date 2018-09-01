@@ -15,10 +15,10 @@
 		.chweyhz{width: 100%;}
 		.hyqy{margin-top: 63px;}
 		.rjwdtd{width: 1150px;margin-top: 30px;margin-bottom: 61px;}
-		.zhkrff p{width: 255px;height: 362px;justify-content: center;box-shadow:0px 0px 14px #c4c4c4;margin-left: 40px;}
+		.zhkrff p{width: 255px;height: 262px;justify-content: center;box-shadow:0px 0px 14px #c4c4c4;margin-left: 40px;}
 		.wendinongr{margin-top: 162px;}
 		.zkrjkjffgs{font-size: 15px;line-height: 15px;color: #000000;justify-content: center;}
-		.zyrjcyf{font-size: 12px;line-height: 12px;color: #666666;margin-top: 17px;}
+		.zyrjcyf{font-size: 12px;line-height: 12px;color: #666666;margin-top: 17px;justify-content: center;}
 	}
 	/* 当展现页面的宽度大于1400px时的样式。 */
 	@media screen and (min-width: 1400px){
@@ -38,7 +38,7 @@
 		.zhkrff p{width: 292px;height: 300px;justify-content: center;box-shadow:0px 0px 16px #c4c4c4;margin-left: 46px;}
 		.wendinongr{margin-top: 186px;}
 	.zkrjkjffgs{font-size: 18px;line-height: 18px;color: #000000;justify-content: center;}
-	.zyrjcyf{font-size: 14px;line-height: 14px;color: #666666;margin-top: 20px;}
+	.zyrjcyf{font-size: 14px;line-height: 14px;color: #666666;margin-top: 20px;justify-content: center;}
 	}
 	
 	
@@ -164,20 +164,20 @@
 						</p>
 						<p class="zhkrff2 gggjdis">
 							<span class="wendinongr">
-								<span class="zkrjkjffgs gggjdis">中科软科技股份有限公司</span>
-								<span class="zyrjcyf gggjdis">主营软件产品研发，系统集成与服务</span>
+								<span class="zkrjkjffgs gggjdis">北京正众信源传媒科技有限公司</span>
+								<span class="zyrjcyf gggjdis">云酒柜、新零售电商平台</span>
 							</span>
 						</p>
 						<p class="zhkrff3 gggjdis">
 							<span class="wendinongr">
-								<span class="zkrjkjffgs gggjdis">中科软科技股份有限公司</span>
-								<span class="zyrjcyf gggjdis">主营软件产品研发，系统集成与服务</span>
+								<span class="zkrjkjffgs gggjdis">北京华亮房地产经纪有限公司</span>
+								<span class="zyrjcyf gggjdis">商业地产投资、金融服务</span>
 							</span>
 						</p>
 						<p class="zhkrff4 gggjdis">
 							<span class="wendinongr">
-								<span class="zkrjkjffgs gggjdis">中科软科技股份有限公司</span>
-								<span class="zyrjcyf gggjdis">主营软件产品研发，系统集成与服务</span>
+								<span class="zkrjkjffgs gggjdis">咕咚智能运动</span>
+								<span class="zyrjcyf gggjdis">运动、社交、互联网</span>
 							</span>
 						</p>
 					</div>
