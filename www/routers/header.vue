@@ -1,7 +1,7 @@
 ﻿<style lang="less">
 /*	页面头部的css样式*/
 	/* 当展现页面的宽度大于1000px且小于1400px时，的样式。 */
-	@media screen and (min-width: 1000px) and (max-width: 1400px) {
+	@media screen and (min-width: 100px) and (max-width: 1400px) {
 		.topbu_box{
 			z-index: 99999;
 			width: 100%;
