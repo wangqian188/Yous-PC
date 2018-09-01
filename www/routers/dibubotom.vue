@@ -97,7 +97,7 @@
 			</div>
 		</div>
 		<div class="kjdz ggdis">
-			<div class="gsjjzt lsicp">北京亮狮企服科技有限公司保留一切权利  京ICP备15046508号-1</div>
+			<div class="gsjjzt lsicp">北京亮狮企服科技有限公司保留一切权利  京ICP备17052275号-2</div>
 		</div>
 	</div>
 </template>

@@ -17,7 +17,7 @@
 		.rjwdtd{width: 1150px;margin-top: 30px;margin-bottom: 61px;}
 		.zhkrff p{width: 255px;height: 262px;justify-content: center;box-shadow:0px 0px 14px #c4c4c4;margin-left: 40px;}
 		.wendinongr{margin-top: 162px;}
-		.zkrjkjffgs{font-size: 15px;line-height: 15px;color: #000000;justify-content: center;}
+		.zkrjkjffgs{font-size: 14px;line-height: 14px;color: #000000;justify-content: center;}
 		.zyrjcyf{font-size: 12px;line-height: 12px;color: #666666;margin-top: 17px;justify-content: center;}
 	}
 	/* 当展现页面的宽度大于1400px时的样式。 */
@@ -37,15 +37,11 @@
 		.rjwdtd{width: 1310px;margin-top: 35px;margin-bottom: 70px;}
 		.zhkrff p{width: 292px;height: 300px;justify-content: center;box-shadow:0px 0px 16px #c4c4c4;margin-left: 46px;}
 		.wendinongr{margin-top: 186px;}
-	.zkrjkjffgs{font-size: 18px;line-height: 18px;color: #000000;justify-content: center;}
+	.zkrjkjffgs{font-size: 16px;line-height: 16px;color: #000000;justify-content: center;}
 	.zyrjcyf{font-size: 14px;line-height: 14px;color: #666666;margin-top: 20px;justify-content: center;}
 	}
-	
-	
 	.ffdc{align-items: flex-end;}
-	
 	.ingyhhdne p{background-color: #f8f8f8;}
-	
 	.lsfyx1{background: url(../resources/images/qyhl/zqjl1.jpg) no-repeat;background-size: 100% auto;}
 	.lsfyx2{background: url(../resources/images/qyhl/zqjl2.jpg) no-repeat;background-size: 100% auto;}
 	.lsfyx3{background: url(../resources/images/qyhl/zqjl3.jpg) no-repeat;background-size: 100% auto;}
@@ -54,23 +50,12 @@
 	.lsfyx6{background: url(../resources/images/qyhl/zqjl6.jpg) no-repeat;background-size: 100% auto;}
 	.lsfyx7{background: url(../resources/images/qyhl/zqjl7.jpg) no-repeat;background-size: 100% auto;}
 	.lsfyx8{background: url(../resources/images/qyhl/zqjl8.jpg) no-repeat;background-size: 100% auto;}
-	
-	
-	
-	
-	
 	.zuidalage{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;}
 	.large{position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;min-width: 1200px;overflow: auto;background-color: white;}
 	.qyhlimg{width: 100%;}
 	.gggjdis{display: flex;}
 	.gxlsdiscenrt{justify-content: center;}
 	.diyigediv{justify-content: space-between;width: 100%;}
-	
-	
-	
-	
-	
-	
 	.zhkrff p:first-child{margin-left: 0px;}
 	.zhkrff1{background: url(../resources/images/qyhl/rjgs1.png) no-repeat;background-size: 100% auto;}
 	.zhkrff2{background: url(../resources/images/qyhl/rjgs2.png) no-repeat;background-size: 100% auto;}
@@ -156,10 +141,11 @@
 			<div class="gggjdis gxlsdiscenrt">
 				<div class="rjwdtd gggjdis">
 					<div class="zhkrff gggjdis">
-						<p class="zhkrff1 gggjdis">
+						<p class="zhkrff3 gggjdis">
 							<span class="wendinongr">
-								<span class="zkrjkjffgs gggjdis">中科软科技股份有限公司</span>
-								<span class="zyrjcyf gggjdis">主营软件产品研发，系统集成与服务</span>
+								<span class="zkrjkjffgs gggjdis">中耀盛世(北京)房地产顾问有限公司
+</span>
+								<span class="zyrjcyf gggjdis">商业地产投资、租售、运营管理</span>
 							</span>
 						</p>
 						<p class="zhkrff2 gggjdis">
@@ -168,10 +154,10 @@
 								<span class="zyrjcyf gggjdis">云酒柜、新零售电商平台</span>
 							</span>
 						</p>
-						<p class="zhkrff3 gggjdis">
+						<p class="zhkrff1 gggjdis">
 							<span class="wendinongr">
-								<span class="zkrjkjffgs gggjdis">北京华亮房地产经纪有限公司</span>
-								<span class="zyrjcyf gggjdis">商业地产投资、金融服务</span>
+								<span class="zkrjkjffgs gggjdis">中科软科技股份有限公司</span>
+								<span class="zyrjcyf gggjdis">主营软件产品研发，系统集成与服务</span>
 							</span>
 						</p>
 						<p class="zhkrff4 gggjdis">
