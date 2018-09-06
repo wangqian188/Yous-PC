@@ -3,7 +3,7 @@
     @import "../resources/css/index/index.less";
     @import "../resources/css/popup/popup.less";
     @import "../resources/css/popup/popup.less";
-    /* 当展现页面的宽度大于1000px且小于1400px时，的样式。 */
+    /* 当展现页面的宽度大于100px且小于1400px时，的样式。 */
 	@media screen and (min-width: 100px) and (max-width: 1400px) {
 		.lagetop{position: absolute;top: 0px;left: 0px;right: 0px;height: 52px;z-index: 12;display: flex;align-items: center;justify-content: center;}/*background-color: #1d1d1d;*/
 		.laingx{margin-top: 63px;max-height: 205px;width: 100%;min-width: 1200px;}
@@ -387,28 +387,28 @@
 		        })
 			},
 			diajissc1(){
-			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1213");
+			 	window.open("http://www.liangshimall.com/index.php?app=search&cate_id=1213");
 			},
 			diajissc2(){
-			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1211");
+			 	window.open("http://www.liangshimall.com/index.php?app=search&cate_id=1211");
 			},
 			diajissc3(){
-			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1210");
+			 	window.open("http://www.liangshimall.com/index.php?app=search&cate_id=1210");
 			},
 			diajissc4(){
-			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1217");
+			 	window.open("http://www.liangshimall.com/index.php?app=search&cate_id=1217");
 			},
 			diajissc5(){
-			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1212");
+			 	window.open("http://www.liangshimall.com/index.php?app=search&cate_id=1212");
 			},
 			diajissc6(){
-			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1214");
+			 	window.open("http://www.liangshimall.com/index.php?app=search&cate_id=1214");
 			},
 			diajissc7(){
-			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1215");
+			 	window.open("http://www.liangshimall.com/index.php?app=search&cate_id=1215");
 			},
 			diajissc8(){
-			 	window.open("http://mall.liangshipower.com/index.php?app=search&cate_id=1216");
+			 	window.open("http://www.liangshimall.com/index.php?app=search&cate_id=1216");
 			},
 			
 			to_link(index){
@@ -416,7 +416,7 @@
 					this.$router.push({ path: '/list',query:{type:2}});
 				}
 				if(index == 1){
-					window.open("http://mall.liangshipower.com/index.php");
+					window.open("http://www.liangshimall.com/index.php");
 				}
 				if(index == 2){
 					this.$router.push({ path: '/yezhuweit',query:{type:4}});
