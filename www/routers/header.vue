@@ -149,7 +149,7 @@
 				this.$router.push({ path: '/list',query:{type:2}});
 			},
 			diafwsc(){
-				window.open("http://mall.liangshipower.com/index.php");
+				window.open("http://www.liangshimall.com/index.php");
 			},
 			yezhuweitui(){
 				this.$router.push({ path: '/yezhuweit',query:{type:4}});
