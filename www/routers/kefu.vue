@@ -99,7 +99,7 @@
 			<!-- 
 			<a href="javascript:;" class="a a-qrcode"><i class="i"></i></a>
 			-->
-			<a target="_blank" href="http://mall.liangshipower.com" class="a a-cart"><i class="i"></i></a>
+			<a target="_blank" href="http://www.liangshimall.com" class="a a-cart"><i class="i"></i></a>
 			<a href="javascript:;" class="a a-top"><i class="i"></i></a>
 			<div class="d d-service">
 				<i class="arrow"></i>
