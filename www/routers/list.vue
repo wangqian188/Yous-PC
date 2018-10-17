@@ -53,6 +53,7 @@
 		background: url(../resources/images/list/del_ion1.png) no-repeat center !important;
 		background-size: auto 100% !important;
 	}*/
+	.userceenggs{background: url(../resources/images/useryonghusc.png) no-repeat !important;}
 </style>
 
 <template>
@@ -416,6 +417,12 @@
                                                 class="font-num"> m²</span>, 待租办公室&nbsp;<span
                                             class="font-num text-black fb" v-text="item.kzfy"></span>&nbsp;套
                                     </dd>
+                                    <dd>
+                                        <i class="sem_icon userceenggs item_area"></i>已有
+                                        <span class="text-black fb"
+                                              v-text="item.scscount"></span>&nbsp;用户收藏，
+                                       	<span class="font-num text-black fb" v-text="item.dkscount"></span>&nbsp;次带看
+                                    </dd>
                                     <!-- <dd>
                                         <span><i class="sem_icon item_see"></i>近7天有 <b
                                                 class="hover" v-text="item.inquiries_nums"></b> 位用户咨询过</span>
@@ -450,7 +457,7 @@
 
                     <!--右侧栏-->
                     <div class="sidebar_box pt70" style="width: 292px;">
-                    	<a href="http://mall.liangshipower.com/index.php" target="_blank">
+                    	<a href="http://www.liangshimall.com/index.php" target="_blank">
                     	<img src="../resources/images/list/celan_bg.png" width="100%" height="auto"></a>
                         <div class="sidebar_main" id="sidebar_fix" v-if="false">
                             <div class="side_model_tit" v-if="false"><i></i>地图找房</div>

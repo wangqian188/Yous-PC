@@ -286,7 +286,7 @@
 
             <!--右侧悬浮box start-->
             <div class="sidebar_box mt10" style="width: 292px;">
-            	<a href="http://mall.liangshipower.com/index.php" target="_blank">
+            	<a href="http://www.liangshimall.com/index.php" target="_blank">
                 <img src="../../resources/images/list/celan_bg.png" width="100%" height="auto"></a>
                 <div class="sidebar_main" id="sidebar_fix" v-if="false">
                     <div class="side_model_tit mb10" v-if="false"><i></i>快速找房</div>
